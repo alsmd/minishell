@@ -6,7 +6,7 @@
 /*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 14:58:23 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/24 15:37:08 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/24 21:39:29 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int string_forward(char *string, char c, int *i)
         *i += 1;
     return (index);
 }
+
 int check_quotes(char *s)
 {
     int i;
@@ -47,7 +48,6 @@ int check_quotes(char *s)
         return (1);
     return(0);
 }
-
 
 int	parse_string(char *buffer)
 {

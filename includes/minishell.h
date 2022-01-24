@@ -6,7 +6,7 @@
 /*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/24 20:59:21 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/24 21:48:21 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,6 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdlib.h>
-
-typedef enum e_relations
-{
-	PIPE = 1,
-	REDIRECT_INPUT,
-	REDIRECT_OUTPUT,
-	REDIRECT_OUTPUT_APPEND,
-	REDIRECT_INPUT_DELIMITER
-} e_relations;
 
 typedef struct s_node
 {
@@ -64,10 +55,11 @@ enum e_error
 void	make_shell_command(char *buffer);
 
 //PARSES
-int	parse_string(char *buffer);
+int		parse_string(char *buffer);
 
 //OPERATORS
-int	output(t_node *cmd);
+int		handle_output(t_node *cmd);
+int		handle_pipe(t_node *node);
 
 //OPERATORS HELPERS
 t_node	*add_new_cmd(char *command, char *relation);
@@ -88,5 +80,6 @@ char	*get_next_line(int fd);
 void	handler_final_file(int fd);
 char	*is_in(char **array, char *str);
 char	*ft_strdup(const char *s);
+char	*ft_strtrim(char const *s1, char const *set);
 
 #endif

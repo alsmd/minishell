@@ -6,7 +6,7 @@
 /*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 18:07:20 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/24 20:59:39 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/24 21:42:54 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@ extern t_minishell g_minishell;
 void	handle_operators(void)
 {
 	t_node		*node;
-	int			id;
-	int			fd[2];
-	int			status;
 
 	node = g_minishell.node;
 	while (node->next)
@@ -27,38 +24,24 @@ void	handle_operators(void)
 	while (node->previous)
 	{
 		if (node->previous->relation[0] == '|')
-		{
-			if (pipe(fd) == -1)
-				return ;
-			id = fork();
-			if (id == -1)
-				return ;
-			if (id != 0)
-			{
-				waitpid(id, &status, 0);
-				parent(node, fd);
-			}
-			dup2(fd[1], STDOUT_FILENO);
-			close(fd[0]);
-		}
+			handle_pipe(node);
 		else if (node->previous->relation[0] == '>')
-			output(node);
+			handle_output(node);
 		node = node->previous;
 	}
 	last_child(node);
 }
 
-void	make_shell_command(char *buffer)
+/*
+	Percorre a string referente ao comando, ex: ls -l | grep d | wc -l > exit,
+	e coloca cada comando em um node da lista encadeada armazenando o relacionamento com o proximo comando.
+*/
+
+void	create_relations(char *buffer)
 {
 	char		*relation;
 	int			index;
-	int			id;
-	int			status;
 
-	/*
-		Percorre a string referente ao comando, ex: ls -l | grep d | wc -l > exit,
-		e coloca cada comando em um node da lista encadeada armazenando o relacionamento com o proximo comando.
-	*/
 	index = 0;
 	while (buffer[index])
 	{
@@ -81,6 +64,14 @@ void	make_shell_command(char *buffer)
 	}
 	if (*buffer != 0)
 		add_new_cmd(buffer, 0);
+}
+
+void	make_shell_command(char *buffer)
+{
+	int			id;
+	int			status;
+
+	create_relations(buffer);
 	id = fork();
 	if (id == 0)
 		handle_operators();

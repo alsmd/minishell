@@ -1,9 +1,10 @@
 
 SRCS =	./srcs/main.c \
-		./srcs/utils/ft_calloc.c ./srcs/utils/ft_split.c ./srcs/utils/ft_bzero.c ./srcs/utils/ft_strlen.c \
+		./srcs/utils/ft_calloc.c ./srcs/utils/ft_split.c ./srcs/utils/ft_bzero.c ./srcs/utils/ft_strlen.c ./srcs/utils/ft_strtrim.c \
 		./srcs/utils/ft_substr.c ./srcs/utils/ft_strjoin.c ./srcs/utils/ft_strncmp.c ./srcs/utils/get_next_line.c \
 		./srcs/utils/handler_final_file.c ./srcs/utils/is_in.c ./srcs/utils/ft_strdup.c \
-		./srcs/command/command_operations.c ./srcs/parse/parse_string.c  ./srcs/operators/redirect.c ./srcs/command/helper_command.c
+		./srcs/command/command_operations.c ./srcs/parse/parse_string.c  ./srcs/operators/redirect.c ./srcs/command/helper_command.c \
+		./srcs/operators/pipe.c
 
 OBJS = $(SRCS:.c=.o)
 

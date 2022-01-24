@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redirect.c                                         :+:      :+:    :+:   */
+/*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/24 15:44:26 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/24 21:34:31 by flda-sil         ###   ########.fr       */
+/*   Created: 2022/01/24 21:33:12 by flda-sil          #+#    #+#             */
+/*   Updated: 2022/01/24 21:37:26 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-int	handle_output(t_node *cmd)
+int	handle_pipe(t_node *node)
 {
-	int	fd;
-	int	id;
+	int			id;
+	int			fd[2];
+	int			status;
 
-	if (!ft_strncmp(cmd->previous->relation, ">>", 2))
-		fd = open(cmd->full_instruction, O_WRONLY | O_APPEND | O_CREAT, 0777);
-	else
-		fd = open(cmd->full_instruction, O_WRONLY | O_TRUNC | O_CREAT, 0777);
-	if (fd == -1)
-		return (ERROR_OPEN_FILE);
-	if (cmd->relation && !ft_strncmp(cmd->relation, ">", 1))
+	if (pipe(fd) == -1)
+		return (1);
+	id = fork();
+	if (id == -1)
+		return (1);
+	if (id != 0)
 	{
-		close(fd);
-		return (0);
+		waitpid(id, &status, 0);
+		parent(node, fd);
 	}
-	dup2(fd, STDOUT_FILENO);
+	dup2(fd[1], STDOUT_FILENO);
+	close(fd[0]);
 	return (0);
 }

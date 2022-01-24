@@ -6,7 +6,7 @@
 /*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:52:37 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/24 21:20:28 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/24 21:44:13 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*set_string(char *src, char *dest)
 }
 
 
-void	reset_minishell(void)
+void	init_minishell(void)
 {
 	ft_bzero(&g_minishell, sizeof(t_minishell));// || | && < > << >> 
 	
@@ -46,7 +46,7 @@ int	main(int argc, char *argv[], char *env[])
 	int		status;
 	char	*buffer;
 
-	reset_minishell();
+	init_minishell();
 	g_minishell.env = env;
 	while (1)
 	{
