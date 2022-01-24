@@ -6,7 +6,7 @@
 /*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 15:44:26 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/24 20:35:44 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/24 21:07:56 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ int	output(t_node *cmd)
 		fd = open(cmd->full_instruction, O_WRONLY | O_TRUNC | O_CREAT, 0777);
 	if (fd == -1)
 		return (ERROR_OPEN_FILE);
+	if (cmd->relation && !ft_strncmp(cmd->relation, ">", 1))
+	{
+		close(fd);
+		return (0);
+	}
 	dup2(fd, STDOUT_FILENO);
 	return (0);
 }

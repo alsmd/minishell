@@ -6,7 +6,7 @@
 /*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:52:37 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/24 15:53:21 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/24 21:20:28 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int	main(int argc, char *argv[], char *env[])
 	while (1)
 	{
 		buffer = readline(">");
+		if (!ft_strncmp(buffer, "exit", 4))
+			return (0);
 		add_history(buffer);
 		//trata a string (eu do futuro)
 		status = parse_string(buffer);

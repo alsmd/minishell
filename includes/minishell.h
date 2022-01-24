@@ -6,7 +6,7 @@
 /*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/24 17:22:36 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/24 20:59:21 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,12 @@ int	parse_string(char *buffer);
 //OPERATORS
 int	output(t_node *cmd);
 
-
+//OPERATORS HELPERS
+t_node	*add_new_cmd(char *command, char *relation);
+void	check_command_exist(t_node *cmd);
+void	execute_cmd(t_node *cmd);
+void	last_child(t_node *node);
+void	parent(t_node *cmd, int fd[2]);
 
 //UTILS
 void	ft_bzero(void *s, size_t n);
