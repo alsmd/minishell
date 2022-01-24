@@ -6,7 +6,7 @@
 /*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:52:37 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/24 21:44:13 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/24 22:02:31 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	main(int argc, char *argv[], char *env[])
 		//...
 		
 		//Realiza a substituição dos metacharacteres (eu do futuro)
-
+		
 		//Cria a lista encadeada de comandos e os seus relacionamentos 
 		if (status == 0)
 			make_shell_command(buffer);

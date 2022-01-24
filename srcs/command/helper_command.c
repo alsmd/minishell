@@ -6,7 +6,7 @@
 /*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 20:53:32 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/24 21:56:26 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/24 22:02:28 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_node	*add_new_cmd(char *command, char *relation)
 	t_node	*new_cmd;
 
 	new_cmd = (t_node *) ft_calloc(1, sizeof(t_node));
-	new_cmd->full_instruction = ft_strtrim(command, "'");
+	new_cmd->full_instruction = ft_strtrim(command, " ");
 	new_cmd->argv = ft_split(new_cmd->full_instruction, ' ');
 	new_cmd->input = STDIN_FILENO;
 	new_cmd->output = STDOUT_FILENO;
