@@ -15,7 +15,8 @@ PATH_PARSE = $(PATH_SRC)parse/
 PATH_BUILTINS = $(PATH_SRC)builtins/
 PATH_OBJS = ./objs/
 
-SRCS =	$(PATH_COMMAND)command_operations.c $(PATH_COMMAND)helper_command.c\
+SRCS =	$(PATH_MAIN)main.c \
+		$(PATH_COMMAND)command_operations.c $(PATH_COMMAND)helper_command.c\
 		$(PATH_OPERATOR)pipe.c $(PATH_OPERATOR)redirect.c\
 		$(PATH_PARSE)parse_string.c\
 		$(PATH_UTILS)ft_bzero.c $(PATH_UTILS)ft_calloc.c $(PATH_UTILS)ft_split.c\
@@ -28,7 +29,7 @@ OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(SRCS))
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(INCLUDE) $(PATH_MAIN)main.c ./objs/*/*.o -o $(NAME) -lreadline
+	$(CC) $(CFLAGS) $(INCLUDE) ./objs/*/*.o -o $(NAME) -lreadline
 
 $(PATH_OBJS)%.o: $(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)
@@ -36,6 +37,7 @@ $(PATH_OBJS)%.o: $(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)operators/
 	@mkdir -p $(PATH_OBJS)parse/
 	@mkdir -p $(PATH_OBJS)utils/
+	@mkdir -p $(PATH_OBJS)main/
 	$(CC) $(CFLAGS) $(INCLUDE) -I. -c $< -o $@ -lreadline
 
 clean:
