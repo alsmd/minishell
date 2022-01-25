@@ -22,8 +22,6 @@ void	add_variable(char *key, char *value)
 	}
 }
 
-
-
 void	create_env(char **envp)
 {
 	char *key;

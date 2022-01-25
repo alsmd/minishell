@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/25 14:53:56 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/01/25 16:45:19 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	unset(char *key);
 // ENV
 void	create_env(char **env);
 void	add_variable(char *key, char *value);
+char **get_matrix(void);
 
 void	make_shell_command(char *buffer);
 
@@ -83,6 +84,8 @@ int is_comand(char *s);
 char **trim_quotes(char **matrix);
 char **search_matrix(char **matrix);
 char *swap_chars(char *cmd, char to_find, char to_put);
+void	check_absolute_path(t_node *cmd);
+int is_absolute_path(char *cmd);
 
 
 char *check_expand(char *buffer);

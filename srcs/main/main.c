@@ -41,6 +41,8 @@ int	main(int argc, char *argv[], char *envp[])
 	while (1)
 	{
 		buffer = readline(">");
+		if(buffer[0] == 0)
+			continue ;
 		if (!ft_strncmp(buffer, "exit", 4))
 			return (0);
 		add_history(buffer);

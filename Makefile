@@ -18,7 +18,7 @@ PATH_OBJS = ./objs/
 SRCS =	$(PATH_MAIN)main.c \
 		$(PATH_BUILTINS)env.c $(PATH_BUILTINS)check_builtin.c\
 		$(PATH_COMMAND)command_operations.c $(PATH_COMMAND)helper_command.c\
-		$(PATH_ENV)create_env.c\
+		$(PATH_ENV)create_env.c $(PATH_ENV)get_matrix.c\
 		$(PATH_OPERATOR)pipe.c $(PATH_OPERATOR)redirect.c\
 		$(PATH_PARSE)parse_string.c $(PATH_PARSE)parse_quotes.c $(PATH_PARSE)get_path.c\
 		$(PATH_PARSE)expand_vars.c\

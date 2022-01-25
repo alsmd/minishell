@@ -13,7 +13,10 @@ t_node	*add_new_cmd(char *command, char *relation)
 	new_cmd->argv = ft_split(new_cmd->full_instruction, ' ');
 	new_cmd->argv = search_matrix(new_cmd->argv);
 	new_cmd->argv = trim_quotes(new_cmd->argv);
-	check_command_exist(new_cmd);
+	if (is_absolute_path(new_cmd->argv[0]))
+		check_absolute_path(new_cmd);
+	else
+		check_command_exist(new_cmd);
 	new_cmd->input = STDIN_FILENO;
 	new_cmd->output = STDOUT_FILENO;
 	new_cmd->relation = relation;
@@ -30,6 +33,26 @@ t_node	*add_new_cmd(char *command, char *relation)
 	return (new_cmd);
 }
 
+int is_absolute_path(char *cmd)
+{
+	if (!ft_strncmp(cmd, "/", 1))
+		return (TRUE);
+	else if (!ft_strncmp(cmd, "./", 2))
+		return (TRUE);
+	else if (!ft_strncmp(cmd, "../", 3))
+		return (TRUE);
+	return(FALSE);
+}
+
+
+void	check_absolute_path(t_node *cmd)
+{
+	if (access(cmd->argv[0], F_OK) == 0)
+		cmd->not_exist = 0;
+	else
+		cmd->not_exist = 1;
+}
+
 void	check_command_exist(t_node *cmd)
 {
 	char	*cmd_path;
@@ -39,6 +62,7 @@ void	check_command_exist(t_node *cmd)
 
 	index = 0;
 	exist = 0;
+
 	while (g_minishell.paths && g_minishell.paths[index] != 0)
 	{
 		tmp = ft_strjoin(g_minishell.paths[index], "/");
@@ -68,7 +92,8 @@ void	execute_cmd(t_node *cmd)
 	}
 	if (cmd->not_exist == 1)
 		exit(1);
-	execve(cmd->argv[0], cmd->argv, NULL);
+	
+	execve(cmd->argv[0], cmd->argv, get_matrix());
 }
 
 void	last_child(t_node *node)
