@@ -6,11 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/01/25 13:42:39 by flda-sil         ###   ########.fr       */
-=======
-/*   Updated: 2022/01/25 08:50:25 by gsilva-v         ###   ########.fr       */
->>>>>>> 44231ec5f9ed05f0b87229ea64e23def7b04aac8
+/*   Updated: 2022/01/25 10:08:48 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +26,7 @@
 
 typedef struct s_env
 {
-	char			*name;
+	char			*key;
 	char			*value;
 
 	struct s_env	*next;
@@ -63,6 +59,10 @@ enum e_error
 	ERROR_SINTAX = 1,
 	ERROR_OPEN_FILE
 };
+
+
+// ENV
+void	create_env(char **env);
 
 
 void	make_shell_command(char *buffer);

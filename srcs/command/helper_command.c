@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 20:53:32 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/25 08:58:46 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/01/25 10:16:42 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ t_node	*add_new_cmd(char *command, char *relation)
 		new_cmd->previous = begin;
 		begin->next = new_cmd;
 	}
-	for (int i = 0; new_cmd->argv[i]; i++)
-		printf("index %d: %s\n", i, new_cmd->argv[i]);
 	return (new_cmd);
 }
 
@@ -76,7 +74,7 @@ void	execute_cmd(t_node *cmd)
 {
 	if (cmd->not_exist == 1)
 		exit(1);
-	execve(cmd->argv[0], cmd->argv, g_minishell.env);
+	execve(cmd->argv[0], cmd->argv, NULL);
 }
 
 void	last_child(t_node *node)

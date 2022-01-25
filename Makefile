@@ -7,16 +7,17 @@ INCLUDE = -I ./includes/
 
 PATH_SRC = ./srcs/
 PATH_MAIN = $(PATH_SRC)main/
-PATH_UTILS = $(PATH_SRC)utils/
 PATH_COMMAND = $(PATH_SRC)command/
+PATH_ENV = $(PATH_SRC)env/
 PATH_OPERATOR = $(PATH_SRC)operators/
-PATH_MESSAGE = $(PATH_SRC)messages/
 PATH_PARSE = $(PATH_SRC)parse/
 PATH_BUILTINS = $(PATH_SRC)builtins/
+PATH_UTILS = $(PATH_SRC)utils/
 PATH_OBJS = ./objs/
 
 SRCS =	$(PATH_MAIN)main.c \
 		$(PATH_COMMAND)command_operations.c $(PATH_COMMAND)helper_command.c\
+		$(PATH_ENV)create_env.c\
 		$(PATH_OPERATOR)pipe.c $(PATH_OPERATOR)redirect.c\
 		$(PATH_PARSE)parse_string.c $(PATH_PARSE)parse_quotes.c\
 		$(PATH_UTILS)ft_bzero.c $(PATH_UTILS)ft_calloc.c $(PATH_UTILS)ft_split.c\
@@ -34,6 +35,7 @@ $(NAME): $(OBJS)
 $(PATH_OBJS)%.o: $(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)command/
+	@mkdir -p $(PATH_OBJS)env/
 	@mkdir -p $(PATH_OBJS)operators/
 	@mkdir -p $(PATH_OBJS)parse/
 	@mkdir -p $(PATH_OBJS)utils/

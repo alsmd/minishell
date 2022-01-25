@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:52:37 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/24 22:02:31 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/25 10:16:04 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ int	main(int argc, char *argv[], char *env[])
 	char	*buffer;
 
 	init_minishell();
-	g_minishell.env = env;
+	
+	create_env(env);
 	while (1)
 	{
 		buffer = readline(">");
