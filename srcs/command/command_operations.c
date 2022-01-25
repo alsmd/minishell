@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_operations.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 18:07:20 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/24 21:42:54 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/25 11:50:49 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,15 @@ void	make_shell_command(char *buffer)
 	int			status;
 
 	create_relations(buffer);
-	id = fork();
-	if (id == 0)
-		handle_operators();
-	waitpid(id, &status, 0);
+	if (g_minishell.node->next == 0)
+		exec_builtin(g_minishell.node);
+	else
+	{
+		id = fork();
+		if (id == 0)
+			handle_operators();
+		waitpid(id, &status, 0);
+	}
 	g_minishell.node = 0;
 	/* while (g_minishell.node)
 	{

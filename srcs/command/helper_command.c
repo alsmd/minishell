@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 20:53:32 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/25 10:16:42 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/01/25 11:44:30 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	execute_cmd(t_node *cmd)
 {
 	if (cmd->not_exist == 1)
 		exit(1);
+	
 	execve(cmd->argv[0], cmd->argv, NULL);
 }
 

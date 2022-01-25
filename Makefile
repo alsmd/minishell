@@ -16,7 +16,7 @@ PATH_UTILS = $(PATH_SRC)utils/
 PATH_OBJS = ./objs/
 
 SRCS =	$(PATH_MAIN)main.c \
-		$(PATH_BUILTINS)env.c\
+		$(PATH_BUILTINS)env.c $(PATH_BUILTINS)check_builtin.c\
 		$(PATH_COMMAND)command_operations.c $(PATH_COMMAND)helper_command.c\
 		$(PATH_ENV)create_env.c\
 		$(PATH_OPERATOR)pipe.c $(PATH_OPERATOR)redirect.c\

@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:52:37 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/25 11:14:00 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/01/25 11:52:06 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,7 @@ int	main(int argc, char *argv[], char *envp[])
 	init_minishell();
 	
 	create_env(envp);
-	export("ARG=123");
-	export("ARG=342");
-	export("ARG2=234");
-	env();
-	sleep(1);
-	unset("ARG2");
-	env();
+
 	while (1)
 	{
 		buffer = readline(">");

@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/25 11:04:06 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/01/25 11:23:19 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#define TRUE 1
+#define FALSE 0
 
 typedef struct s_env
 {
@@ -61,6 +63,7 @@ enum e_error
 };
 
 // BUILTINS
+void	exec_builtin(t_node *cmd);
 void	env(void);
 void	export(char *command);
 void	unset(char *key);
