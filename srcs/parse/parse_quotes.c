@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 08:43:26 by gsilva-v          #+#    #+#             */
-/*   Updated: 2022/01/25 08:51:26 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/01/25 09:24:36 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,15 @@ char **search_matrix(char **matrix)
 char **trim_quotes(char **matrix)
 {
 	int i;
-
+	
 	i = 0;
 	while (matrix[i])
 	{
-		matrix[i] = ft_strtrim(matrix[i], "\'");
+		
+		if (matrix[i][0] == '\'')
+			matrix[i] = ft_strtrim(matrix[i], "\'");
+		else
+			matrix[i] = ft_strtrim(matrix[i], "\"");
 		i++;
 	}
 	return (matrix);
