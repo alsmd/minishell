@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/25 17:36:53 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/25 14:53:56 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,9 @@ int is_comand(char *s);
 char **trim_quotes(char **matrix);
 char **search_matrix(char **matrix);
 char *swap_chars(char *cmd, char to_find, char to_put);
+
+
+char *check_expand(char *buffer);
 
 //OPERATORS
 int		handle_output(t_node *cmd);

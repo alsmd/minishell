@@ -33,7 +33,7 @@ int	main(int argc, char *argv[], char *envp[])
 {
 	int		status;
 	char	*buffer;
-
+	char	*new_buffer;
 	init_minishell();
 	
 	create_env(envp);
@@ -44,17 +44,14 @@ int	main(int argc, char *argv[], char *envp[])
 		if (!ft_strncmp(buffer, "exit", 4))
 			return (0);
 		add_history(buffer);
-		//trata a string (eu do futuro)
-		status = parse_string(buffer);
+		//Realiza a substituição dos metacharacteres (eu do futuro)
+		new_buffer = check_expand(buffer);
+		status = parse_string(new_buffer);
 		if (status != 0)
 			printf("Error Sintaxe\n");
-		//...
 		
-		//Realiza a substituição dos metacharacteres (eu do futuro)
-		
-		//Cria a lista encadeada de comandos e os seus relacionamentos 
 		if (status == 0)
-			make_shell_command(buffer);
+			make_shell_command(new_buffer);
 	}
 	return (0);
 }
