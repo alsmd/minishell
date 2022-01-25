@@ -1,30 +1,42 @@
-
-SRCS =	./srcs/main.c \
-		./srcs/utils/ft_calloc.c ./srcs/utils/ft_split.c ./srcs/utils/ft_bzero.c ./srcs/utils/ft_strlen.c ./srcs/utils/ft_strtrim.c \
-		./srcs/utils/ft_substr.c ./srcs/utils/ft_strjoin.c ./srcs/utils/ft_strncmp.c ./srcs/utils/get_next_line.c \
-		./srcs/utils/handler_final_file.c ./srcs/utils/is_in.c ./srcs/utils/ft_strdup.c \
-		./srcs/command/command_operations.c ./srcs/parse/parse_string.c  ./srcs/operators/redirect.c ./srcs/command/helper_command.c \
-		./srcs/operators/pipe.c
-
-OBJS = $(SRCS:.c=.o)
-
-HEADER = ./includes/ 
-
 NAME = minishell
-
-CFLAGS = 
-
 CC = gcc
+CFLAGS = -g
 
-RM = rm -f
+
+INCLUDE = -I ./includes/
+
+PATH_SRC = ./srcs/
+PATH_MAIN = $(PATH_SRC)main/
+PATH_UTILS = $(PATH_SRC)utils/
+PATH_COMMAND = $(PATH_SRC)command/
+PATH_OPERATOR = $(PATH_SRC)operators/
+PATH_MESSAGE = $(PATH_SRC)messages/
+PATH_PARSE = $(PATH_SRC)parse/
+PATH_BUILTINS = $(PATH_SRC)builtins/
+PATH_OBJS = ./objs/
+
+SRCS =	$(PATH_COMMAND)command_operations.c $(PATH_COMMAND)helper_command.c\
+		$(PATH_OPERATOR)pipe.c $(PATH_OPERATOR)redirect.c\
+		$(PATH_PARSE)parse_string.c\
+		$(PATH_UTILS)ft_bzero.c $(PATH_UTILS)ft_calloc.c $(PATH_UTILS)ft_split.c\
+		$(PATH_UTILS)ft_strdup.c $(PATH_UTILS)ft_strjoin.c $(PATH_UTILS)ft_strlen.c\
+		$(PATH_UTILS)ft_strncmp.c $(PATH_UTILS)ft_strtrim.c $(PATH_UTILS)ft_substr.c \
+		$(PATH_UTILS)get_next_line.c $(PATH_UTILS)handler_final_file.c $(PATH_UTILS)is_in.c
+		
+OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(SRCS))
 
 all: $(NAME)
 
-%.o: %.c
-	$(CC) -c -o $@ $< -I $(HEADER) $(CFLAGS)
-
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -I $(HEADER) -o $@ $^ -lreadline
+	$(CC) $(CFLAGS) $(INCLUDE) $(PATH_MAIN)main.c ./objs/*/*.o -o $(NAME) -lreadline
+
+$(PATH_OBJS)%.o: $(PATH_SRC)%.c
+	@mkdir -p $(PATH_OBJS)
+	@mkdir -p $(PATH_OBJS)command/
+	@mkdir -p $(PATH_OBJS)operators/
+	@mkdir -p $(PATH_OBJS)parse/
+	@mkdir -p $(PATH_OBJS)utils/
+	$(CC) $(CFLAGS) $(INCLUDE) -I. -c $< -o $@ -lreadline
 
 clean:
 	$(RM) $(OBJS)
