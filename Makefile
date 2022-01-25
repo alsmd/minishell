@@ -20,7 +20,7 @@ SRCS =	$(PATH_MAIN)main.c \
 		$(PATH_COMMAND)command_operations.c $(PATH_COMMAND)helper_command.c\
 		$(PATH_ENV)create_env.c\
 		$(PATH_OPERATOR)pipe.c $(PATH_OPERATOR)redirect.c\
-		$(PATH_PARSE)parse_string.c $(PATH_PARSE)parse_quotes.c\
+		$(PATH_PARSE)parse_string.c $(PATH_PARSE)parse_quotes.c $(PATH_PARSE)get_path.c\
 		$(PATH_UTILS)ft_bzero.c $(PATH_UTILS)ft_calloc.c $(PATH_UTILS)ft_split.c\
 		$(PATH_UTILS)ft_strdup.c $(PATH_UTILS)ft_strjoin.c $(PATH_UTILS)ft_strlen.c\
 		$(PATH_UTILS)ft_strncmp.c $(PATH_UTILS)ft_strtrim.c $(PATH_UTILS)ft_substr.c \

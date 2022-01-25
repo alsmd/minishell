@@ -6,7 +6,7 @@
 /*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 20:53:32 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/25 16:56:28 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/25 17:43:29 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_node	*add_new_cmd(char *command, char *relation)
 	new_cmd->argv = ft_split(new_cmd->full_instruction, ' ');
 	new_cmd->argv = search_matrix(new_cmd->argv);
 	new_cmd->argv = trim_quotes(new_cmd->argv);
+	check_command_exist(new_cmd);
 	new_cmd->input = STDIN_FILENO;
 	new_cmd->output = STDOUT_FILENO;
 	new_cmd->relation = relation;
@@ -50,7 +51,7 @@ void	check_command_exist(t_node *cmd)
 
 	index = 0;
 	exist = 0;
-	while (g_minishell.paths[index] != 0)
+	while (g_minishell.paths && g_minishell.paths[index] != 0)
 	{
 		tmp = ft_strjoin(g_minishell.paths[index], "/");
 		cmd_path = ft_strjoin(tmp, cmd->argv[0]);
@@ -72,13 +73,13 @@ void	check_command_exist(t_node *cmd)
 
 void	execute_cmd(t_node *cmd)
 {
-	if (cmd->not_exist == 1)
-		exit(1);
 	if (is_builtin(cmd))
 	{
 		exec_builtin(cmd);
 		exit(0);
 	}
+	if (cmd->not_exist == 1)
+		exit(1);
 	execve(cmd->argv[0], cmd->argv, NULL);
 }
 

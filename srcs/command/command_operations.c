@@ -6,7 +6,7 @@
 /*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 18:07:20 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/25 17:04:52 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/25 17:30:39 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	handle_operators(void)
 			handle_pipe(node);
 		else if (node->previous->relation[0] == '>')
 			handle_output(node);
+		else if (node->previous->relation[0] == '<' && node->previous->relation[1] == '\0')
+			handle_input(node);
 		node = node->previous;
 	}
 	last_child(node);
@@ -71,6 +73,7 @@ void	make_shell_command(char *buffer)
 	int			id;
 	int			status;
 
+	get_path();
 	create_relations(buffer);
 	if (is_builtin(g_minishell.node) == TRUE && g_minishell.node->next == 0)
 		exec_builtin(g_minishell.node);
