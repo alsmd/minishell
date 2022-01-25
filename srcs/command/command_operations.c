@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_operations.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 18:07:20 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/25 11:50:49 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/01/25 17:04:52 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	make_shell_command(char *buffer)
 	int			status;
 
 	create_relations(buffer);
-	if (g_minishell.node->next == 0)
+	if (is_builtin(g_minishell.node) == TRUE && g_minishell.node->next == 0)
 		exec_builtin(g_minishell.node);
 	else
 	{
@@ -82,9 +82,4 @@ void	make_shell_command(char *buffer)
 		waitpid(id, &status, 0);
 	}
 	g_minishell.node = 0;
-	/* while (g_minishell.node)
-	{
-		printf("nome do comando: %s, relação com o proximo comando: %s\n", g_minishell.node->full_instruction, g_minishell.node->relation);
-		g_minishell.node = g_minishell.node->next;
-	} */
 }

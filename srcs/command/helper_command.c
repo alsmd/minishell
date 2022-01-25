@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper_command.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 20:53:32 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/25 11:44:30 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/01/25 16:56:28 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,11 @@ void	execute_cmd(t_node *cmd)
 {
 	if (cmd->not_exist == 1)
 		exit(1);
-	
+	if (is_builtin(cmd))
+	{
+		exec_builtin(cmd);
+		exit(0);
+	}
 	execve(cmd->argv[0], cmd->argv, NULL);
 }
 

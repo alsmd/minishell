@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/25 11:23:19 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/01/25 16:55:48 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ enum e_error
 
 // BUILTINS
 void	exec_builtin(t_node *cmd);
+int		is_builtin(t_node *cmd);
 void	env(void);
 void	export(char *command);
 void	unset(char *key);
