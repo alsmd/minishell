@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/24 21:48:21 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/25 08:50:25 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,11 @@ void	make_shell_command(char *buffer);
 
 //PARSES
 int		parse_string(char *buffer);
+
+int is_comand(char *s);
+char **trim_quotes(char **matrix);
+char **search_matrix(char **matrix);
+char *swap_chars(char *cmd, char to_find, char to_put);
 
 //OPERATORS
 int		handle_output(t_node *cmd);
