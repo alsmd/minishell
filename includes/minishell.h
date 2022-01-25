@@ -6,7 +6,7 @@
 /*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/24 21:48:21 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/25 13:42:39 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@
 #include <fcntl.h>
 #include <stdlib.h>
 
+typedef struct s_env
+{
+	char			*name;
+	char			*value;
+
+	struct s_env	*next;
+	struct s_env	*previous;
+} t_env;
+
 typedef struct s_node
 {
 	char				**argv;
@@ -40,7 +49,7 @@ typedef struct s_minishell
 {
 	char		**paths;
 	char		**operators;
-	char		**env; 
+	t_env		*env;
 	t_node		*node;
 
 } t_minishell;
