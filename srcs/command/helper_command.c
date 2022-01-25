@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper_command.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 20:53:32 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/24 22:02:28 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/25 08:58:46 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ t_node	*add_new_cmd(char *command, char *relation)
 
 	new_cmd = (t_node *) ft_calloc(1, sizeof(t_node));
 	new_cmd->full_instruction = ft_strtrim(command, " ");
+	new_cmd->full_instruction = swap_chars(new_cmd->full_instruction, ' ', 1);
 	new_cmd->argv = ft_split(new_cmd->full_instruction, ' ');
+	new_cmd->argv = search_matrix(new_cmd->argv);
+	new_cmd->argv = trim_quotes(new_cmd->argv);
 	new_cmd->input = STDIN_FILENO;
 	new_cmd->output = STDOUT_FILENO;
 	new_cmd->relation = relation;
@@ -35,6 +38,8 @@ t_node	*add_new_cmd(char *command, char *relation)
 		new_cmd->previous = begin;
 		begin->next = new_cmd;
 	}
+	for (int i = 0; new_cmd->argv[i]; i++)
+		printf("index %d: %s\n", i, new_cmd->argv[i]);
 	return (new_cmd);
 }
 
