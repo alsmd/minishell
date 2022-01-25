@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/25 10:08:48 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/01/25 11:04:06 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,14 @@ enum e_error
 	ERROR_OPEN_FILE
 };
 
+// BUILTINS
+void	env(void);
+void	export(char *command);
+void	unset(char *key);
 
 // ENV
 void	create_env(char **env);
-
+void	add_variable(char *key, char *value);
 
 void	make_shell_command(char *buffer);
 
