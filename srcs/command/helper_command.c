@@ -80,3 +80,32 @@ void	check_command_exist(t_node *cmd)
 	if (exist == 0)
 		cmd->not_exist = 1;
 }
+
+int	is_command(t_node *node)
+{
+	if (node->previous == 0)
+		return (1);
+	if (node->previous->relation[0] == '|')
+		return (1);
+	if (node->relation == 0 && node->previous->relation[0] == '|')
+		return (1);
+	return (0);
+}
+
+void	add_fd(int fd)
+{
+	t_fd	*new_fd;
+	t_fd	*fds;
+
+	new_fd = (t_fd *) ft_calloc(sizeof(t_fd), 1);
+	new_fd->value = fd;
+	fds = g_minishell.fds;
+	if (fds == 0)
+		g_minishell.fds = new_fd;
+	else
+	{
+		while (fds->next)
+			fds = fds->next;
+		fds->next = new_fd;
+	}
+}
