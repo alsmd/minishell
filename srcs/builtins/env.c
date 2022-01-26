@@ -1,10 +1,10 @@
 #include <minishell.h>
 
-extern t_minishell g_minishell;
+extern t_minishell	g_minishell;
 
-void env(void)
+void	env(void)
 {
-	t_env *init;
+	t_env	*init;
 
 	init = g_minishell.env;
 	while (init)
@@ -14,11 +14,11 @@ void env(void)
 	}
 }
 
-void export(char *command)
+void	export(char *command)
 {
-	char *key;
-	char *value;
-	int i;
+	char	*key;
+	char	*value;
+	int		i;
 
 	i = 0;
 	while (command[i] && command[i] != '=')
@@ -30,10 +30,10 @@ void export(char *command)
 	add_variable(key, value);
 }
 
-void unset(char *key)
+void	unset(char *key)
 {
-	t_env *init;
-	t_env *previous;
+	t_env	*init;
+	t_env	*previous;
 
 	previous = 0;
 	init = g_minishell.env;
@@ -52,10 +52,9 @@ void unset(char *key)
 			free(init->key);
 			free(init->value);
 			free(init);
-			break;
+			break ;
 		}
 		previous = init;
 		init = init->next;
 	}
 }
-

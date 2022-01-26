@@ -12,11 +12,10 @@ void	*set_string(char *src, char *dest)
 	}
 }
 
-
+// || | && < > << >> 
 void	init_minishell(void)
 {
-	ft_bzero(&g_minishell, sizeof(t_minishell));// || | && < > << >> 
-	
+	ft_bzero(&g_minishell, sizeof(t_minishell));
 	g_minishell.operators = (char **) ft_calloc(8, sizeof(char *));
 	g_minishell.operators[0] = ft_strdup("|");
 	g_minishell.operators[1] = ft_strdup("<<");
@@ -28,30 +27,26 @@ void	init_minishell(void)
 	g_minishell.operators[7] = NULL;
 }
 
-
 int	main(int argc, char *argv[], char *envp[])
 {
 	int		status;
 	char	*buffer;
 	char	*new_buffer;
-	init_minishell();
-	
-	create_env(envp);
 
+	init_minishell();
+	create_env(envp);
 	while (1)
 	{
 		buffer = readline(">");
-		if(buffer[0] == 0)
+		if (buffer[0] == 0)
 			continue ;
 		if (!ft_strncmp(buffer, "exit", 4))
 			return (0);
 		add_history(buffer);
-		//Realiza a substituição dos metacharacteres (eu do futuro)
 		new_buffer = check_expand(buffer);
 		status = parse_string(new_buffer);
 		if (status != 0)
 			printf("Error Sintaxe\n");
-		
 		if (status == 0)
 			make_shell_command(new_buffer);
 	}

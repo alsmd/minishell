@@ -1,13 +1,11 @@
-
-
 #include <minishell.h>
 
-extern t_minishell g_minishell;
+extern t_minishell	g_minishell;
 
-int get_env_len(void)
+int	get_env_len(void)
 {
-	int len;
-	t_env *init;
+	int		len;
+	t_env	*init;
 
 	init = g_minishell.env;
 	len = 0;
@@ -19,17 +17,16 @@ int get_env_len(void)
 	return (len);
 }
 
-char **get_matrix(void)
+char	**get_matrix(void)
 {
-	int len;
-	t_env *init;
-	char **my_env;
-	char *temp;
-	int index;
+	int		len;
+	t_env	*init;
+	char	**my_env;
+	char	*temp;
+	int		index;
 
 	index = 0;
 	init = g_minishell.env;
-
 	len = get_env_len();
 	my_env = (char **)ft_calloc(sizeof(char *), len + 1);
 	while (init)

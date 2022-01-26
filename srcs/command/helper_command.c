@@ -1,6 +1,6 @@
 #include <minishell.h>
 
-extern t_minishell g_minishell;
+extern t_minishell	g_minishell;
 
 t_node	*add_new_cmd(char *command, char *relation)
 {
@@ -33,7 +33,7 @@ t_node	*add_new_cmd(char *command, char *relation)
 	return (new_cmd);
 }
 
-int is_absolute_path(char *cmd)
+int	is_absolute_path(char *cmd)
 {
 	if (!ft_strncmp(cmd, "/", 1))
 		return (TRUE);
@@ -41,9 +41,8 @@ int is_absolute_path(char *cmd)
 		return (TRUE);
 	else if (!ft_strncmp(cmd, "../", 3))
 		return (TRUE);
-	return(FALSE);
+	return (FALSE);
 }
-
 
 void	check_absolute_path(t_node *cmd)
 {
@@ -62,7 +61,6 @@ void	check_command_exist(t_node *cmd)
 
 	index = 0;
 	exist = 0;
-
 	while (g_minishell.paths && g_minishell.paths[index] != 0)
 	{
 		tmp = ft_strjoin(g_minishell.paths[index], "/");
@@ -81,31 +79,4 @@ void	check_command_exist(t_node *cmd)
 	}
 	if (exist == 0)
 		cmd->not_exist = 1;
-}
-
-void	execute_cmd(t_node *cmd)
-{
-	if (is_builtin(cmd))
-	{
-		exec_builtin(cmd);
-		exit(0);
-	}
-	if (cmd->not_exist == 1)
-		exit(1);
-	
-	execve(cmd->argv[0], cmd->argv, get_matrix());
-}
-
-void	last_child(t_node *node)
-{
-	execute_cmd(node);
-	exit(0);
-}
-
-void	parent(t_node *cmd, int fd[2])
-{
-	close(fd[1]);
-	dup2(fd[0], STDIN_FILENO);
-	execute_cmd(cmd);
-	exit(0);
 }

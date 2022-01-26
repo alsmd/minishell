@@ -6,34 +6,33 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/25 16:45:19 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/01/26 09:23:28 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-#include <stdio.h>
-#include <readline/readline.h>
-#include <readline/history.h>
-#include <curses.h>
-#include <term.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#define TRUE 1
-#define FALSE 0
+# include <stdio.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <curses.h>
+# include <term.h>
+# include <unistd.h>
+# include <sys/types.h>
+# include <sys/wait.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# define TRUE 1
+# define FALSE 0
 
 typedef struct s_env
 {
 	char			*key;
 	char			*value;
-
 	struct s_env	*next;
 	struct s_env	*previous;
-} t_env;
+}	t_env;
 
 typedef struct s_node
 {
@@ -54,7 +53,7 @@ typedef struct s_minishell
 	t_env		*env;
 	t_node		*node;
 
-} t_minishell;
+}	t_minishell;
 
 enum e_error
 {
@@ -72,23 +71,25 @@ void	unset(char *key);
 // ENV
 void	create_env(char **env);
 void	add_variable(char *key, char *value);
-char **get_matrix(void);
+char	**get_matrix(void);
 
+// EXEC
 void	make_shell_command(char *buffer);
+void	last_child(t_node *node);
+void	execute_cmd(t_node *cmd);
+void	parent(t_node *cmd, int fd[2]);
 
 //PARSES
 int		parse_string(char *buffer);
 void	get_path(void);
 
-int is_comand(char *s);
-char **trim_quotes(char **matrix);
-char **search_matrix(char **matrix);
-char *swap_chars(char *cmd, char to_find, char to_put);
+int		is_comand(char *s);
+char	**trim_quotes(char **matrix);
+char	**search_matrix(char **matrix);
+char	*swap_chars(char *cmd, char to_find, char to_put);
 void	check_absolute_path(t_node *cmd);
-int is_absolute_path(char *cmd);
-
-
-char *check_expand(char *buffer);
+int		is_absolute_path(char *cmd);
+char	*check_expand(char *buffer);
 
 //OPERATORS
 int		handle_output(t_node *cmd);

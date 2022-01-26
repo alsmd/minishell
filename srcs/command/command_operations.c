@@ -15,10 +15,11 @@ void	handle_operators(void)
 			handle_pipe(node);
 		else if (node->previous->relation[0] == '>')
 			handle_output(node);
-		else if (node->previous->relation[0] == '<' && node->previous->relation[1] == '\0')
+		else if (node->previous->relation[0] == '<'\
+		&& node->previous->relation[1] == '\0')
 			handle_input(node);
-		else if (ft_strncmp(node->previous->relation, "<<", 2))
-			handle_here_doc(node);
+		// else if (ft_strncmp(node->previous->relation, "<<", 2))
+		// 	handle_here_doc(node);
 		node = node->previous;
 	}
 	last_child(node);

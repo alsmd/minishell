@@ -1,8 +1,8 @@
 #include <minishell.h>
 
-char *swap_chars(char *cmd, char to_find, char to_put)
+char	*swap_chars(char *cmd, char to_find, char to_put)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (cmd[i])
@@ -22,9 +22,9 @@ char *swap_chars(char *cmd, char to_find, char to_put)
 	return (cmd);
 }
 
-char **search_matrix(char **matrix)
+char	**search_matrix(char **matrix)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (matrix[i])
@@ -35,14 +35,13 @@ char **search_matrix(char **matrix)
 	return (matrix);
 }
 
-char **trim_quotes(char **matrix)
+char	**trim_quotes(char **matrix)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (matrix[i])
 	{
-		
 		if (matrix[i][0] == '\'')
 			matrix[i] = ft_strtrim(matrix[i], "\'");
 		else
