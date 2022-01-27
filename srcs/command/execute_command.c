@@ -98,8 +98,10 @@ static void	exec_commands(void)
 {
 	t_node		*node;
 	int			id;
+	int			status;
 
 	node = g_minishell.node;
+	status = 0;
 	while (node)
 	{
 		if (is_command(node))
@@ -109,16 +111,17 @@ static void	exec_commands(void)
 				close_fd(node->previous->input);
 				close_fd(node->previous->output);
 			}
-			// g_minishell.execute_signal = FALSE;
 			id = fork();
-			signals(CHILD);
+			signals(3);
 			if (id == 0)
 			{
-				// g_minishell.execute_signal = TRUE;
+				signals(CHILD);
 				execute_cmd(node);
 			}
-			waitpid(id, NULL, 0);
-			// g_minishell.execute_signal = TRUE;
+			waitpid(id, &status, 0);
+			//variavel global com o retorno do ctrl+c
+			if (status == 2)
+				printf("\n");
 		}
 		node = node->next;
 	}
