@@ -109,10 +109,15 @@ static void	exec_commands(void)
 				close_fd(node->previous->input);
 				close_fd(node->previous->output);
 			}
+			// g_minishell.execute_signal = FALSE;
 			id = fork();
 			if (id == 0)
+			{
+				// g_minishell.execute_signal = TRUE;
 				execute_cmd(node);
+			}
 			waitpid(id, NULL, 0);
+			// g_minishell.execute_signal = TRUE;
 		}
 		node = node->next;
 	}
@@ -135,6 +140,7 @@ void	make_shell_command(char *buffer)
 		exec_builtin(g_minishell.node);
 	else
 	{
+		g_minishell.execute_signal = FALSE;
 		id = fork();
 		if (id == 0)
 		{
@@ -142,6 +148,7 @@ void	make_shell_command(char *buffer)
 			exec_commands();
 		}
 		waitpid(id, &status, 0);
+		g_minishell.execute_signal = TRUE;
 	}
 	g_minishell.node = 0;
 }

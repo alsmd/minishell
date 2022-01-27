@@ -19,7 +19,7 @@ int	main(int argc, char *argv[], char *envp[])
 	create_env(envp);
 	while (1)
 	{
-		buffer = readline("> ");
+		buffer = readline("MiniShell > ");
 		if (!buffer)
 			return (0);
 		if (buffer[0] == '\0')

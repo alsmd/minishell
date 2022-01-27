@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/27 13:48:21 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/01/27 14:20:01 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct s_minishell
 	t_env				*env;
 	t_node				*node;
 	t_fd				*fds;
+	int					execute_signal;
 	struct sigaction	sa;
 }	t_minishell;
 
