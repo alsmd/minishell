@@ -18,7 +18,8 @@ PATH_UTILS = $(PATH_SRC)utils/
 PATH_OBJS = ./objs/
 
 SRCS =	$(PATH_MAIN)main.c	$(PATH_MAIN)init.c \
-		$(PATH_BUILTINS)env.c $(PATH_BUILTINS)check_builtin.c\
+		$(PATH_BUILTINS)env.c $(PATH_BUILTINS)check_builtin.c $(PATH_BUILTINS)pwd.c\
+		$(PATH_BUILTINS)cd.c\
 		$(PATH_COMMAND)execute_command.c $(PATH_COMMAND)helper_command.c\
 		$(PATH_ENV)create_env.c $(PATH_ENV)get_matrix.c\
 		$(PATH_MESSAGE)errors.c\

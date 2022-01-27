@@ -24,9 +24,9 @@ void	exec_builtin(t_node *cmd)
 	if (!(ft_strncmp(cmd->argv[0], "exit", -1)))
 		return ;
 	if (!(ft_strncmp(cmd->argv[0], "cd", -1)))
-		return ;
+		cd(cmd->argv);
 	if (!(ft_strncmp(cmd->argv[0], "pwd", -1)))
-		return ;
+		pwd();
 	if (!(ft_strncmp(cmd->argv[0], "export", -1)))
 		export(cmd->argv[1]);
 	if (!(ft_strncmp(cmd->argv[0], "env", -1)))

@@ -59,15 +59,15 @@ static void	execute_cmd(t_node *node)
 	dup2(node->input, STDIN_FILENO);
 	dup2(node->output, STDOUT_FILENO);
 	if (is_builtin(node))
-	{
 		exec_builtin(node);
-		exit(0);
+	else
+	{
+		if (node->not_exist == 1 && node->is_absolute_path)
+			show_error(node->argv[0], M_INVALID_FILE, E_COMMAND_NOT_FOUND, 1);
+		if (node->not_exist == 1)
+			show_error(node->argv[0], M_COMMAND_NOT_FOUND, E_COMMAND_NOT_FOUND, 1);
+		execve(node->argv[0], node->argv, get_matrix());
 	}
-	if (node->not_exist == 1 && node->is_absolute_path)
-		show_error(node->argv[0], M_INVALID_FILE, E_COMMAND_NOT_FOUND, 1);
-	if (node->not_exist == 1)
-		show_error(node->argv[0], M_COMMAND_NOT_FOUND, E_COMMAND_NOT_FOUND, 1);
-	execve(node->argv[0], node->argv, get_matrix());
 	exit(0);
 }
 

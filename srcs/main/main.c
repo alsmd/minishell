@@ -14,6 +14,7 @@ int	main(int argc, char *argv[], char *envp[])
 		printf("Invalid number of argument!\n");
 		return (-1);
 	}
+	init_term();
 	init_minishell();
 	create_env(envp);
 	while (1)

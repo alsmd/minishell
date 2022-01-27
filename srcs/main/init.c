@@ -2,6 +2,11 @@
 
 extern t_minishell	g_minishell;
 
+void	init_term(void)
+{
+	printf("\033[H\033[J");
+}
+
 void	init_minishell(void)
 {
 	ft_bzero(&g_minishell, sizeof(t_minishell));
