@@ -11,8 +11,11 @@ t_node	*add_new_cmd(char *command, char *relation)
 	new_cmd->full_instruction = ft_strtrim(command, " ");
 	new_cmd->full_instruction = swap_chars(new_cmd->full_instruction, ' ', 1);
 	new_cmd->argv = ft_split(new_cmd->full_instruction, ' ');
+	// printf("|%s|\n", new_cmd->full_instruction);
+	// printf("|%s|\n", new_cmd->relation);
 	new_cmd->argv = search_matrix(new_cmd->argv);
 	new_cmd->argv = trim_quotes(new_cmd->argv);
+	// printf("%p\n", new_cmd->argv[0]);
 	if (is_absolute_path(new_cmd->argv[0]))
 		check_absolute_path(new_cmd);
 	else
@@ -35,6 +38,8 @@ t_node	*add_new_cmd(char *command, char *relation)
 
 int	is_absolute_path(char *cmd)
 {
+	if (!cmd)
+		return (FALSE);
 	if (!ft_strncmp(cmd, "/", 1))
 		return (TRUE);
 	else if (!ft_strncmp(cmd, "./", 2))
@@ -61,6 +66,8 @@ void	check_command_exist(t_node *cmd)
 
 	index = 0;
 	exist = 0;
+	if (!cmd->argv[0])
+		return ;
 	while (g_minishell.paths && g_minishell.paths[index] != 0)
 	{
 		tmp = ft_strjoin(g_minishell.paths[index], "/");
@@ -83,9 +90,13 @@ void	check_command_exist(t_node *cmd)
 
 int	is_command(t_node *node)
 {
-	if (node->previous == 0)
+	if (node->previous == 0 && node->argv[0])
 		return (1);
+	if (node->previous == 0)
+		return (0);
 	if (node->previous->relation[0] == '|')
+		return (1);
+	if (node->previous->relation[0] == ' ')
 		return (1);
 	if (node->relation == 0 && node->previous->relation[0] == '|')
 		return (1);

@@ -2,6 +2,8 @@
 
 int	is_builtin(t_node *cmd)
 {
+	if (!cmd->argv[0])
+		return (FALSE);
 	if (!(ft_strncmp(cmd->argv[0], "exit", -1)))
 		return (TRUE);
 	if (!(ft_strncmp(cmd->argv[0], "cd", -1)))

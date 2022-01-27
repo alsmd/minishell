@@ -16,7 +16,7 @@ void	*set_string(char *src, char *dest)
 void	init_minishell(void)
 {
 	ft_bzero(&g_minishell, sizeof(t_minishell));
-	g_minishell.operators = (char **) ft_calloc(8, sizeof(char *));
+	g_minishell.operators = (char **) ft_calloc(9, sizeof(char *));
 	g_minishell.operators[0] = ft_strdup("|");
 	g_minishell.operators[1] = ft_strdup("<<");
 	g_minishell.operators[2] = ft_strdup(">>");
@@ -37,7 +37,7 @@ int	main(int argc, char *argv[], char *envp[])
 	create_env(envp);
 	while (1)
 	{
-		buffer = readline(">");
+		buffer = readline("> ");
 		if (buffer[0] == 0)
 			continue ;
 		if (!ft_strncmp(buffer, "exit", 4))
