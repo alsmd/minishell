@@ -19,6 +19,7 @@ int	main(int argc, char *argv[], char *envp[])
 	create_env(envp);
 	while (1)
 	{
+		signals(PARENT);
 		buffer = readline("MiniShell > ");
 		if (!buffer)
 			return (0);
@@ -31,6 +32,7 @@ int	main(int argc, char *argv[], char *envp[])
 		status = parse_string(new_buffer);
 		if (status == 0)
 			make_shell_command(new_buffer);
+		rl_replace_line("", 0);
 	}
 	return (0);
 }

@@ -111,6 +111,7 @@ static void	exec_commands(void)
 			}
 			// g_minishell.execute_signal = FALSE;
 			id = fork();
+			signals(CHILD);
 			if (id == 0)
 			{
 				// g_minishell.execute_signal = TRUE;
@@ -142,6 +143,7 @@ void	make_shell_command(char *buffer)
 	{
 		g_minishell.execute_signal = FALSE;
 		id = fork();
+		signals(3);
 		if (id == 0)
 		{
 			link_relations();

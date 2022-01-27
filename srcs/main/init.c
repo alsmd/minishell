@@ -19,7 +19,7 @@ void	init_minishell(void)
 	g_minishell.operators[5] = ft_strdup("||");
 	g_minishell.operators[6] = ft_strdup("&&");
 	g_minishell.operators[7] = NULL;
-	g_minishell.sa.sa_handler = &handle_signal;
-	sigaction(SIGINT, &g_minishell.sa, NULL);
-	g_minishell.execute_signal = TRUE;
+	// g_minishell.sa.sa_handler = &handle_signal;
+	// sigaction(SIGINT, &g_minishell.sa, NULL);
+	// g_minishell.execute_signal = TRUE;
 }

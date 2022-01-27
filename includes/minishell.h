@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/27 14:20:01 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/01/27 15:44:37 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # include <stdlib.h>
 # define TRUE 1
 # define FALSE 0
+# define PARENT 1
+# define CHILD 2
 # define M_COMMAND_NOT_FOUND ": command not found"
 # define M_INVALID_FILE ": No such file or directory"
 # define M_ERROR_SINTAX "sintax error near unexpected token "
@@ -119,7 +121,7 @@ int		handle_pipe(t_node *node);
 void	handle_here_doc(t_node *node);
 
 //SIGNALS
-void	handle_signal(int sig);
+void	signals(int sig);
 
 //COMMAND HELPERS
 t_node	*add_new_cmd(char *command, char *relation);
