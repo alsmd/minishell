@@ -22,7 +22,10 @@ int	main(int argc, char *argv[], char *envp[])
 		signals(PARENT);
 		buffer = readline("MiniShell > ");
 		if (!buffer)
+		{
+			write(1, "\n", 1);
 			return (0);
+		}
 		if (buffer[0] == '\0')
 			continue ;
 		if (!ft_strncmp(buffer, "exit", 4))
