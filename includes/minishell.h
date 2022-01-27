@@ -6,7 +6,7 @@
 /*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/26 19:09:43 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/26 20:21:10 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,13 @@ void	make_shell_command(char *buffer);
 //PARSES
 int		parse_string(char *buffer);
 void	get_path(void);
-
 int		is_comand(char *s);
 char	**trim_quotes(char **matrix);
 char	**search_matrix(char **matrix);
 char	*swap_chars(char *cmd, char to_find, char to_put);
 void	check_absolute_path(t_node *cmd);
 int		is_absolute_path(char *cmd);
-char	*check_expand(char *buffer);
+char	*expand_vars(char *buffer);
 
 //OPERATORS
 int		handle_output(t_node *cmd);
@@ -100,7 +99,7 @@ int		handle_input(t_node *cmd);
 int		handle_pipe(t_node *node);
 void	handle_here_doc(t_node *node);
 
-//OPERATORS HELPERS
+//COMMAND HELPERS
 t_node	*add_new_cmd(char *command, char *relation);
 void	check_command_exist(t_node *cmd);
 int		is_command(t_node *node);

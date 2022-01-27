@@ -19,7 +19,7 @@ int	toogle_value(int signal)
 	return (FALSE);
 }
 
-char	*expand_var(char *key)
+static char	*get_var_value(char *key)
 {
 	t_env	*init;
 
@@ -35,7 +35,7 @@ char	*expand_var(char *key)
 	return (ft_calloc(1, 1));
 }
 
-void	cut_char(char *buffer)
+static void	cut_char(char *buffer)
 {
 	int	index;
 	int	is_in_quotes;
@@ -61,7 +61,7 @@ void	cut_char(char *buffer)
 	}
 }
 
-char	*check_expand(char *buffer)
+char	*expand_vars(char *buffer)
 {
 	char	*new_buffer;
 	int		is_in_quotes;
@@ -84,7 +84,7 @@ char	*check_expand(char *buffer)
 		{
 			//limitando o tamanho para o join, colocando byte nulo ante do $
 			cut_char(new_buffer);			
-			new_buffer = ft_strjoin(new_buffer, expand_var(&buffer[index + 1]));
+			new_buffer = ft_strjoin(new_buffer, get_var_value(&buffer[index + 1]));
 			new_buffer = ft_strjoin(new_buffer, \
 			&buffer[index + get_variable_len(&buffer[index])]);
 		}
