@@ -43,7 +43,7 @@ int	main(int argc, char *argv[], char *envp[])
 		if (!ft_strncmp(buffer, "exit", 4))
 			return (0);
 		add_history(buffer);
-		new_buffer = check_expand(buffer);
+		new_buffer = expand_vars(buffer);
 		status = parse_string(new_buffer);
 		if (status != 0)
 			printf("Error Sintaxe\n");

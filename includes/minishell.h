@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/26 09:23:28 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/01/26 20:21:10 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,19 @@ typedef struct s_node
 	struct s_node		*previous;
 }	t_node;
 
+typedef struct s_fd
+{
+	int			value;
+	struct s_fd	*next;;
+} t_fd;
+
 typedef struct s_minishell
 {
 	char		**paths;
 	char		**operators;
 	t_env		*env;
 	t_node		*node;
-
+	t_fd		*fds;
 }	t_minishell;
 
 enum e_error
@@ -75,33 +81,29 @@ char	**get_matrix(void);
 
 // EXEC
 void	make_shell_command(char *buffer);
-void	last_child(t_node *node);
-void	execute_cmd(t_node *cmd);
-void	parent(t_node *cmd, int fd[2]);
 
 //PARSES
 int		parse_string(char *buffer);
 void	get_path(void);
-
 int		is_comand(char *s);
 char	**trim_quotes(char **matrix);
 char	**search_matrix(char **matrix);
 char	*swap_chars(char *cmd, char to_find, char to_put);
 void	check_absolute_path(t_node *cmd);
 int		is_absolute_path(char *cmd);
-char	*check_expand(char *buffer);
+char	*expand_vars(char *buffer);
 
 //OPERATORS
 int		handle_output(t_node *cmd);
 int		handle_input(t_node *cmd);
 int		handle_pipe(t_node *node);
+void	handle_here_doc(t_node *node);
 
-//OPERATORS HELPERS
+//COMMAND HELPERS
 t_node	*add_new_cmd(char *command, char *relation);
 void	check_command_exist(t_node *cmd);
-void	execute_cmd(t_node *cmd);
-void	last_child(t_node *node);
-void	parent(t_node *cmd, int fd[2]);
+int		is_command(t_node *node);
+void	add_fd(int fd);
 
 //UTILS
 void	ft_bzero(void *s, size_t n);
@@ -116,5 +118,6 @@ void	handler_final_file(int fd);
 char	*is_in(char **array, char *str);
 char	*ft_strdup(const char *s);
 char	*ft_strtrim(char const *s1, char const *set);
+void	close_fd(int fd);
 
 #endif

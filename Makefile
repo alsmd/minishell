@@ -18,7 +18,7 @@ PATH_OBJS = ./objs/
 
 SRCS =	$(PATH_MAIN)main.c \
 		$(PATH_BUILTINS)env.c $(PATH_BUILTINS)check_builtin.c\
-		$(PATH_COMMAND)command_operations.c $(PATH_COMMAND)helper_command.c $(PATH_COMMAND)exec.c\
+		$(PATH_COMMAND)execute_command.c $(PATH_COMMAND)helper_command.c\
 		$(PATH_ENV)create_env.c $(PATH_ENV)get_matrix.c\
 		$(PATH_OPERATOR)pipe.c $(PATH_OPERATOR)redirect.c\
 		$(PATH_PARSE)parse_string.c $(PATH_PARSE)parse_quotes.c $(PATH_PARSE)get_path.c\
@@ -26,7 +26,7 @@ SRCS =	$(PATH_MAIN)main.c \
 		$(PATH_UTILS)ft_bzero.c $(PATH_UTILS)ft_calloc.c $(PATH_UTILS)ft_split.c\
 		$(PATH_UTILS)ft_strdup.c $(PATH_UTILS)ft_strjoin.c $(PATH_UTILS)ft_strlen.c\
 		$(PATH_UTILS)ft_strncmp.c $(PATH_UTILS)ft_strtrim.c $(PATH_UTILS)ft_substr.c \
-		$(PATH_UTILS)get_next_line.c $(PATH_UTILS)handler_final_file.c $(PATH_UTILS)is_in.c
+		$(PATH_UTILS)get_next_line.c $(PATH_UTILS)handler_final_file.c $(PATH_UTILS)is_in.c $(PATH_UTILS)close_fd.c
 		
 OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(SRCS))
 
