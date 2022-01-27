@@ -6,7 +6,7 @@
 /*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/27 15:30:42 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/27 17:14:27 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <curses.h>
+#include <signal.h>
 # include <term.h>
 # include <unistd.h>
 # include <sys/types.h>
@@ -59,11 +60,12 @@ typedef struct s_fd
 
 typedef struct s_minishell
 {
-	char		**paths;
-	char		**operators;
-	t_env		*env;
-	t_node		*node;
-	t_fd		*fds;
+	char				**paths;
+	char				**operators;
+	t_env				*env;
+	t_node				*node;
+	t_fd				*fds;
+	struct sigaction	sa;
 }	t_minishell;
 
 enum e_error
@@ -72,6 +74,8 @@ enum e_error
 	ERROR_OPEN_FILE,
 	E_COMMAND_NOT_FOUND = 127,
 };
+
+void	init_minishell(void);
 
 // BUILTINS
 void	exec_builtin(t_node *cmd);
@@ -109,6 +113,9 @@ int		handle_output(t_node *cmd);
 int		handle_input(t_node *cmd);
 int		handle_pipe(t_node *node);
 void	handle_here_doc(t_node *node);
+
+//SIGNALS
+void	handle_signal(int sig);
 
 //COMMAND HELPERS
 t_node	*add_new_cmd(char *command, char *relation);
