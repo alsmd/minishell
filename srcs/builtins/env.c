@@ -25,7 +25,6 @@ void	export(char *command)
 		i++;
 	key = ft_substr(command, 0, i);
 	value = ft_substr(command, i + 1, ft_strlen(command) - i + 1);
-	printf("|%s|\n", value);
 	unset(key);
 	add_variable(key, value);
 }

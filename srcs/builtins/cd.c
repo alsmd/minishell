@@ -2,7 +2,20 @@
 
 void cd(char **argv)
 {
-	if (argv[2] != 0)
+	int		status;
+	char	*buffer;
+
+	status = 0;
+	if (argv[1] == 0 || argv[1][0] == '\0')
+		status = chdir(get_var_value("HOME"));
+	else if (argv[2] != 0)
 		show_error("cd: ", "too many arguments", 1, 0);
-	chdir(argv[1]);
+	else
+		status = chdir(argv[1]);
+	if (status == -1)
+	{
+		buffer = ft_strjoin("cd: ", argv[1]);
+		show_error(buffer, M_INVALID_FILE, 1, 0);
+		free(buffer);
+	}
 }

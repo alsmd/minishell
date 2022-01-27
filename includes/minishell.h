@@ -6,7 +6,7 @@
 /*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/27 20:51:37 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/27 21:27:53 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,14 @@ void	export(char *command);
 void	unset(char *key);
 void	pwd(void);
 void	cd(char **argv);
+void	my_exit(char **argv);
 
 // ENV
 void	create_env(char **env);
 void	add_variable(char *key, char *value);
 char	**get_matrix(void);
+char	*get_var_value(char *key);
+int		get_variable_len(char *key);
 
 //MESSAGES
 void	show_error(char *name, char *message, int status, int has_to_exit);
@@ -141,5 +144,6 @@ char	*is_in(char **array, char *str);
 char	*ft_strdup(const char *s);
 char	*ft_strtrim(char const *s1, char const *set);
 void	close_fd(int fd);
+int		ft_atoi(const char *nptr);
 
 #endif

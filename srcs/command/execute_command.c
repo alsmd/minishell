@@ -144,7 +144,6 @@ void	make_shell_command(char *buffer)
 		exec_builtin(g_minishell.node);
 	else
 	{
-		g_minishell.execute_signal = FALSE;
 		id = fork();
 		signals(3);
 		if (id == 0)
@@ -153,7 +152,6 @@ void	make_shell_command(char *buffer)
 			exec_commands();
 		}
 		waitpid(id, &status, 0);
-		g_minishell.execute_signal = TRUE;
 	}
 	g_minishell.node = 0;
 }

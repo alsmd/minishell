@@ -43,3 +43,19 @@ char	**get_matrix(void)
 	}
 	return (my_env);
 }
+
+char	*get_var_value(char *key)
+{
+	t_env	*init;
+
+	init = g_minishell.env;
+	while (init)
+	{
+		if (!ft_strncmp(init->key, key, get_variable_len(key)))
+		{
+			return (init->value);
+		}
+		init = init->next;
+	}
+	return (ft_calloc(1, 1));
+}

@@ -28,8 +28,6 @@ int	main(int argc, char *argv[], char *envp[])
 		}
 		if (buffer[0] == '\0')
 			continue ;
-		if (!ft_strncmp(buffer, "exit", 4))
-			return (0);
 		add_history(buffer);
 		new_buffer = expand_vars(buffer);
 		status = parse_string(new_buffer);

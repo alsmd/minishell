@@ -19,22 +19,6 @@ int	toogle_value(int signal)
 	return (FALSE);
 }
 
-static char	*get_var_value(char *key)
-{
-	t_env	*init;
-
-	init = g_minishell.env;
-	while (init)
-	{
-		if (!ft_strncmp(init->key, key, get_variable_len(key)))
-		{
-			return (init->value);
-		}
-		init = init->next;
-	}
-	return (ft_calloc(1, 1));
-}
-
 static void	cut_char(char *buffer)
 {
 	int	index;

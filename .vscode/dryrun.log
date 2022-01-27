@@ -1,5 +1,5 @@
 make --dry-run --keep-going --print-directory
 make: Entering directory '/home/coder/Documents/minishell'
-gcc -g -Wall -Werror -Wextra -I ./includes/ ./objs/*/*.o -o minishell -lreadline
+make: Nothing to be done for 'all'.
 make: Leaving directory '/home/coder/Documents/minishell'
  

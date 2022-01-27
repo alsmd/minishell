@@ -19,7 +19,7 @@ PATH_OBJS = ./objs/
 
 SRCS =	$(PATH_MAIN)main.c	$(PATH_MAIN)init.c \
 		$(PATH_BUILTINS)env.c $(PATH_BUILTINS)check_builtin.c $(PATH_BUILTINS)pwd.c\
-		$(PATH_BUILTINS)cd.c\
+		$(PATH_BUILTINS)cd.c $(PATH_BUILTINS)my_exit.c\
 		$(PATH_COMMAND)execute_command.c $(PATH_COMMAND)helper_command.c\
 		$(PATH_ENV)create_env.c $(PATH_ENV)get_matrix.c\
 		$(PATH_MESSAGE)errors.c\
@@ -29,7 +29,8 @@ SRCS =	$(PATH_MAIN)main.c	$(PATH_MAIN)init.c \
 		$(PATH_UTILS)ft_bzero.c $(PATH_UTILS)ft_calloc.c $(PATH_UTILS)ft_split.c\
 		$(PATH_UTILS)ft_strdup.c $(PATH_UTILS)ft_strjoin.c $(PATH_UTILS)ft_strlen.c\
 		$(PATH_UTILS)ft_strncmp.c $(PATH_UTILS)ft_strtrim.c $(PATH_UTILS)ft_substr.c \
-		$(PATH_UTILS)get_next_line.c $(PATH_UTILS)handler_final_file.c $(PATH_UTILS)is_in.c $(PATH_UTILS)close_fd.c
+		$(PATH_UTILS)get_next_line.c $(PATH_UTILS)handler_final_file.c $(PATH_UTILS)is_in.c $(PATH_UTILS)close_fd.c\
+		$(PATH_UTILS)ft_atoi.c
 		
 OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(SRCS))
 
