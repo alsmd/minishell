@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/26 20:21:10 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/27 09:38:47 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ char	*swap_chars(char *cmd, char to_find, char to_put);
 void	check_absolute_path(t_node *cmd);
 int		is_absolute_path(char *cmd);
 char	*expand_vars(char *buffer);
+int		check_grammar(void);
 
 //OPERATORS
 int		handle_output(t_node *cmd);

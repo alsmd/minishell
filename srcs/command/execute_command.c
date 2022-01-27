@@ -6,13 +6,19 @@ static void	create_relations(char *buffer)
 {
 	char		*relation;
 	int			index;
+	int first;
 
 	index = 0;
+	first = TRUE;
 	while (buffer[index])
 	{
 		relation = is_in(g_minishell.operators, &(buffer[index]));
-		if (relation)
+		if (relation)//<< EOF cat
 		{	
+			if (relation[0] == ' ')
+			{
+				g_minishell.operators[7] = NULL;
+			}
 			if (!ft_strncmp(&buffer[index], ">>", 2) || !ft_strncmp(&buffer[index], "<<", 2))
 			{
 				buffer[index] = '\0';
@@ -22,7 +28,15 @@ static void	create_relations(char *buffer)
 			index++;
 			add_new_cmd(buffer, relation);
 			buffer += index;
+			if (first == TRUE && g_minishell.node->argv[0] == 0)
+			{
+				while (*buffer && *buffer == ' ')
+					*buffer++;				
+				g_minishell.operators[7] = " ";
+				g_minishell.operators[8] = NULL;
+			}
 			index = 0;
+			first = FALSE;
 		}
 		else
 			index++;
@@ -106,9 +120,23 @@ void	make_shell_command(char *buffer)
 {
 	int			id;
 	int			status;
+	t_node	*init;
 
 	get_path();
 	create_relations(buffer);
+	init = g_minishell.node;
+	while (init)
+    {
+        printf("name: %s\n", init->full_instruction);
+        printf("relation: |%s|\n", init->relation);
+        printf("_____________________________________________________\n");
+        init = init->next;
+    }
+	if (check_grammar())
+	{
+		g_minishell.node = 0;
+		return ;
+	}
 	if (is_builtin(g_minishell.node) == TRUE && g_minishell.node->next == 0)
 		exec_builtin(g_minishell.node);
 	else
