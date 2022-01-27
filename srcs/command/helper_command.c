@@ -51,6 +51,7 @@ int	is_absolute_path(char *cmd)
 
 void	check_absolute_path(t_node *cmd)
 {
+	cmd->is_absolute_path = TRUE;
 	if (access(cmd->argv[0], F_OK) == 0)
 		cmd->not_exist = 0;
 	else

@@ -3,7 +3,6 @@
 int	handle_pipe(t_node *node)
 {
 	int			fd[2];
-	int			status;
 
 	if (pipe(fd) == -1)
 		return (1);

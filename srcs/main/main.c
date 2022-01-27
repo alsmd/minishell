@@ -2,17 +2,6 @@
 
 t_minishell	g_minishell;
 
-void	*set_string(char *src, char *dest)
-{
-	while (*dest)
-	{
-		*src = *dest;
-		src++;
-		dest++;
-	}
-}
-
-// || | && < > << >> 
 void	init_minishell(void)
 {
 	ft_bzero(&g_minishell, sizeof(t_minishell));
@@ -33,6 +22,12 @@ int	main(int argc, char *argv[], char *envp[])
 	char	*buffer;
 	char	*new_buffer;
 
+	(void)argv;
+	if (argc > 1)
+	{
+		printf("Invalid number of argument!\n");
+		return (-1);
+	}
 	init_minishell();
 	create_env(envp);
 	while (1)
@@ -45,8 +40,6 @@ int	main(int argc, char *argv[], char *envp[])
 		add_history(buffer);
 		new_buffer = expand_vars(buffer);
 		status = parse_string(new_buffer);
-		if (status != 0)
-			printf("Error Sintaxe\n");
 		if (status == 0)
 			make_shell_command(new_buffer);
 	}

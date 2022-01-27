@@ -1,6 +1,6 @@
 NAME = minishell
 CC = gcc
-CFLAGS = -g
+CFLAGS = -g -Wall -Werror -Wextra
 RM = rm -rf
 
 
@@ -11,6 +11,7 @@ PATH_MAIN = $(PATH_SRC)main/
 PATH_COMMAND = $(PATH_SRC)command/
 PATH_ENV = $(PATH_SRC)env/
 PATH_OPERATOR = $(PATH_SRC)operators/
+PATH_MESSAGE = $(PATH_SRC)message/
 PATH_PARSE = $(PATH_SRC)parse/
 PATH_BUILTINS = $(PATH_SRC)builtins/
 PATH_UTILS = $(PATH_SRC)utils/
@@ -20,6 +21,7 @@ SRCS =	$(PATH_MAIN)main.c \
 		$(PATH_BUILTINS)env.c $(PATH_BUILTINS)check_builtin.c\
 		$(PATH_COMMAND)execute_command.c $(PATH_COMMAND)helper_command.c\
 		$(PATH_ENV)create_env.c $(PATH_ENV)get_matrix.c\
+		$(PATH_MESSAGE)errors.c\
 		$(PATH_OPERATOR)pipe.c $(PATH_OPERATOR)redirect.c\
 		$(PATH_PARSE)parse_string.c $(PATH_PARSE)parse_quotes.c $(PATH_PARSE)get_path.c\
 		$(PATH_PARSE)expand_vars.c $(PATH_PARSE)check_grammar.c\
@@ -40,6 +42,7 @@ $(PATH_OBJS)%.o: $(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
 	@mkdir -p $(PATH_OBJS)env/
+	@mkdir -p $(PATH_OBJS)message/
 	@mkdir -p $(PATH_OBJS)operators/
 	@mkdir -p $(PATH_OBJS)parse/
 	@mkdir -p $(PATH_OBJS)utils/

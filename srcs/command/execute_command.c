@@ -31,7 +31,7 @@ static void	create_relations(char *buffer)
 			if (first == TRUE && g_minishell.node->argv[0] == 0)
 			{
 				while (*buffer && *buffer == ' ')
-					*buffer++;				
+					buffer++;				
 				g_minishell.operators[7] = " ";
 				g_minishell.operators[8] = NULL;
 			}
@@ -63,11 +63,14 @@ static void	execute_cmd(t_node *node)
 		exec_builtin(node);
 		exit(0);
 	}
-	execve(node->argv[0], node->argv, get_matrix());
+	if (node->not_exist == 1 && node->is_absolute_path)
+		show_error(node->argv[0], M_INVALID_FILE, E_COMMAND_NOT_FOUND, 1);
 	if (node->not_exist == 1)
-		exit(1);
+		show_error(node->argv[0], M_COMMAND_NOT_FOUND, E_COMMAND_NOT_FOUND, 1);
+	execve(node->argv[0], node->argv, get_matrix());
 	exit(0);
 }
+
 
 static void	link_relations(void)
 {
@@ -120,18 +123,9 @@ void	make_shell_command(char *buffer)
 {
 	int			id;
 	int			status;
-	t_node	*init;
 
 	get_path();
 	create_relations(buffer);
-	init = g_minishell.node;
-	while (init)
-    {
-        printf("name: %s\n", init->full_instruction);
-        printf("relation: |%s|\n", init->relation);
-        printf("_____________________________________________________\n");
-        init = init->next;
-    }
 	if (check_grammar())
 	{
 		g_minishell.node = 0;

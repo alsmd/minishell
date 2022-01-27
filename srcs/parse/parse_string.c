@@ -32,7 +32,11 @@ int	check_quotes(char *s)
 			i += string_forward(&s[i], '\"', &quote_d);
 		i++;
 	}
-	if (quote_s % 2 != 0 || quote_d % 2 != 0)
+	if (quote_s % 2 != 0)
+		show_error(M_ERROR_SINTAX, "'''", E_ERROR_SINTAX, 0);
+	if (quote_d % 2 != 0)
+		show_error(M_ERROR_SINTAX, "'\"'", E_ERROR_SINTAX, 0);
+	if (quote_d % 2 != 0 || quote_s % 2 != 0)
 		return (1);
 	return (0);
 }
@@ -40,15 +44,24 @@ int	check_quotes(char *s)
 int	parse_string(char *buffer)
 {
 	if (check_quotes(buffer))
-		return (ERROR_SINTAX);
+		return (1);
 	while (*buffer)
 	{
 		if (!ft_strncmp(buffer, ">>>", 3))
-			return (ERROR_SINTAX);
+		{
+			show_error(M_ERROR_SINTAX, "'>'", E_ERROR_SINTAX, 0);
+			return (1);
+		}
 		if (*buffer == '\\')
-			return (ERROR_SINTAX);
+		{
+			show_error(M_ERROR_SINTAX, "'\\'", E_ERROR_SINTAX, 0);
+			return (1);
+		}
 		if (*buffer == ';')
-			return (ERROR_SINTAX);
+		{
+			show_error(M_ERROR_SINTAX, "';'", E_ERROR_SINTAX, 0);
+			return (1);
+		}
 		buffer++;
 	}
 	return (0);

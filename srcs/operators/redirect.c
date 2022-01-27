@@ -3,7 +3,6 @@
 int	handle_output(t_node *cmd)
 {
 	int	fd;
-	int	id;
 	t_node *temp;
 
 	temp = cmd;
@@ -30,7 +29,6 @@ int	handle_output(t_node *cmd)
 int	handle_input(t_node *cmd)
 {
 	int	fd;
-	int	id;
 	t_node *temp;
 
 	temp = cmd;
@@ -80,9 +78,5 @@ void	handle_here_doc(t_node *node)
 
 	}
 	else
-	{
-		
-		printf("\n|%s|\n%s\n", node->full_instruction, node->relation);
 		node->input = fd[0];
-	}
 }

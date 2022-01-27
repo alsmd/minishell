@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/27 09:38:47 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/01/27 15:30:42 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@
 # include <stdlib.h>
 # define TRUE 1
 # define FALSE 0
+# define M_COMMAND_NOT_FOUND ": command not found"
+# define M_INVALID_FILE ": No such file or directory"
+# define M_ERROR_SINTAX "sintax error near unexpected token "
+
 
 typedef struct s_env
 {
@@ -41,6 +45,7 @@ typedef struct s_node
 	int					not_exist;
 	int					input;
 	int					output;
+	int					is_absolute_path;
 	char				*relation;
 	struct s_node		*next;
 	struct s_node		*previous;
@@ -63,8 +68,9 @@ typedef struct s_minishell
 
 enum e_error
 {
-	ERROR_SINTAX = 1,
-	ERROR_OPEN_FILE
+	E_ERROR_SINTAX = 2,
+	ERROR_OPEN_FILE,
+	E_COMMAND_NOT_FOUND = 127,
 };
 
 // BUILTINS
@@ -79,8 +85,12 @@ void	create_env(char **env);
 void	add_variable(char *key, char *value);
 char	**get_matrix(void);
 
+//MESSAGES
+void	show_error(char *name, char *message, int status, int has_to_exit);
+
 // EXEC
 void	make_shell_command(char *buffer);
+
 
 //PARSES
 int		parse_string(char *buffer);
