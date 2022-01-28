@@ -2,6 +2,11 @@
 
 extern t_minishell	g_minishell;
 
+int get_status(int status)
+{
+    return (((status) & 0xff00) >> 8);
+}
+
 char	*create_node(char *buffer, int first, int index, char *relation)
 {
 	if (relation[0] == ' ')
@@ -72,19 +77,27 @@ static void	execute_cmd(t_node *node)
 		exec_builtin(node);
 	else
 	{
-		argv = node->argv;
-		node->argv = 0;
 		if (node->not_exist == 1 && node->is_absolute_path)
-			show_error(argv[0], M_INVALID_FILE, E_COMMAND_NOT_FOUND, 1);
-		if (node->not_exist == 1)
-			show_error(argv[0], M_COMMAND_NOT_FOUND, \
+			show_error(node->argv[0], M_INVALID_FILE, E_COMMAND_NOT_FOUND, 1);
+		else if(node->is_absolute_path && node->is_executable == 0 && node->not_exist == 0)
+			show_error(node->argv[0], ": Permission denied", 
+			126, 1);
+		else if (node->not_exist == 1)
+			show_error(node->argv[0], M_COMMAND_NOT_FOUND, \
 			E_COMMAND_NOT_FOUND, 1);
-		env = get_matrix();
-		clean_trash();
-		execve(argv[0], argv, env);
+		else
+		{
+			argv = node->argv;
+			node->argv = 0;
+			env = get_matrix();
+			clean_trash();
+			g_minishell.exit_code = execve(argv[0], argv, env);
+			printf("\033[1;31mUnknown error!!!\033[33m☣\033[0m\n");
+			exit(get_status(g_minishell.exit_code));
+		}
 	}
 	clean_trash();
-	exit(0);
+	exit(g_minishell.exit_code);
 }
 
 static void	link_relations(void)
@@ -109,14 +122,13 @@ static void	link_relations(void)
 	}
 }
 
+
 static void	exec_commands(void)
 {
 	t_node		*node;
 	int			id;
-	int			status;
 
 	node = g_minishell.node;
-	status = 0;
 	while (node)
 	{
 		if (is_command(node))
@@ -133,21 +145,20 @@ static void	exec_commands(void)
 				signals(CHILD);
 				execute_cmd(node);
 			}
-			waitpid(id, &status, 0);
-			//variavel global com o retorno do ctrl+c
-			if (status == 2)
-				printf("\n");
+			waitpid(id, &g_minishell.exit_code, 0);
+			// if (g_minishell.exit_code == 2)
+			// 	printf("\n");
+			g_minishell.exit_code = get_status(g_minishell.exit_code);
 		}
 		node = node->next;
 	}
 	clean_trash();
-	exit(0);
+	exit(g_minishell.exit_code);
 }
 
 void	make_shell_command(char *buffer)
 {
 	int			id;
-	int			status;
 
 	get_path();
 	create_relations(buffer);
@@ -165,6 +176,9 @@ void	make_shell_command(char *buffer)
 			link_relations();
 			exec_commands();
 		}
-		waitpid(id, &status, 0);
+		waitpid(id, &g_minishell.exit_code, 0);
+		g_minishell.exit_code = get_status(g_minishell.exit_code);
 	}
+	
+	// printf("\n|%d|\n", g_minishell.exit_code);
 }

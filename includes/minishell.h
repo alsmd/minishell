@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/28 11:23:26 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/01/28 15:37:16 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_node
 	int					input;
 	int					output;
 	int					is_builtin;
+	int					is_executable;
 	int					is_absolute_path;
 	char				*relation;
 	struct s_node		*next;
@@ -62,6 +63,7 @@ typedef struct s_fd
 
 typedef struct s_minishell
 {
+	int					exit_code;
 	char				**paths;
 	char				**operators;
 	t_env				*env;
@@ -140,6 +142,7 @@ t_node	*add_new_cmd(char *command, char *relation);
 void	check_command_exist(t_node *cmd);
 int		is_command(t_node *node);
 void	add_fd(int fd);
+int		get_status(int status);
 
 //UTILS
 void	ft_bzero(void *s, size_t n);
@@ -156,5 +159,6 @@ char	*ft_strdup(const char *s);
 char	*ft_strtrim(char *s1, char const *set);
 void	close_fd(int fd);
 int		ft_atoi(const char *nptr);
+char	*ft_itoa(int n);
 
 #endif

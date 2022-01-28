@@ -6,7 +6,14 @@ void	check_absolute_path(t_node *cmd)
 {
 	cmd->is_absolute_path = TRUE;
 	if (access(cmd->argv[0], F_OK) == 0)
+	{
 		cmd->not_exist = 0;
+		if (access(cmd->argv[0], X_OK) == 0)
+		{
+			printf("é executavel\n");
+			cmd->is_executable = 1;
+		}	
+	}
 	else
 		cmd->not_exist = 1;
 }
