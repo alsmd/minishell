@@ -56,7 +56,7 @@ static void	execute_cmd(t_node *node)
 {
 	t_fd	*fds;
 	char	**argv;
-
+	char	**env;
 
 	fds = g_minishell.fds;
 	while (fds)
@@ -79,8 +79,9 @@ static void	execute_cmd(t_node *node)
 		if (node->not_exist == 1)
 			show_error(argv[0], M_COMMAND_NOT_FOUND, \
 			E_COMMAND_NOT_FOUND, 1);
+		env = get_matrix();
 		clean_trash();
-		execve(argv[0], argv, get_matrix());
+		execve(argv[0], argv, env);
 	}
 	clean_trash();
 	exit(0);
