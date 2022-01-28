@@ -75,5 +75,6 @@ char	*expand_vars(char *buffer)
 		}
 		index++;
 	}
+	free(buffer);
 	return (new_buffer);
 }

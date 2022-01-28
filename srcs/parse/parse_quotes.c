@@ -38,14 +38,23 @@ char	**search_matrix(char **matrix)
 char	**trim_quotes(char **matrix)
 {
 	int	i;
+	char *temp;
 
 	i = 0;
 	while (matrix[i])
 	{
 		if (matrix[i][0] == '\'')
-			matrix[i] = ft_strtrim(matrix[i], "\'");
-		else
-			matrix[i] = ft_strtrim(matrix[i], "\"");
+		{
+			temp = matrix[i];
+			matrix[i] = ft_strtrim(temp, "'");
+			free(temp);
+		}	
+		else if(matrix[i][0] == '"')
+		{
+			temp = matrix[i];
+			matrix[i] = ft_strtrim(temp, "\"");
+			free(temp);
+		}
 		i++;
 	}
 	return (matrix);

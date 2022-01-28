@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/28 09:20:16 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/01/28 11:23:26 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_node
 	int					not_exist;
 	int					input;
 	int					output;
+	int					is_builtin;
 	int					is_absolute_path;
 	char				*relation;
 	struct s_node		*next;
@@ -103,6 +104,11 @@ void	show_error(char *name, char *message, int status, int has_to_exit);
 // EXEC
 void	make_shell_command(char *buffer);
 
+// FREE
+void	clean_trash(void);
+void	clean_node(void);
+void	free_matrix(char **matrix);
+
 //PARSES
 int		parse_string(char *buffer);
 void	get_path(void);
@@ -147,7 +153,7 @@ char	*get_next_line(int fd);
 void	handler_final_file(int fd);
 char	*is_in(char **array, char *str);
 char	*ft_strdup(const char *s);
-char	*ft_strtrim(char const *s1, char const *set);
+char	*ft_strtrim(char *s1, char const *set);
 void	close_fd(int fd);
 int		ft_atoi(const char *nptr);
 

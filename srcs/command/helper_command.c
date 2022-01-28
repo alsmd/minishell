@@ -21,7 +21,9 @@ t_node	*add_new_cmd(char *command, char *relation)
 	t_node	*new_cmd;
 
 	new_cmd = parse_cmd(command);
-	if (is_absolute_path(new_cmd->argv[0]))
+	if (is_builtin(new_cmd))
+		new_cmd->is_builtin = 1;
+	else if (is_absolute_path(new_cmd->argv[0]))
 		check_absolute_path(new_cmd);
 	else
 		check_command_exist(new_cmd);

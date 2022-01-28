@@ -7,9 +7,9 @@ int	check_grammar(void)
 	t_node	*init;
 
 	init = g_minishell.node;
-	while (init)
+	while (init->next)
 	{
-		if (init->relation && (init->next == 0 || !init->next->argv[0]))
+		if (init->relation && !init->next->argv[0])
 		{
 			printf("erro de sintax\n");
 			return (1);
