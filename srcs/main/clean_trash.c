@@ -26,9 +26,14 @@ void clean_node(void)
 	while(g_minishell.node)
 	{
 		temp = g_minishell.node;
+		printf("full_path: %s\nok\n", temp->full_path);
 		g_minishell.node = g_minishell.node->next;
 		if (temp->argv)
 			free_matrix(temp->argv);
+		if (temp->full_path){
+
+			free(temp->full_path);
+		}
 		free(temp->full_instruction);
 		free(temp);
 	}

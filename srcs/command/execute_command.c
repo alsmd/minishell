@@ -62,6 +62,7 @@ static void	execute_cmd(t_node *node)
 	t_fd	*fds;
 	char	**argv;
 	char	**env;
+	char 	*path;
 
 	fds = g_minishell.fds;
 	while (fds)
@@ -89,12 +90,15 @@ static void	execute_cmd(t_node *node)
 		{
 			argv = node->argv;
 			node->argv = 0;
+			path = node->full_path;
+			node->full_path = 0;
 			env = get_matrix();
 			clean_trash();
-			g_minishell.exit_code = execve(argv[0], argv, env);
+			g_minishell.exit_code = execve(path, argv, env);
 			printf("\033[1;31mUnknown error!!!\033[33m☣\033[0m\n");
 			free_matrix(argv);
 			free_matrix(env);
+			free(path);
 			exit(get_status(g_minishell.exit_code));
 		}
 	}

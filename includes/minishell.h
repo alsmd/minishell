@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/28 16:10:36 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/01/28 16:46:38 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_node
 {
 	char				**argv;
 	char				*full_instruction;
+	char				*full_path;
 	int					not_exist;
 	int					input;
 	int					output;

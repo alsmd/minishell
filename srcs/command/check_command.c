@@ -33,8 +33,8 @@ void	check_command_exist(t_node *cmd)
 		// free(tmp);
 		if (access(cmd_path, F_OK) == 0)
 		{
-			free(cmd->argv[0]);
-			cmd->argv[0] = cmd_path;
+			
+			cmd->full_path = cmd_path;
 			exist = 1;
 			break ;
 		}
