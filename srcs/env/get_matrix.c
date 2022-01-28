@@ -22,7 +22,6 @@ char	**get_matrix(void)
 	int		len;
 	t_env	*init;
 	char	**my_env;
-	// char	*temp;
 	int		index;
 
 	index = 0;
@@ -32,12 +31,8 @@ char	**get_matrix(void)
 	while (init)
 	{
 		my_env[index] = ft_strdup(init->key);
-		// temp = my_env[index];
 		my_env[index] = ft_strjoin(my_env[index], "=");
-		// free(temp);
-		// temp = my_env[index];
 		my_env[index] = ft_strjoin(my_env[index], init->value);
-		// free(temp);
 		index++;
 		init = init->next;
 	}
@@ -47,16 +42,15 @@ char	**get_matrix(void)
 char	*get_var_value(char *key)
 {
 	t_env	*init;
+	
 
 	init = g_minishell.env;
-	if (!ft_strncmp(key, "?", -1))
+	if (!ft_strncmp(key, "?",  get_variable_len(key)))
 		return (ft_itoa(g_minishell.exit_code));
 	while (init)
 	{
 		if (!ft_strncmp(init->key, key, get_variable_len(key)))
-		{
-			return (init->value);
-		}
+			return (ft_strdup(init->value));
 		init = init->next;
 	}
 	return (ft_calloc(1, 1));

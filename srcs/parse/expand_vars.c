@@ -48,6 +48,7 @@ static void	cut_char(char *buffer)
 char	*expand_vars(char *buffer)
 {
 	char	*new_buffer;
+	char	*value;
 	int		is_in_quotes;
 	int		index;
 
@@ -68,10 +69,11 @@ char	*expand_vars(char *buffer)
 		{
 			//limitando o tamanho para o join, colocando byte nulo ante do $
 			cut_char(new_buffer);
-			new_buffer = ft_strjoin(new_buffer, \
-			get_var_value(&buffer[index + 1]));
+			value = get_var_value(&buffer[index + 1]);
+			new_buffer = ft_strjoin(new_buffer, value);
 			new_buffer = ft_strjoin(new_buffer, \
 			&buffer[index + get_variable_len(&buffer[index])]);
+			free(value);
 		}
 		index++;
 	}
