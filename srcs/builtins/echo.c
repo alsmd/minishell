@@ -7,13 +7,17 @@ void	my_echo(char **argv)
 
 	i = 1;
 	broke_line = 0;
-	if (!ft_strncmp(argv[1], "-n", -1))
-		broke_line = 1;
-	while (argv[1])
+	if (argv[1] && !ft_strncmp(argv[1], "-n", -1))
 	{
-		printf("%s", argv[i]);
+		broke_line = 1;
+		i = 2;
+	}
+	while (argv[i])
+	{
+		write(1, argv[i], ft_strlen(argv[i]));
+		write(1, " ", 1);
 		i++;
 	}
-	if (broke_line == 1)
+	if (broke_line == 0)
 		write (1, "\n", 1);
 }

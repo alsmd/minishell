@@ -17,7 +17,7 @@ PATH_BUILTINS = $(PATH_SRC)builtins/
 PATH_UTILS = $(PATH_SRC)utils/
 PATH_OBJS = ./objs/
 
-SRCS =	$(PATH_MAIN)main.c	$(PATH_MAIN)init.c \
+SRCS =	$(PATH_MAIN)main.c	$(PATH_MAIN)init.c $(PATH_MAIN)clean_trash.c\
 		$(PATH_BUILTINS)env.c $(PATH_BUILTINS)check_builtin.c $(PATH_BUILTINS)pwd.c\
 		$(PATH_BUILTINS)cd.c $(PATH_BUILTINS)my_exit.c $(PATH_BUILTINS)echo.c\
 		$(PATH_COMMAND)execute_command.c $(PATH_COMMAND)helper_command.c $(PATH_COMMAND)check_command.c\

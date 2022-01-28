@@ -48,9 +48,9 @@ int	is_command(t_node *node)
 		return (1);
 	if (node->previous == 0)
 		return (0);
-	if (node->previous->relation[0] == '|')
+	if (node->previous->relation &&  node->previous->relation[0] == '|')
 		return (1);
-	if (node->previous->relation[0] == ' ')
+	if (node->previous->relation && node->previous->relation[0] == ' ')
 		return (1);
 	if (node->relation == 0 && node->previous->relation[0] == '|')
 		return (1);

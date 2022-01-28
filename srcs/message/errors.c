@@ -10,5 +10,8 @@ void	show_error(char *name, char *message, int status, int has_to_exit)
 	write(2, "\n", 1);
 	g_minishell.node = 0;
 	if (has_to_exit)
+	{
+		clean_trash();
 		exit(status);
+	}
 }

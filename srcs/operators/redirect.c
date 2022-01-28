@@ -6,7 +6,9 @@ int	handle_output(t_node *cmd)
 	t_node	*temp;
 
 	temp = cmd;
-	if (!ft_strncmp(cmd->relation, ">>", 2))
+	printf("%s\n", cmd->relation);
+
+	if (cmd->relation && !ft_strncmp(cmd->relation, ">>", 2))
 		fd = open(cmd->next->full_instruction, \
 		O_WRONLY | O_APPEND | O_CREAT, 0777);
 	else
@@ -65,7 +67,7 @@ void	handle_here_doc(t_node *node)
 	t_node	*temp;
 
 	temp = node;
-	delimiter = ft_strjoin(node->next->full_instruction, "\n");
+	delimiter = ft_strjoin(ft_strdup(node->next->full_instruction), "\n");
 	line = get_next_line(STDIN_FILENO);
 	pipe(fd);
 	while (ft_strncmp(line, delimiter, -1))

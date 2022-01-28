@@ -55,6 +55,8 @@ static void	create_relations(char *buffer)
 static void	execute_cmd(t_node *node)
 {
 	t_fd	*fds;
+	char	**argv;
+
 
 	fds = g_minishell.fds;
 	while (fds)
@@ -65,17 +67,22 @@ static void	execute_cmd(t_node *node)
 	}
 	dup2(node->input, STDIN_FILENO);
 	dup2(node->output, STDOUT_FILENO);
-	if (is_builtin(node))
+	// printf("%s\n", node->argv[0]);
+	if (node->is_builtin == 1)
 		exec_builtin(node);
 	else
 	{
+		argv = node->argv;
+		node->argv = 0;
 		if (node->not_exist == 1 && node->is_absolute_path)
-			show_error(node->argv[0], M_INVALID_FILE, E_COMMAND_NOT_FOUND, 1);
+			show_error(argv[0], M_INVALID_FILE, E_COMMAND_NOT_FOUND, 1);
 		if (node->not_exist == 1)
-			show_error(node->argv[0], M_COMMAND_NOT_FOUND, \
+			show_error(argv[0], M_COMMAND_NOT_FOUND, \
 			E_COMMAND_NOT_FOUND, 1);
-		execve(node->argv[0], node->argv, get_matrix());
+		clean_trash();
+		execve(argv[0], argv, get_matrix());
 	}
+	clean_trash();
 	exit(0);
 }
 
@@ -132,6 +139,7 @@ static void	exec_commands(void)
 		}
 		node = node->next;
 	}
+	clean_trash();
 	exit(0);
 }
 
@@ -142,11 +150,9 @@ void	make_shell_command(char *buffer)
 
 	get_path();
 	create_relations(buffer);
+	free(buffer);
 	if (check_grammar())
-	{
-		g_minishell.node = 0;
 		return ;
-	}
 	if (is_builtin(g_minishell.node) == TRUE && g_minishell.node->next == 0)
 		exec_builtin(g_minishell.node);
 	else
@@ -160,5 +166,4 @@ void	make_shell_command(char *buffer)
 		}
 		waitpid(id, &status, 0);
 	}
-	g_minishell.node = 0;
 }

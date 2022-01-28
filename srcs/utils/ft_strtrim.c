@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 21:47:58 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/26 08:57:10 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/01/28 11:27:14 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static size_t	get_size(char const *s, char const *set)
 	return (size);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char *s1, char const *set)
 {
 	char	*string;
 	size_t	size;

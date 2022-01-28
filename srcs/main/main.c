@@ -38,6 +38,7 @@ int	main(int argc, char *argv[], char *envp[])
 		if (buffer[0] == '\0')
 			continue ;
 		run(buffer);
+		clean_node();
 	}
 	return (0);
 }
