@@ -49,6 +49,8 @@ char	*get_var_value(char *key)
 	t_env	*init;
 
 	init = g_minishell.env;
+	if (!ft_strncmp(key, "?", -1))
+		return (ft_itoa(g_minishell.exit_code));
 	while (init)
 	{
 		if (!ft_strncmp(init->key, key, get_variable_len(key)))
