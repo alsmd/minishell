@@ -2,6 +2,11 @@
 
 extern t_minishell	g_minishell;
 
+int get_status(int status)
+{
+    return (((status) & 0xff00) >> 8);
+}
+
 char	*create_node(char *buffer, int first, int index, char *relation)
 {
 	if (relation[0] == ' ')
@@ -74,6 +79,9 @@ static void	execute_cmd(t_node *node)
 	{
 		if (node->not_exist == 1 && node->is_absolute_path)
 			show_error(node->argv[0], M_INVALID_FILE, E_COMMAND_NOT_FOUND, 1);
+		else if(node->is_absolute_path && node->is_executable == 0 && node->not_exist == 0)
+			show_error(node->argv[0], ": Permission denied", 
+			126, 1);
 		else if (node->not_exist == 1)
 			show_error(node->argv[0], M_COMMAND_NOT_FOUND, \
 			E_COMMAND_NOT_FOUND, 1);
@@ -84,8 +92,8 @@ static void	execute_cmd(t_node *node)
 			env = get_matrix();
 			clean_trash();
 			g_minishell.exit_code = execve(argv[0], argv, env);
-			printf("MiniShell: %s: Permission denied\n", argv[0]);
-			exit(g_minishell.exit_code);
+			printf("\033[1;31mUnknown error!!!\033[33m☣\033[0m\n");
+			exit(get_status(g_minishell.exit_code));
 		}
 	}
 	clean_trash();
@@ -114,10 +122,6 @@ static void	link_relations(void)
 	}
 }
 
-int get_status(int status)
-{
-    return (((status) & 0xff00) >> 8);
-}
 
 static void	exec_commands(void)
 {
