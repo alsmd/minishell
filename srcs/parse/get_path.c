@@ -16,6 +16,11 @@ void	get_path(void)
 		init = init->next;
 	}
 	if (g_minishell.paths)
+
+
+
+
+	
 		free_matrix(g_minishell.paths);
 	g_minishell.paths = ft_split(path, ':');
 }
