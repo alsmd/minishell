@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/28 15:37:16 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/01/28 16:10:36 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define M_COMMAND_NOT_FOUND ": command not found"
 # define M_INVALID_FILE ": No such file or directory"
 # define M_ERROR_SINTAX "sintax error near unexpected token "
+# define M_PERMISSION ": Permission denied"
 
 typedef struct s_env
 {
@@ -75,6 +76,7 @@ enum e_error
 {
 	E_ERROR_SINTAX = 2,
 	ERROR_OPEN_FILE,
+	E_PERMISSION = 126,
 	E_COMMAND_NOT_FOUND = 127,
 };
 
