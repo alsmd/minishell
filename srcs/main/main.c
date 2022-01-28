@@ -32,7 +32,8 @@ int	main(int argc, char *argv[], char *envp[])
 		buffer = readline("MiniShell > ");
 		if (!buffer)
 		{
-			write(1, "\n", 1);
+			clean_trash();
+			write(1, "exit\n", 5);
 			return (0);
 		}
 		if (buffer[0] == '\0')

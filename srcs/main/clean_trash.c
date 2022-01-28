@@ -7,6 +7,8 @@ void	free_matrix(char **matrix)
 	int	i;
 
 	i = 0;
+	if (matrix == 0)
+		return ;
 	while (matrix[i])
 	{
 		if (matrix[i])
