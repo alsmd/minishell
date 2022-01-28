@@ -14,7 +14,7 @@ static int	is_number(char c)
 	return (0);
 }
 
-static int	get_overflow_n(int	sign)
+static int	get_overflow_n(int sign)
 {
 	if (sign == 1)
 		return (-1);

@@ -1,8 +1,8 @@
 #include <minishell.h>
 
-extern	t_minishell g_minishell;
+extern t_minishell	g_minishell;
 
-void handle_signal_child(int sig)
+void	handle_signal_child(int sig)
 {
 	(void)sig;
 	write(1, "\n", 10);

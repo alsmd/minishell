@@ -2,6 +2,13 @@
 
 extern t_minishell	g_minishell;
 
+void	init_shell(char **envp)
+{
+	init_term();
+	init_minishell();
+	create_env(envp);
+}
+
 void	init_term(void)
 {
 	printf("\033[H\033[J");

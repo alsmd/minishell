@@ -22,7 +22,7 @@ char	**get_matrix(void)
 	int		len;
 	t_env	*init;
 	char	**my_env;
-	char	*temp;
+	// char	*temp;
 	int		index;
 
 	index = 0;
@@ -32,12 +32,12 @@ char	**get_matrix(void)
 	while (init)
 	{
 		my_env[index] = ft_strdup(init->key);
-		temp = my_env[index];
+		// temp = my_env[index];
 		my_env[index] = ft_strjoin(my_env[index], "=");
-		free(temp);
-		temp = my_env[index];
+		// free(temp);
+		// temp = my_env[index];
 		my_env[index] = ft_strjoin(my_env[index], init->value);
-		free(temp);
+		// free(temp);
 		index++;
 		init = init->next;
 	}

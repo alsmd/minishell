@@ -1,6 +1,6 @@
 #include <minishell.h>
 
-void cd(char **argv)
+void	cd(char **argv)
 {
 	int		status;
 	char	*buffer;

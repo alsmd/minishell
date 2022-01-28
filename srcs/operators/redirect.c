@@ -2,14 +2,16 @@
 
 int	handle_output(t_node *cmd)
 {
-	int	fd;
-	t_node *temp;
+	int		fd;
+	t_node	*temp;
 
 	temp = cmd;
 	if (!ft_strncmp(cmd->relation, ">>", 2))
-		fd = open(cmd->next->full_instruction, O_WRONLY | O_APPEND | O_CREAT, 0777);
+		fd = open(cmd->next->full_instruction, \
+		O_WRONLY | O_APPEND | O_CREAT, 0777);
 	else
-		fd = open(cmd->next->full_instruction, O_WRONLY | O_TRUNC | O_CREAT, 0777);
+		fd = open(cmd->next->full_instruction, \
+		O_WRONLY | O_TRUNC | O_CREAT, 0777);
 	if (fd == -1)
 		return (ERROR_OPEN_FILE);
 	add_fd(fd);
@@ -17,7 +19,7 @@ int	handle_output(t_node *cmd)
 		cmd = cmd->previous;
 	if (cmd == 0)
 	{
-		while(temp && !is_command(temp))
+		while (temp && !is_command(temp))
 			temp = temp->next;
 		temp->output = fd;
 	}
@@ -28,8 +30,8 @@ int	handle_output(t_node *cmd)
 
 int	handle_input(t_node *cmd)
 {
-	int	fd;
-	t_node *temp;
+	int		fd;
+	t_node	*temp;
 
 	temp = cmd;
 	fd = open(cmd->next->full_instruction, O_RDONLY, 0777);
@@ -40,7 +42,7 @@ int	handle_input(t_node *cmd)
 		cmd = cmd->previous;
 	if (cmd == 0)
 	{
-		while(temp && !is_command(temp))
+		while (temp && !is_command(temp))
 			temp = temp->next;
 		temp->input = fd;
 	}
@@ -49,12 +51,18 @@ int	handle_input(t_node *cmd)
 	return (0);
 }
 
+void	write_and_free(int fd, char *line)
+{
+	write(fd, line, ft_strlen(line));
+	free(line);
+}
+
 void	handle_here_doc(t_node *node)
 {
 	char	*delimiter;
 	int		fd[2];
 	char	*line;
-	t_node *temp;
+	t_node	*temp;
 
 	temp = node;
 	delimiter = ft_strjoin(node->next->full_instruction, "\n");
@@ -62,8 +70,7 @@ void	handle_here_doc(t_node *node)
 	pipe(fd);
 	while (ft_strncmp(line, delimiter, -1))
 	{
-		write(fd[1], line, ft_strlen(line));
-		free(line);
+		write_and_free(fd[1], line);
 		line = get_next_line(STDIN_FILENO);
 	}
 	close(fd[1]);
@@ -71,11 +78,9 @@ void	handle_here_doc(t_node *node)
 		node = node->previous;
 	if (node == 0)
 	{
-		while(temp && !is_command(temp))
+		while (temp && !is_command(temp))
 			temp = temp->next;
 		temp->input = fd[0];
-
-
 	}
 	else
 		node->input = fd[0];

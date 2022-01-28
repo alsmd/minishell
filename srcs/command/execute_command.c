@@ -1,40 +1,47 @@
 #include <minishell.h>
 
-extern t_minishell g_minishell;
+extern t_minishell	g_minishell;
+
+char	*create_node(char *buffer, int first, int index, char *relation)
+{
+	if (relation[0] == ' ')
+	{
+		g_minishell.operators[7] = NULL;
+	}
+	if (!ft_strncmp(&buffer[index], ">>", 2) ||\
+	!ft_strncmp(&buffer[index], "<<", 2))
+	{
+		buffer[index] = '\0';
+		index++;
+	}
+	buffer[index] = '\0';
+	index++;
+	add_new_cmd(buffer, relation);
+	buffer += index;
+	if (first == TRUE && g_minishell.node->argv[0] == 0)
+	{
+		while (*buffer && *buffer == ' ')
+			buffer++;
+		g_minishell.operators[7] = " ";
+		g_minishell.operators[8] = NULL;
+	}
+	return (buffer);
+}
 
 static void	create_relations(char *buffer)
 {
-	char		*relation;
-	int			index;
-	int first;
+	char	*relation;
+	int		index;
+	int		first;
 
 	index = 0;
 	first = TRUE;
 	while (buffer[index])
 	{
 		relation = is_in(g_minishell.operators, &(buffer[index]));
-		if (relation)//<< EOF cat
+		if (relation)
 		{	
-			if (relation[0] == ' ')
-			{
-				g_minishell.operators[7] = NULL;
-			}
-			if (!ft_strncmp(&buffer[index], ">>", 2) || !ft_strncmp(&buffer[index], "<<", 2))
-			{
-				buffer[index] = '\0';
-				index++;
-			}
-			buffer[index] = '\0';
-			index++;
-			add_new_cmd(buffer, relation);
-			buffer += index;
-			if (first == TRUE && g_minishell.node->argv[0] == 0)
-			{
-				while (*buffer && *buffer == ' ')
-					buffer++;				
-				g_minishell.operators[7] = " ";
-				g_minishell.operators[8] = NULL;
-			}
+			buffer = create_node(buffer, first, index, relation);
 			index = 0;
 			first = FALSE;
 		}
@@ -65,19 +72,19 @@ static void	execute_cmd(t_node *node)
 		if (node->not_exist == 1 && node->is_absolute_path)
 			show_error(node->argv[0], M_INVALID_FILE, E_COMMAND_NOT_FOUND, 1);
 		if (node->not_exist == 1)
-			show_error(node->argv[0], M_COMMAND_NOT_FOUND, E_COMMAND_NOT_FOUND, 1);
+			show_error(node->argv[0], M_COMMAND_NOT_FOUND, \
+			E_COMMAND_NOT_FOUND, 1);
 		execve(node->argv[0], node->argv, get_matrix());
 	}
 	exit(0);
 }
 
-
 static void	link_relations(void)
 {
-	t_node		*node;
+	t_node	*node;
 
 	node = g_minishell.node;
-	while (node)//ls | wc
+	while (node)
 	{
 		if (node->relation == 0)
 			break ;
@@ -155,4 +162,3 @@ void	make_shell_command(char *buffer)
 	}
 	g_minishell.node = 0;
 }
-

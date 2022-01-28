@@ -2,11 +2,22 @@
 
 t_minishell	g_minishell;
 
+void	run(char *buffer)
+{
+	char	*new_buffer;
+	int		status;
+
+	add_history(buffer);
+	new_buffer = expand_vars(buffer);
+	status = parse_string(new_buffer);
+	if (status == 0)
+		make_shell_command(new_buffer);
+	rl_replace_line("", 0);
+}
+
 int	main(int argc, char *argv[], char *envp[])
 {
-	int		status;
 	char	*buffer;
-	char	*new_buffer;
 
 	(void)argv;
 	if (argc > 1)
@@ -14,9 +25,7 @@ int	main(int argc, char *argv[], char *envp[])
 		printf("Invalid number of argument!\n");
 		return (-1);
 	}
-	init_term();
-	init_minishell();
-	create_env(envp);
+	init_shell(envp);
 	while (1)
 	{
 		signals(PARENT);
@@ -28,12 +37,7 @@ int	main(int argc, char *argv[], char *envp[])
 		}
 		if (buffer[0] == '\0')
 			continue ;
-		add_history(buffer);
-		new_buffer = expand_vars(buffer);
-		status = parse_string(new_buffer);
-		if (status == 0)
-			make_shell_command(new_buffer);
-		rl_replace_line("", 0);
+		run(buffer);
 	}
 	return (0);
 }

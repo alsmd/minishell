@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/27 21:27:53 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/28 09:20:16 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <curses.h>
-#include <signal.h>
+# include <signal.h>
 # include <term.h>
 # include <unistd.h>
 # include <sys/types.h>
@@ -31,7 +31,6 @@
 # define M_COMMAND_NOT_FOUND ": command not found"
 # define M_INVALID_FILE ": No such file or directory"
 # define M_ERROR_SINTAX "sintax error near unexpected token "
-
 
 typedef struct s_env
 {
@@ -57,8 +56,8 @@ typedef struct s_node
 typedef struct s_fd
 {
 	int			value;
-	struct s_fd	*next;;
-} t_fd;
+	struct s_fd	*next;
+}	t_fd;
 
 typedef struct s_minishell
 {
@@ -76,6 +75,7 @@ enum e_error
 	E_COMMAND_NOT_FOUND = 127,
 };
 
+void	init_shell(char **envp);
 void	init_minishell(void);
 void	init_term(void);
 
@@ -87,6 +87,7 @@ void	export(char *command);
 void	unset(char *key);
 void	pwd(void);
 void	cd(char **argv);
+void	my_echo(char **argv);
 void	my_exit(char **argv);
 
 // ENV
@@ -102,7 +103,6 @@ void	show_error(char *name, char *message, int status, int has_to_exit);
 // EXEC
 void	make_shell_command(char *buffer);
 
-
 //PARSES
 int		parse_string(char *buffer);
 void	get_path(void);
@@ -114,6 +114,11 @@ void	check_absolute_path(t_node *cmd);
 int		is_absolute_path(char *cmd);
 char	*expand_vars(char *buffer);
 int		check_grammar(void);
+
+//CHECK COMMAND
+void	check_absolute_path(t_node *cmd);
+void	check_command_exist(t_node *cmd);
+int		is_command(t_node *node);
 
 //OPERATORS
 int		handle_output(t_node *cmd);

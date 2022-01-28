@@ -67,8 +67,9 @@ char	*expand_vars(char *buffer)
 		if (buffer[index] == '$')
 		{
 			//limitando o tamanho para o join, colocando byte nulo ante do $
-			cut_char(new_buffer);			
-			new_buffer = ft_strjoin(new_buffer, get_var_value(&buffer[index + 1]));
+			cut_char(new_buffer);
+			new_buffer = ft_strjoin(new_buffer, \
+			get_var_value(&buffer[index + 1]));
 			new_buffer = ft_strjoin(new_buffer, \
 			&buffer[index + get_variable_len(&buffer[index])]);
 		}

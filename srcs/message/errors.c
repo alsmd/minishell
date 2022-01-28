@@ -1,6 +1,6 @@
 #include <minishell.h>
 
-extern t_minishell g_minishell;
+extern t_minishell	g_minishell;
 
 void	show_error(char *name, char *message, int status, int has_to_exit)
 {

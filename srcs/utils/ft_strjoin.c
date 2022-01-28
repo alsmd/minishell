@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 19:44:37 by flavio            #+#    #+#             */
-/*   Updated: 2022/01/25 16:42:20 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/01/28 09:37:07 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (0);
 	ft_strlcpy(string, s1, s1len + 1);
 	ft_strlcat(string, s2, s1len + s2len + 1);
+	free(s1);
 	return (string);
 }
