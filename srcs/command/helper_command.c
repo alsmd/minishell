@@ -4,7 +4,7 @@ extern t_minishell	g_minishell;
 
 t_node	*parse_cmd(char *command)
 {
-	t_node *new_cmd;
+	t_node	*new_cmd;
 
 	new_cmd = (t_node *) ft_calloc(1, sizeof(t_node));
 	new_cmd->full_instruction = ft_strtrim(command, " ");

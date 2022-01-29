@@ -22,15 +22,14 @@ void	check_command_exist(t_node *cmd)
 	int		index;
 	int		exist;
 
-	index = 0;
+	index = -1;
 	exist = 0;
 	if (!cmd->argv[0])
 		return ;
-	while (g_minishell.paths && g_minishell.paths[index] != 0)
+	while (g_minishell.paths && g_minishell.paths[++index] != 0)
 	{
 		tmp = ft_strjoin(ft_strdup(g_minishell.paths[index]), "/");
 		cmd_path = ft_strjoin(tmp, cmd->argv[0]);
-		// free(tmp);
 		if (access(cmd_path, F_OK) == 0)
 		{
 			free(cmd->full_path);
@@ -40,7 +39,6 @@ void	check_command_exist(t_node *cmd)
 		}
 		else
 			free(cmd_path);
-		index++;
 	}
 	if (exist == 0)
 		cmd->not_exist = 1;
@@ -52,7 +50,7 @@ int	is_command(t_node *node)
 		return (1);
 	if (node->previous == 0)
 		return (0);
-	if (node->previous->relation &&  node->previous->relation[0] == '|')
+	if (node->previous->relation && node->previous->relation[0] == '|')
 		return (1);
 	if (node->previous->relation && node->previous->relation[0] == ' ')
 		return (1);

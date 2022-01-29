@@ -18,15 +18,13 @@ void	free_matrix(char **matrix)
 	free(matrix);
 }
 
-
-void clean_node(void)
+void	clean_node(void)
 {
 	t_node	*temp;
 
-
 	if (g_minishell.node)
 	{
-		while(g_minishell.node)
+		while (g_minishell.node)
 		{
 			temp = g_minishell.node;
 			g_minishell.node = g_minishell.node->next;
@@ -42,7 +40,7 @@ void clean_node(void)
 
 void	clean_env(void)
 {
-	t_env *temp;
+	t_env	*temp;
 
 	while (g_minishell.env)
 	{
@@ -56,7 +54,7 @@ void	clean_env(void)
 
 void	clean_fd(void)
 {
-	t_fd *temp;
+	t_fd	*temp;
 
 	while (g_minishell.fds)
 	{
@@ -64,7 +62,6 @@ void	clean_fd(void)
 		g_minishell.fds = g_minishell.fds->next;
 		free(temp);
 	}
-	
 }
 
 void	clean_trash(void)
@@ -74,6 +71,4 @@ void	clean_trash(void)
 	free_matrix(g_minishell.operators);
 	clean_fd();
 	free_matrix(g_minishell.paths);
-
-
 }
