@@ -12,7 +12,7 @@ t_node	*parse_cmd(char *command)
 	new_cmd->argv = ft_split(new_cmd->full_instruction, ' ');
 	new_cmd->full_path = ft_strdup(new_cmd->argv[0]);
 	new_cmd->argv = search_matrix(new_cmd->argv);
-	new_cmd->argv = trim_quotes(new_cmd->argv);
+	trim_quotes(new_cmd->argv);
 	return (new_cmd);
 }
 

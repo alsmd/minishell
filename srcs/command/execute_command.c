@@ -166,8 +166,22 @@ void	make_shell_command(char *buffer)
 {
 	int			id;
 
+
 	get_path();
 	create_relations(buffer);
+
+/* 	while (g_minishell.node)
+	{
+		while (*g_minishell.node->argv)
+		{
+			printf("%s\n", *g_minishell.node->argv);
+			g_minishell.node->argv += 1;
+		}
+		printf("-----------------------------------------------\n");
+		g_minishell.node = g_minishell.node->next;
+	}
+
+	return ; */
 	free(buffer);
 	if (check_grammar())
 		return ;

@@ -120,6 +120,7 @@ mkdir -p ./objs/parse/
 mkdir -p ./objs/utils/
 mkdir -p ./objs/main/
 gcc -g -Wall -Werror -Wextra -I ./includes/ -I. -c srcs/command/check_command.c -o objs/command/check_command.o -lreadline
+ 
 mkdir -p ./objs/
 mkdir -p ./objs/builtins/
 mkdir -p ./objs/command/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 18:48:17 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/28 16:46:38 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/01/29 14:41:45 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void	free_matrix(char **matrix);
 int		parse_string(char *buffer);
 void	get_path(void);
 int		is_comand(char *s);
-char	**trim_quotes(char **matrix);
+void	trim_quotes(char **matrix);
 char	**search_matrix(char **matrix);
 char	*swap_chars(char *cmd, char to_find, char to_put);
 void	check_absolute_path(t_node *cmd);
