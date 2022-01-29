@@ -42,10 +42,9 @@ char	**get_matrix(void)
 char	*get_var_value(char *key)
 {
 	t_env	*init;
-	
 
 	init = g_minishell.env;
-	if (!ft_strncmp(key, "?",  get_variable_len(key)))
+	if (!ft_strncmp(key, "?", get_variable_len(key)))
 		return (ft_itoa(g_minishell.exit_code));
 	while (init)
 	{

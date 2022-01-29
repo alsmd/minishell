@@ -45,10 +45,23 @@ static void	cut_char(char *buffer)
 	}
 }
 
+char	*write_variable(char *new_buffer, char *buffer, int index)
+{
+	char	*value;
+
+	//limitando o tamanho para o join, colocando byte nulo ante do $
+	cut_char(new_buffer);
+	value = get_var_value(&buffer[index + 1]);
+	new_buffer = ft_strjoin(new_buffer, value);
+	new_buffer = ft_strjoin(new_buffer, \
+	&buffer[index + get_variable_len(&buffer[index])]);
+	free (value);
+	return (new_buffer);
+}
+
 char	*expand_vars(char *buffer)
 {
 	char	*new_buffer;
-	char	*value;
 	int		is_in_quotes;
 	int		index;
 
@@ -66,15 +79,7 @@ char	*expand_vars(char *buffer)
 				index++;
 		}
 		if (buffer[index] == '$')
-		{
-			//limitando o tamanho para o join, colocando byte nulo ante do $
-			cut_char(new_buffer);
-			value = get_var_value(&buffer[index + 1]);
-			new_buffer = ft_strjoin(new_buffer, value);
-			new_buffer = ft_strjoin(new_buffer, \
-			&buffer[index + get_variable_len(&buffer[index])]);
-			free(value);
-		}
+			new_buffer = write_variable(new_buffer, buffer, index);
 		index++;
 	}
 	free(buffer);

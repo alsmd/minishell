@@ -2,7 +2,6 @@
 
 int	is_builtin(t_node *cmd)
 {
-
 	if (!cmd->argv[0])
 		return (FALSE);
 	if (!(ft_strncmp(cmd->argv[0], "exit", -1)))
@@ -24,7 +23,7 @@ int	is_builtin(t_node *cmd)
 
 void	exec_builtin(t_node *cmd)
 {
-	if(cmd->argv)
+	if (cmd->argv)
 	{
 		if (!(ft_strncmp(cmd->argv[0], "exit", -1)))
 			my_exit(cmd->argv);

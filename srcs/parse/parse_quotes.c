@@ -37,8 +37,8 @@ char	**search_matrix(char **matrix)
 
 char	**trim_quotes(char **matrix)
 {
-	int	i;
-	char *temp;
+	int		i;
+	char	*temp;
 
 	i = 0;
 	while (matrix[i])
@@ -49,7 +49,7 @@ char	**trim_quotes(char **matrix)
 			matrix[i] = ft_strtrim(temp, "'");
 			free(temp);
 		}	
-		else if(matrix[i][0] == '"')
+		else if (matrix[i][0] == '"')
 		{
 			temp = matrix[i];
 			matrix[i] = ft_strtrim(temp, "\"");
