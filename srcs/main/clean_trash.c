@@ -23,17 +23,20 @@ void clean_node(void)
 {
 	t_node	*temp;
 
-		printf("full_path: %s\nok\n", g_minishell.node->full_path);
-	if (g_minishell.node->full_path)
-		free(g_minishell.node->full_path);
-	while(g_minishell.node)
+
+	if (g_minishell.node)
 	{
-		temp = g_minishell.node;
-		g_minishell.node = g_minishell.node->next;
-		if (temp->argv)
-			free_matrix(temp->argv);
-		free(temp->full_instruction);
-		free(temp);
+		while(g_minishell.node)
+		{
+			temp = g_minishell.node;
+			g_minishell.node = g_minishell.node->next;
+			if (temp->argv)
+				free_matrix(temp->argv);
+			free(temp->full_instruction);
+			if (temp->full_path)
+				free(temp->full_path);
+			free(temp);
+		}
 	}
 }
 
