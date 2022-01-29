@@ -8,7 +8,9 @@ int	handle_pipe(t_node *node)
 		return (1);
 	add_fd(fd[0]);
 	add_fd(fd[1]);
-	node->output = fd[1];
 	node->next->input = fd[0];
+	while (node && !is_command(node))
+		node = node->previous;
+	node->output = fd[1];
 	return (0);
 }

@@ -137,13 +137,13 @@ static void	exec_commands(void)
 	node = g_minishell.node;
 	while (node)
 	{
+		if (node->previous && is_command(node->previous))
+		{
+			close_fd(node->previous->input);
+			close_fd(node->previous->output);
+		}
 		if (is_command(node))
 		{
-			if (node->previous)
-			{
-				close_fd(node->previous->input);
-				close_fd(node->previous->output);
-			}
 			id = fork();
 			signals(3);
 			if (id == 0)
