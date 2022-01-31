@@ -6,11 +6,16 @@ void	cd(char **argv)
 	char	*old_pwd;
 	char	*buffer;
 	char	tmp[500];
+	char	*aux;
 
 	old_pwd = ft_strdup(getcwd(tmp, 500));
 	status = 0;
 	if (argv[1] == 0 || argv[1][0] == '\0' || !ft_strncmp(argv[1], "~", -1))
-		status = chdir(get_var_value("HOME"));
+	{
+		aux = get_var_value("HOME");
+		status = chdir(aux);
+		free(aux);
+	}
 	else if (argv[2] != 0)
 		show_error("cd: ", "too many arguments", 1, 0);
 	else
