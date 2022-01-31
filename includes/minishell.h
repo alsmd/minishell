@@ -37,6 +37,7 @@ typedef struct s_node
 	int				not_exist;
 	int				input;
 	int				output;
+	int				output_file;
 	int				is_builtin;
 	int				is_executable;
 	int				is_absolute_path;

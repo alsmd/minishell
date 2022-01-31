@@ -22,9 +22,13 @@ int	handle_output(t_node *cmd)
 		while (temp && !is_command(temp))
 			temp = temp->next;
 		temp->output = fd;
+		temp->output_file = 1;
 	}
 	else
+	{
 		cmd->output = fd;
+		cmd->output_file = 1;
+	}
 	return (0);
 }
 
