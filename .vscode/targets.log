@@ -5,8 +5,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Tue Feb  1 18:38:27 2022
+# Make data base, printed on Tue Feb  1 18:39:20 2022
 
 # Variables
 
@@ -55,13 +56,13 @@ OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(SRCS))
 # environment
 VSCODE_CWD = /home/coder
 # environment
-SSH_CONNECTION = 10.51.4.20 11644 192.168.88.14 2222
+SSH_CONNECTION = 192.168.78.0 29570 192.168.88.14 2222
 # environment
 PATH = /home/coder/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/bin:/home/coder/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-56d5a0e1-a362-449b-b19c-ee2f98218eac.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-4b36b9bb-b462-4265-b741-dc526e7cd671.sock
 # makefile (from 'Makefile', line 11)
 PATH_COMMAND = $(PATH_SRC)command/
 # default
@@ -127,7 +128,7 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 10.51.4.20 11644 2222
+SSH_CLIENT = 192.168.78.0 29570 2222
 # makefile (from 'Makefile', line 14)
 PATH_MESSAGE = $(PATH_SRC)message/
 # automatic
@@ -178,7 +179,7 @@ MOTD_SHOWN = pam
 # srcs/command (device 115, inode 220473348): 7 files, no impossibilities so far.
 # srcs/builtins (device 115, inode 220473347): 8 files, no impossibilities so far.
 # srcs/operators (device 115, inode 220473352): 6 files, no impossibilities so far.
-# . (device 115, inode 220469257): 42 files, no impossibilities.
+# . (device 115, inode 220469257): 58 files, no impossibilities.
 # srcs/env (device 115, inode 220473349): 4 files, no impossibilities so far.
 # srcs/parse (device 115, inode 220473353): 7 files, no impossibilities so far.
 # srcs/utils (device 115, inode 220473354): 19 files, no impossibilities so far.
@@ -186,7 +187,7 @@ MOTD_SHOWN = pam
 # srcs/main (device 115, inode 220473350): 5 files, no impossibilities so far.
 # srcs (device 115, inode 220473346): No files, no impossibilities so far.
 
-# 101 files, no impossibilities in 10 directories.
+# 117 files, no impossibilities in 10 directories.
 
 # Implicit Rules
 
@@ -286,7 +287,6 @@ objs/builtins/my_exit.o: srcs/builtins/my_exit.c
 	@mkdir -p $(PATH_OBJS)main/
 	$(CC) $(CFLAGS) $(INCLUDE) -I. -c $< -o $@ -lreadline
 
- 
 # Not a target:
 srcs/utils/ft_calloc.c:
 #  Implicit rule search has been done.
@@ -297,6 +297,7 @@ srcs/utils/ft_calloc.c:
 # Not a target:
 srcs/utils/ft_substr.c:
 #  Implicit rule search has been done.
+ 
 #  Last modified 2022-01-27 15:33:29.245696947
 #  File has been updated.
 #  Successfully updated.
@@ -566,7 +567,6 @@ objs/utils/ft_strtrim.o: srcs/utils/ft_strtrim.c
 
 # Not a target:
 Makefile:
- 
 #  Implicit rule search has been done.
 #  Last modified 2022-02-01 18:06:51.618941885
 #  File has been updated.
@@ -582,6 +582,7 @@ srcs/operators/pipe.c:
 objs/utils/is_in.o: srcs/utils/is_in.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'utils/is_in'
+ 
 #  Last modified 2022-02-01 18:24:00.999425954
 #  File has been updated.
 #  Successfully updated.
@@ -843,7 +844,6 @@ objs/utils/ft_split.o: srcs/utils/ft_split.c
 	@mkdir -p $(PATH_OBJS)command/
 	@mkdir -p $(PATH_OBJS)env/
 	@mkdir -p $(PATH_OBJS)message/
- 
 	@mkdir -p $(PATH_OBJS)operators/
 	@mkdir -p $(PATH_OBJS)parse/
 	@mkdir -p $(PATH_OBJS)utils/
@@ -867,6 +867,7 @@ srcs/parse/parse_string.c:
 objs/builtins/pwd.o: srcs/builtins/pwd.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'builtins/pwd'
+ 
 #  Last modified 2022-02-01 18:23:56.907265739
 #  File has been updated.
 #  Successfully updated.
@@ -1128,7 +1129,6 @@ objs/main/main.o: srcs/main/main.c
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
 	@mkdir -p $(PATH_OBJS)env/
- 
 	@mkdir -p $(PATH_OBJS)message/
 	@mkdir -p $(PATH_OBJS)operators/
 	@mkdir -p $(PATH_OBJS)parse/
@@ -1157,6 +1157,7 @@ objs/env/get_matrix.o: srcs/env/get_matrix.c
 # Not a target:
 srcs/parse/parse_quotes.c:
 #  Implicit rule search has been done.
+ 
 #  Last modified 2022-01-29 15:37:25.863869561
 #  File has been updated.
 #  Successfully updated.
@@ -1333,12 +1334,12 @@ objs/parse/get_path.o: srcs/parse/get_path.c
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 231 / storage = 3910 B / avg = 16 B
-# current buf: size = 8162 B / used = 3910 B / count = 231 / avg = 16 B
+# strcache buffers: 1 (0) / strings = 247 / storage = 4118 B / avg = 16 B
+# current buf: size = 8162 B / used = 4118 B / count = 247 / avg = 16 B
 
-# strcache performance: lookups = 313 / hit rate = 26%
+# strcache performance: lookups = 329 / hit rate = 24%
 # hash-table stats:
-# Load=231/8192=3%, Rehash=0, Collisions=12/313=4%
-# Finished Make data base on Tue Feb  1 18:38:27 2022
+# Load=247/8192=3%, Rehash=0, Collisions=12/329=4%
+# Finished Make data base on Tue Feb  1 18:39:20 2022
 
  

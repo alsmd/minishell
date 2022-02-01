@@ -3,16 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 19:44:37 by flavio            #+#    #+#             */
-/*   Updated: 2022/02/01 18:10:19 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/01/28 09:37:07 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 #include <stdlib.h>
 #include <stdio.h>
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	index;
+
+	index = 0;
+	if (!src || !dst)
+		return (0);
+	while (src[index] && index + 1 < size)
+	{
+		dst[index] = src[index];
+		index++;
+	}
+	if (size > 0)
+		dst[index] = '\0';
+	return (ft_strlen(src));
+}
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {

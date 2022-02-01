@@ -1,5 +1,7 @@
 #include <minishell.h>
 
+extern t_minishell g_minishell;
+
 void	cd(char **argv)
 {
 	int		status;
@@ -30,4 +32,5 @@ void	cd(char **argv)
 	unset("OLDPWD");
 	add_variable(ft_strdup("OLDPWD"), old_pwd);
 	add_variable(ft_strdup("PWD"), ft_strdup(getcwd(tmp, 500)));
+	g_minishell.exit_code = 0;
 }

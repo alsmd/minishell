@@ -1,5 +1,7 @@
 #include <minishell.h>
 
+extern t_minishell g_minishell;
+
 void	my_echo(char **argv)
 {
 	int	broke_line;
@@ -20,4 +22,5 @@ void	my_echo(char **argv)
 	}
 	if (broke_line == 0)
 		write (1, "\n", 1);
+	g_minishell.exit_code = 0;
 }

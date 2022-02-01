@@ -12,6 +12,7 @@ void	env(void)
 		printf("%s=%s\n", init->key, init->value);
 		init = init->next;
 	}
+	g_minishell.exit_code = 0;
 }
 
 void	export(char *command)
@@ -27,6 +28,7 @@ void	export(char *command)
 	value = ft_substr(command, i + 1, ft_strlen(command) - i + 1);
 	unset(key);
 	add_variable(key, value);
+	g_minishell.exit_code = 0;
 }
 
 void	unset(char *key)
@@ -56,4 +58,5 @@ void	unset(char *key)
 		previous = init;
 		init = init->next;
 	}
+	g_minishell.exit_code = 0;
 }
