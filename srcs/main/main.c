@@ -12,6 +12,8 @@ void	run(char *buffer)
 	status = parse_string(new_buffer);
 	if (status == 0)
 		make_shell_command(new_buffer);
+	else
+		free(new_buffer);
 	rl_replace_line("", 0);
 }
 

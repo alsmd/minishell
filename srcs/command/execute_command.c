@@ -15,7 +15,8 @@ static void	exec_extern_cmd(t_node *node)
 	env = get_matrix();
 	clean_trash();
 	g_minishell.exit_code = execve(path, argv, env);
-	printf("\033[1;31mUnknown error!!!\033[33m☣\033[0m\n");
+	printf("\033[1;31mUnknown error!!!: I'm not programmed for this \
+\033[1;97m\"%s\" \033[33m☣\033[0m\n", argv[0]);
 	free_matrix(argv);
 	free_matrix(env);
 	free(path);
@@ -81,9 +82,26 @@ void	make_shell_command(char *buffer)
 
 	get_path();
 	create_relations(buffer);
+
+	/* while (g_minishell.node)
+	{
+		while (*g_minishell.node->argv)
+		{
+
+			printf("|%s|\n", *g_minishell.node->argv);
+			g_minishell.node->argv += 1;
+		}
+		if (g_minishell.node->relation)
+			printf("|%s|\n", g_minishell.node->relation);
+		g_minishell.node = g_minishell.node->next;
+	}
+	return ; */
 	free(buffer);
 	if (check_grammar())
+	{
+		clean_node();
 		return ;
+	}
 	if (is_builtin(g_minishell.node) == TRUE && g_minishell.node->next == 0)
 		exec_builtin(g_minishell.node);
 	else

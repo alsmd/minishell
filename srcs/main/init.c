@@ -26,4 +26,5 @@ void	init_minishell(void)
 	g_minishell.operators[5] = ft_strdup("||");
 	g_minishell.operators[6] = ft_strdup("&&");
 	g_minishell.operators[7] = NULL;
+	g_minishell.operators[8] = ft_strdup(" ");
 }

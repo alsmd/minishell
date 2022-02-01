@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jan 29 14:23:09 2022
+# Make data base, printed on Tue Feb  1 14:36:38 2022
 
 # Variables
 
@@ -50,18 +50,18 @@ PATH_UTILS = $(PATH_SRC)utils/
 GNUMAKEFLAGS := 
 # environment
 VSCODE_VERBOSE_LOGGING = true
-# makefile (from 'Makefile', line 35)
+# makefile (from 'Makefile', line 37)
 OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(SRCS))
 # environment
 VSCODE_CWD = /home/coder
 # environment
-SSH_CONNECTION = 192.168.127.0 9296 192.168.81.75 2222
+SSH_CONNECTION = 192.168.127.0 14602 192.168.88.14 2222
 # environment
 PATH = /home/coder/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/bin:/home/coder/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-48e9eaaf-a50b-4b6d-b4fd-b343aad180f9.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-2d535ea8-29cd-4072-87fa-9ea7405b6c43.sock
 # makefile (from 'Makefile', line 11)
 PATH_COMMAND = $(PATH_SRC)command/
 # default
@@ -97,7 +97,7 @@ MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # makefile (from 'Makefile', line 20)
-SRCS = $(PATH_MAIN)main.c	$(PATH_MAIN)init.c $(PATH_MAIN)clean_trash.c $(PATH_BUILTINS)env.c $(PATH_BUILTINS)check_builtin.c $(PATH_BUILTINS)pwd.c $(PATH_BUILTINS)cd.c $(PATH_BUILTINS)my_exit.c $(PATH_BUILTINS)echo.c $(PATH_COMMAND)execute_command.c $(PATH_COMMAND)helper_command.c $(PATH_COMMAND)check_command.c $(PATH_ENV)create_env.c $(PATH_ENV)get_matrix.c $(PATH_MESSAGE)errors.c $(PATH_OPERATOR)pipe.c $(PATH_OPERATOR)redirect.c $(PATH_OPERATOR)signal.c $(PATH_PARSE)parse_string.c $(PATH_PARSE)parse_quotes.c $(PATH_PARSE)get_path.c $(PATH_PARSE)expand_vars.c $(PATH_PARSE)check_grammar.c $(PATH_UTILS)ft_bzero.c $(PATH_UTILS)ft_calloc.c $(PATH_UTILS)ft_split.c $(PATH_UTILS)ft_strdup.c $(PATH_UTILS)ft_strjoin.c $(PATH_UTILS)ft_strlen.c $(PATH_UTILS)ft_strncmp.c $(PATH_UTILS)ft_strtrim.c $(PATH_UTILS)ft_substr.c $(PATH_UTILS)get_next_line.c $(PATH_UTILS)handler_final_file.c $(PATH_UTILS)is_in.c $(PATH_UTILS)close_fd.c	$(PATH_UTILS)ft_atoi.c $(PATH_UTILS)ft_itoa.c
+SRCS = $(PATH_MAIN)main.c	$(PATH_MAIN)init.c $(PATH_MAIN)clean_trash.c $(PATH_BUILTINS)env.c $(PATH_BUILTINS)check_builtin.c $(PATH_BUILTINS)pwd.c $(PATH_BUILTINS)cd.c $(PATH_BUILTINS)my_exit.c $(PATH_BUILTINS)echo.c $(PATH_COMMAND)execute_command.c $(PATH_COMMAND)helper_command.c $(PATH_COMMAND)check_command.c $(PATH_COMMAND)relations.c $(PATH_COMMAND)exec_helper.c $(PATH_ENV)create_env.c $(PATH_ENV)get_matrix.c $(PATH_MESSAGE)errors.c $(PATH_OPERATOR)pipe.c $(PATH_OPERATOR)redirect.c $(PATH_OPERATOR)signal.c $(PATH_OPERATOR)redirect_helper.c $(PATH_PARSE)parse_string.c $(PATH_PARSE)parse_quotes.c $(PATH_PARSE)get_path.c $(PATH_PARSE)expand_vars.c $(PATH_PARSE)check_grammar.c $(PATH_UTILS)ft_bzero.c $(PATH_UTILS)ft_calloc.c $(PATH_UTILS)ft_split.c $(PATH_UTILS)ft_strdup.c $(PATH_UTILS)ft_strjoin.c $(PATH_UTILS)ft_strlen.c $(PATH_UTILS)ft_strncmp.c $(PATH_UTILS)ft_strtrim.c $(PATH_UTILS)ft_substr.c $(PATH_UTILS)get_next_line.c $(PATH_UTILS)handler_final_file.c $(PATH_UTILS)is_in.c $(PATH_UTILS)close_fd.c	$(PATH_UTILS)ft_atoi.c $(PATH_UTILS)ft_itoa.c
 # environment
 SHLVL = 0
 # makefile (from 'Makefile', line 13)
@@ -127,7 +127,7 @@ MAKEFLAGS = pqrR
 # environment
 MFLAGS = -pqrR
 # environment
-SSH_CLIENT = 192.168.127.0 9296 2222
+SSH_CLIENT = 192.168.127.0 14602 2222
 # makefile (from 'Makefile', line 14)
 PATH_MESSAGE = $(PATH_SRC)message/
 # automatic
@@ -167,7 +167,7 @@ PATH_BUILTINS = $(PATH_SRC)builtins/
 # environment
 MOTD_SHOWN = pam
 # variable set hash-table stats:
-# Load=78/1024=8%, Rehash=0, Collisions=12/187=6%
+# Load=78/1024=8%, Rehash=0, Collisions=12/193=6%
 
 # Pattern-specific Variable Values
 
@@ -175,10 +175,10 @@ MOTD_SHOWN = pam
 
 # Directories
 
-# srcs/command (device 115, inode 220473348): 5 files, no impossibilities so far.
+# srcs/command (device 115, inode 220473348): 7 files, no impossibilities so far.
 # srcs/builtins (device 115, inode 220473347): 8 files, no impossibilities so far.
-# srcs/operators (device 115, inode 220473352): 5 files, no impossibilities so far.
-# . (device 115, inode 220469257): 28 files, no impossibilities.
+# srcs/operators (device 115, inode 220473352): 6 files, no impossibilities so far.
+# . (device 115, inode 220469257): 58 files, no impossibilities.
 # srcs/env (device 115, inode 220473349): 4 files, no impossibilities so far.
 # srcs/parse (device 115, inode 220473353): 7 files, no impossibilities so far.
 # srcs/utils (device 115, inode 220473354): 18 files, no impossibilities so far.
@@ -186,12 +186,12 @@ MOTD_SHOWN = pam
 # srcs/main (device 115, inode 220473350): 5 files, no impossibilities so far.
 # srcs (device 115, inode 220473346): No files, no impossibilities so far.
 
-# 83 files, no impossibilities in 10 directories.
+# 116 files, no impossibilities in 10 directories.
 
 # Implicit Rules
 
 objs/%.o: srcs/%.c
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -210,10 +210,28 @@ objs/%.o: srcs/%.c
 objs/utils/ft_strncmp.o: srcs/utils/ft_strncmp.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'utils/ft_strncmp'
-#  Last modified 2022-01-28 20:42:11.98355463
+#  Last modified 2022-02-01 14:05:26.795185159
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
+	@mkdir -p $(PATH_OBJS)
+	@mkdir -p $(PATH_OBJS)builtins/
+	@mkdir -p $(PATH_OBJS)command/
+	@mkdir -p $(PATH_OBJS)env/
+	@mkdir -p $(PATH_OBJS)message/
+	@mkdir -p $(PATH_OBJS)operators/
+	@mkdir -p $(PATH_OBJS)parse/
+	@mkdir -p $(PATH_OBJS)utils/
+	@mkdir -p $(PATH_OBJS)main/
+	$(CC) $(CFLAGS) $(INCLUDE) -I. -c $< -o $@ -lreadline
+
+objs/command/relations.o: srcs/command/relations.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'command/relations'
+#  Last modified 2022-02-01 14:22:30.899932739
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -228,10 +246,10 @@ objs/utils/ft_strncmp.o: srcs/utils/ft_strncmp.c
 objs/builtins/env.o: srcs/builtins/env.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'builtins/env'
-#  Last modified 2022-01-28 20:42:08.707433773
+#  Last modified 2022-02-01 14:05:22.899037956
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -246,17 +264,17 @@ objs/builtins/env.o: srcs/builtins/env.c
 # Not a target:
 srcs/env/get_matrix.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-29 13:33:09.618227702
+#  Last modified 2022-01-29 15:33:48.475459867
 #  File has been updated.
 #  Successfully updated.
 
 objs/builtins/my_exit.o: srcs/builtins/my_exit.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'builtins/my_exit'
-#  Last modified 2022-01-28 20:42:09.311456054
+#  Last modified 2022-02-01 14:05:23.331054279
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -271,6 +289,7 @@ objs/builtins/my_exit.o: srcs/builtins/my_exit.c
 # Not a target:
 srcs/utils/ft_calloc.c:
 #  Implicit rule search has been done.
+ 
 #  Last modified 2022-01-27 15:33:29.23769664
 #  File has been updated.
 #  Successfully updated.
@@ -278,7 +297,6 @@ srcs/utils/ft_calloc.c:
 # Not a target:
 srcs/utils/ft_substr.c:
 #  Implicit rule search has been done.
- 
 #  Last modified 2022-01-27 15:33:29.245696947
 #  File has been updated.
 #  Successfully updated.
@@ -286,10 +304,10 @@ srcs/utils/ft_substr.c:
 objs/utils/ft_strdup.o: srcs/utils/ft_strdup.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'utils/ft_strdup'
-#  Last modified 2022-01-28 20:42:11.58754002
+#  Last modified 2022-02-01 14:05:26.323167326
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -304,10 +322,10 @@ objs/utils/ft_strdup.o: srcs/utils/ft_strdup.c
 objs/operators/redirect.o: srcs/operators/redirect.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'operators/redirect'
-#  Last modified 2022-01-29 14:00:27.88097424
+#  Last modified 2022-02-01 14:05:24.795109595
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -329,10 +347,10 @@ srcs/utils/close_fd.c:
 objs/operators/pipe.o: srcs/operators/pipe.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'operators/pipe'
-#  Last modified 2022-01-29 14:02:50.8905365
+#  Last modified 2022-02-01 14:05:24.607102491
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -352,18 +370,43 @@ all: minishell
 #  File has been updated.
 #  Successfully updated.
 
+# Not a target:
+srcs/command/exec_helper.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-02-01 14:33:07.266851502
+#  File has been updated.
+#  Successfully updated.
+
 .PHONY: fclean re clean all run
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
+objs/operators/redirect_helper.o: srcs/operators/redirect_helper.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'operators/redirect_helper'
+#  Last modified 2022-02-01 14:05:25.003117453
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 45):
+	@mkdir -p $(PATH_OBJS)
+	@mkdir -p $(PATH_OBJS)builtins/
+	@mkdir -p $(PATH_OBJS)command/
+	@mkdir -p $(PATH_OBJS)env/
+	@mkdir -p $(PATH_OBJS)message/
+	@mkdir -p $(PATH_OBJS)operators/
+	@mkdir -p $(PATH_OBJS)parse/
+	@mkdir -p $(PATH_OBJS)utils/
+	@mkdir -p $(PATH_OBJS)main/
+	$(CC) $(CFLAGS) $(INCLUDE) -I. -c $< -o $@ -lreadline
+
 objs/command/execute_command.o: srcs/command/execute_command.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'command/execute_command'
-#  Last modified 2022-01-29 14:02:50.786532464
+#  Last modified 2022-02-01 14:05:23.627065463
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -378,10 +421,10 @@ objs/command/execute_command.o: srcs/command/execute_command.c
 objs/utils/get_next_line.o: srcs/utils/get_next_line.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'utils/get_next_line'
-#  Last modified 2022-01-28 20:42:12.475572782
+#  Last modified 2022-02-01 14:05:27.40320813
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -408,6 +451,13 @@ srcs/utils/ft_strncmp.c:
 #  Successfully updated.
 
 # Not a target:
+srcs/command/relations.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-02-01 14:22:26.963757244
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
 srcs/builtins/env.c:
 #  Implicit rule search has been done.
 #  Last modified 2022-01-28 17:28:59.141309096
@@ -417,10 +467,10 @@ srcs/builtins/env.c:
 objs/env/create_env.o: srcs/env/create_env.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'env/create_env'
-#  Last modified 2022-01-28 20:42:09.979480697
+#  Last modified 2022-02-01 14:05:24.295090703
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -435,17 +485,17 @@ objs/env/create_env.o: srcs/env/create_env.c
 # Not a target:
 srcs/builtins/my_exit.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-28 20:06:39.02553191
+#  Last modified 2022-01-29 15:33:48.471459712
 #  File has been updated.
 #  Successfully updated.
 
 objs/main/init.o: srcs/main/init.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'main/init'
-#  Last modified 2022-01-28 20:42:08.403422559
+#  Last modified 2022-02-01 14:17:19.401429417
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -460,10 +510,10 @@ objs/main/init.o: srcs/main/init.c
 objs/utils/ft_atoi.o: srcs/utils/ft_atoi.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'utils/ft_atoi'
-#  Last modified 2022-01-28 20:42:13.019592853
+#  Last modified 2022-02-01 14:05:28.011231101
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -485,17 +535,17 @@ srcs/utils/ft_strdup.c:
 # Not a target:
 srcs/operators/redirect.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-29 14:00:15.772502037
+#  Last modified 2022-01-31 17:39:25.908186269
 #  File has been updated.
 #  Successfully updated.
 
 objs/utils/ft_strtrim.o: srcs/utils/ft_strtrim.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'utils/ft_strtrim'
-#  Last modified 2022-01-28 20:42:12.099558909
+#  Last modified 2022-02-01 14:05:26.915189693
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -510,24 +560,26 @@ objs/utils/ft_strtrim.o: srcs/utils/ft_strtrim.c
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-28 20:06:39.021531748
+#  Last modified 2022-01-29 15:33:48.467459558
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 srcs/operators/pipe.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-29 14:02:43.702257508
+#  Last modified 2022-01-31 17:39:25.904186114
+ 
 #  File has been updated.
 #  Successfully updated.
 
 objs/utils/is_in.o: srcs/utils/is_in.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'utils/is_in'
-#  Last modified 2022-01-28 20:42:12.795584588
+ 
+#  Last modified 2022-02-01 14:05:27.735220674
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -542,10 +594,10 @@ objs/utils/is_in.o: srcs/utils/is_in.c
 objs/command/helper_command.o: srcs/command/helper_command.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'command/helper_command'
-#  Last modified 2022-01-29 13:34:12.680626731
+#  Last modified 2022-02-01 14:05:23.79107166
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -560,18 +612,17 @@ objs/command/helper_command.o: srcs/command/helper_command.c
 # Not a target:
 srcs/command/execute_command.c:
 #  Implicit rule search has been done.
- 
-#  Last modified 2022-01-29 14:02:43.702257508
+#  Last modified 2022-02-01 13:58:32.311422238
 #  File has been updated.
 #  Successfully updated.
 
 objs/parse/parse_string.o: srcs/parse/parse_string.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'parse/parse_string'
-#  Last modified 2022-01-28 20:42:10.679506521
+#  Last modified 2022-02-01 14:05:25.119121836
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -593,10 +644,10 @@ srcs/utils/get_next_line.c:
 objs/utils/ft_itoa.o: srcs/utils/ft_itoa.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'utils/ft_itoa'
-#  Last modified 2022-01-28 20:42:13.191599199
+#  Last modified 2022-02-01 14:05:28.123235332
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -608,13 +659,20 @@ objs/utils/ft_itoa.o: srcs/utils/ft_itoa.c
 	@mkdir -p $(PATH_OBJS)main/
 	$(CC) $(CFLAGS) $(INCLUDE) -I. -c $< -o $@ -lreadline
 
+# Not a target:
+srcs/operators/redirect_helper.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-01-29 15:33:48.479460021
+#  File has been updated.
+#  Successfully updated.
+
 objs/utils/ft_strlen.o: srcs/utils/ft_strlen.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'utils/ft_strlen'
-#  Last modified 2022-01-28 20:42:11.879550793
+#  Last modified 2022-02-01 14:05:26.615178359
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -636,10 +694,10 @@ srcs/env/create_env.c:
 objs/utils/handler_final_file.o: srcs/utils/handler_final_file.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'utils/handler_final_file'
-#  Last modified 2022-01-28 20:42:12.599577357
+#  Last modified 2022-02-01 14:05:27.607215838
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -654,25 +712,25 @@ objs/utils/handler_final_file.o: srcs/utils/handler_final_file.c
 # Not a target:
 srcs/main/init.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-28 16:59:48.948938799
+#  Last modified 2022-02-01 14:13:40.346166043
 #  File has been updated.
 #  Successfully updated.
 
-minishell: objs/main/main.o objs/main/init.o objs/main/clean_trash.o objs/builtins/env.o objs/builtins/check_builtin.o objs/builtins/pwd.o objs/builtins/cd.o objs/builtins/my_exit.o objs/builtins/echo.o objs/command/execute_command.o objs/command/helper_command.o objs/command/check_command.o objs/env/create_env.o objs/env/get_matrix.o objs/message/errors.o objs/operators/pipe.o objs/operators/redirect.o objs/operators/signal.o objs/parse/parse_string.o objs/parse/parse_quotes.o objs/parse/get_path.o objs/parse/expand_vars.o objs/parse/check_grammar.o objs/utils/ft_bzero.o objs/utils/ft_calloc.o objs/utils/ft_split.o objs/utils/ft_strdup.o objs/utils/ft_strjoin.o objs/utils/ft_strlen.o objs/utils/ft_strncmp.o objs/utils/ft_strtrim.o objs/utils/ft_substr.o objs/utils/get_next_line.o objs/utils/handler_final_file.o objs/utils/is_in.o objs/utils/close_fd.o objs/utils/ft_atoi.o objs/utils/ft_itoa.o
+minishell: objs/main/main.o objs/main/init.o objs/main/clean_trash.o objs/builtins/env.o objs/builtins/check_builtin.o objs/builtins/pwd.o objs/builtins/cd.o objs/builtins/my_exit.o objs/builtins/echo.o objs/command/execute_command.o objs/command/helper_command.o objs/command/check_command.o objs/command/relations.o objs/command/exec_helper.o objs/env/create_env.o objs/env/get_matrix.o objs/message/errors.o objs/operators/pipe.o objs/operators/redirect.o objs/operators/signal.o objs/operators/redirect_helper.o objs/parse/parse_string.o objs/parse/parse_quotes.o objs/parse/get_path.o objs/parse/expand_vars.o objs/parse/check_grammar.o objs/utils/ft_bzero.o objs/utils/ft_calloc.o objs/utils/ft_split.o objs/utils/ft_strdup.o objs/utils/ft_strjoin.o objs/utils/ft_strlen.o objs/utils/ft_strncmp.o objs/utils/ft_strtrim.o objs/utils/ft_substr.o objs/utils/get_next_line.o objs/utils/handler_final_file.o objs/utils/is_in.o objs/utils/close_fd.o objs/utils/ft_atoi.o objs/utils/ft_itoa.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-01-29 14:02:51.090544262
+#  Last modified 2022-02-01 14:34:56.811304031
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 40):
+#  recipe to execute (from 'Makefile', line 42):
 	$(CC) $(CFLAGS) $(INCLUDE) ./objs/*/*.o -o $(NAME) -lreadline
 
 objs/builtins/check_builtin.o: srcs/builtins/check_builtin.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'builtins/check_builtin'
-#  Last modified 2022-01-28 20:42:08.883440266
+#  Last modified 2022-02-01 14:05:23.015042338
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -703,16 +761,16 @@ fclean: clean
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 58):
+#  recipe to execute (from 'Makefile', line 60):
 	$(RM) $(NAME)
 
 objs/parse/parse_quotes.o: srcs/parse/parse_quotes.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'parse/parse_quotes'
-#  Last modified 2022-01-28 20:42:10.791510653
+#  Last modified 2022-02-01 14:05:25.239126371
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -727,10 +785,10 @@ objs/parse/parse_quotes.o: srcs/parse/parse_quotes.c
 objs/command/check_command.o: srcs/command/check_command.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'command/check_command'
-#  Last modified 2022-01-29 13:34:12.792630992
+#  Last modified 2022-02-01 14:31:38.403213547
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -752,10 +810,10 @@ srcs/utils/is_in.c:
 objs/utils/ft_strjoin.o: srcs/utils/ft_strjoin.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'utils/ft_strjoin'
-#  Last modified 2022-01-28 20:42:11.695544004
+#  Last modified 2022-02-01 14:05:26.499173976
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -770,10 +828,10 @@ objs/utils/ft_strjoin.o: srcs/utils/ft_strjoin.c
 objs/utils/ft_split.o: srcs/utils/ft_split.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'utils/ft_split'
-#  Last modified 2022-01-28 20:42:11.48753633
+#  Last modified 2022-02-01 14:05:26.199162641
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -788,24 +846,25 @@ objs/utils/ft_split.o: srcs/utils/ft_split.c
 # Not a target:
 srcs/command/helper_command.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-29 13:33:09.61422755
+#  Last modified 2022-02-01 13:34:03.28042884
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 srcs/parse/parse_string.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-27 15:33:29.233696486
+#  Last modified 2022-01-29 15:37:36.456211569
 #  File has been updated.
 #  Successfully updated.
 
+ 
 objs/builtins/pwd.o: srcs/builtins/pwd.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'builtins/pwd'
-#  Last modified 2022-01-28 20:42:08.999444545
+#  Last modified 2022-02-01 14:05:23.119046268
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -820,10 +879,10 @@ objs/builtins/pwd.o: srcs/builtins/pwd.c
 objs/builtins/cd.o: srcs/builtins/cd.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'builtins/cd'
-#  Last modified 2022-01-28 20:42:09.183451332
+#  Last modified 2022-02-01 14:05:23.227050349
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -844,8 +903,7 @@ objs/builtins/cd.o: srcs/builtins/cd.c
 # Not a target:
 srcs/utils/ft_itoa.c:
 #  Implicit rule search has been done.
- 
-#  Last modified 2022-01-28 20:06:39.049532878
+#  Last modified 2022-01-29 15:33:48.483460176
 #  File has been updated.
 #  Successfully updated.
 
@@ -866,10 +924,10 @@ srcs/utils/handler_final_file.c:
 objs/utils/ft_bzero.o: srcs/utils/ft_bzero.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'utils/ft_bzero'
-#  Last modified 2022-01-28 20:42:11.215526295
+#  Last modified 2022-02-01 14:05:25.815148133
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -884,17 +942,17 @@ objs/utils/ft_bzero.o: srcs/utils/ft_bzero.c
 # Not a target:
 srcs/builtins/check_builtin.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-28 18:05:24.794532753
+#  Last modified 2022-01-29 15:33:48.467459558
 #  File has been updated.
 #  Successfully updated.
 
 objs/operators/signal.o: srcs/operators/signal.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'operators/signal'
-#  Last modified 2022-01-28 20:42:10.523500766
+#  Last modified 2022-02-01 14:05:24.899113524
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -915,10 +973,10 @@ re: fclean all
 objs/message/errors.o: srcs/message/errors.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'message/errors'
-#  Last modified 2022-01-29 13:34:13.00863921
+#  Last modified 2022-02-01 14:05:24.49909841
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -935,16 +993,16 @@ run: all
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 63):
+#  recipe to execute (from 'Makefile', line 65):
 	valgrind --leak-check=full ./$(NAME) here_doc ok 'cat' 'cat' fileout
 
 objs/builtins/echo.o: srcs/builtins/echo.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'builtins/echo'
-#  Last modified 2022-01-28 20:42:09.483462399
+#  Last modified 2022-02-01 14:05:23.491060324
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -961,16 +1019,16 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 55):
+#  recipe to execute (from 'Makefile', line 57):
 	$(RM) $(PATH_OBJS)
 
 objs/main/clean_trash.o: srcs/main/clean_trash.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'main/clean_trash'
-#  Last modified 2022-01-29 13:34:12.392615773
+#  Last modified 2022-02-01 14:19:08.110651599
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -985,17 +1043,17 @@ objs/main/clean_trash.o: srcs/main/clean_trash.c
 # Not a target:
 srcs/command/check_command.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-29 13:33:09.610227398
+#  Last modified 2022-02-01 14:31:30.470887515
 #  File has been updated.
 #  Successfully updated.
 
 objs/parse/expand_vars.o: srcs/parse/expand_vars.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'parse/expand_vars'
-#  Last modified 2022-01-29 13:34:13.500657928
+#  Last modified 2022-02-01 14:34:56.723300466
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -1024,10 +1082,10 @@ srcs/utils/ft_split.c:
 objs/parse/check_grammar.o: srcs/parse/check_grammar.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'parse/check_grammar'
-#  Last modified 2022-01-29 14:02:50.994540536
+#  Last modified 2022-02-01 14:05:25.711144204
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -1049,17 +1107,17 @@ srcs/builtins/pwd.c:
 # Not a target:
 srcs/builtins/cd.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-28 18:05:24.790532602
+#  Last modified 2022-01-31 17:39:25.904186114
 #  File has been updated.
 #  Successfully updated.
 
 objs/main/main.o: srcs/main/main.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'main/main'
-#  Last modified 2022-01-28 20:42:08.291418427
+#  Last modified 2022-02-01 14:05:22.527023899
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -1074,10 +1132,10 @@ objs/main/main.o: srcs/main/main.c
 objs/env/get_matrix.o: srcs/env/get_matrix.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'env/get_matrix'
-#  Last modified 2022-01-29 13:34:12.900635101
+#  Last modified 2022-02-01 14:05:24.395094481
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -1092,7 +1150,8 @@ objs/env/get_matrix.o: srcs/env/get_matrix.c
 # Not a target:
 srcs/parse/parse_quotes.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-28 18:05:24.838534418
+ 
+#  Last modified 2022-01-29 15:37:25.863869561
 #  File has been updated.
 #  Successfully updated.
 
@@ -1113,10 +1172,10 @@ srcs/operators/signal.c:
 objs/utils/ft_calloc.o: srcs/utils/ft_calloc.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'utils/ft_calloc'
-#  Last modified 2022-01-28 20:42:11.327530427
+#  Last modified 2022-02-01 14:05:25.999155085
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -1131,11 +1190,10 @@ objs/utils/ft_calloc.o: srcs/utils/ft_calloc.c
 objs/utils/ft_substr.o: srcs/utils/ft_substr.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'utils/ft_substr'
- 
-#  Last modified 2022-01-28 20:42:12.283565698
+#  Last modified 2022-02-01 14:05:27.103196796
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -1157,10 +1215,10 @@ srcs/message/errors.c:
 objs/utils/close_fd.o: srcs/utils/close_fd.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'utils/close_fd'
-#  Last modified 2022-01-28 20:42:12.911588868
+#  Last modified 2022-02-01 14:05:27.891226567
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -1175,16 +1233,34 @@ objs/utils/close_fd.o: srcs/utils/close_fd.c
 # Not a target:
 srcs/main/clean_trash.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-29 13:33:09.618227702
+#  Last modified 2022-02-01 14:19:06.298566152
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 srcs/parse/expand_vars.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-29 13:33:09.622227854
+#  Last modified 2022-02-01 14:34:52.727138586
 #  File has been updated.
 #  Successfully updated.
+
+objs/command/exec_helper.o: srcs/command/exec_helper.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'command/exec_helper'
+#  Last modified 2022-02-01 14:33:24.915571077
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 45):
+	@mkdir -p $(PATH_OBJS)
+	@mkdir -p $(PATH_OBJS)builtins/
+	@mkdir -p $(PATH_OBJS)command/
+	@mkdir -p $(PATH_OBJS)env/
+	@mkdir -p $(PATH_OBJS)message/
+	@mkdir -p $(PATH_OBJS)operators/
+	@mkdir -p $(PATH_OBJS)parse/
+	@mkdir -p $(PATH_OBJS)utils/
+	@mkdir -p $(PATH_OBJS)main/
+	$(CC) $(CFLAGS) $(INCLUDE) -I. -c $< -o $@ -lreadline
 
 # Not a target:
 srcs/builtins/echo.c:
@@ -1196,7 +1272,7 @@ srcs/builtins/echo.c:
 # Not a target:
 srcs/parse/check_grammar.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-01-29 14:02:43.706257664
+#  Last modified 2022-02-01 13:48:17.803253697
 #  File has been updated.
 #  Successfully updated.
 
@@ -1210,10 +1286,10 @@ srcs/main/main.c:
 objs/parse/get_path.o: srcs/parse/get_path.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'parse/get_path'
-#  Last modified 2022-01-28 20:42:10.891514342
+#  Last modified 2022-02-01 14:05:25.395132264
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 45):
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
@@ -1226,19 +1302,19 @@ objs/parse/get_path.o: srcs/parse/get_path.c
 	$(CC) $(CFLAGS) $(INCLUDE) -I. -c $< -o $@ -lreadline
 
 # files hash-table stats:
-# Load=86/1024=8%, Rehash=0, Collisions=6/260=2%
+# Load=92/1024=9%, Rehash=0, Collisions=11/278=4%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 201 / storage = 3306 B / avg = 16 B
-# current buf: size = 8162 B / used = 3306 B / count = 201 / avg = 16 B
+# strcache buffers: 1 (0) / strings = 243 / storage = 4382 B / avg = 18 B
+# current buf: size = 8162 B / used = 4382 B / count = 243 / avg = 18 B
 
-# strcache performance: lookups = 279 / hit rate = 27%
+# strcache performance: lookups = 324 / hit rate = 25%
 # hash-table stats:
-# Load=201/8192=2%, Rehash=0, Collisions=10/279=4%
-# Finished Make data base on Sat Jan 29 14:23:09 2022
+# Load=243/8192=3%, Rehash=0, Collisions=10/324=3%
+# Finished Make data base on Tue Feb  1 14:36:38 2022
 
  

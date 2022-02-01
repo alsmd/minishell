@@ -5,7 +5,9 @@ extern t_minishell	g_minishell;
 void	check_absolute_path(t_node *cmd)
 {
 	cmd->is_absolute_path = TRUE;
-	if (access(cmd->argv[0], F_OK) == 0)
+	if (!ft_strncmp(cmd->argv[0], "/", -1))
+		cmd->not_exist = 1;
+	else if (access(cmd->argv[0], F_OK) == 0)
 	{
 		cmd->not_exist = 0;
 		if (access(cmd->argv[0], X_OK) == 0)

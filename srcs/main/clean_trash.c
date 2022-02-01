@@ -68,6 +68,8 @@ void	clean_trash(void)
 {
 	clean_node();
 	clean_env();
+	if (g_minishell.operators[7] == NULL)
+		free(g_minishell.operators[8]);
 	free_matrix(g_minishell.operators);
 	clean_fd();
 	free_matrix(g_minishell.paths);

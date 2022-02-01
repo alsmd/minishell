@@ -20,6 +20,7 @@ mkdir -p ./objs/parse/
 mkdir -p ./objs/utils/
 mkdir -p ./objs/main/
 gcc -g -Wall -Werror -Wextra -I ./includes/ -I. -c srcs/main/init.c -o objs/main/init.o -lreadline
+ 
 mkdir -p ./objs/
 mkdir -p ./objs/builtins/
 mkdir -p ./objs/command/
@@ -30,6 +31,7 @@ mkdir -p ./objs/parse/
 mkdir -p ./objs/utils/
 mkdir -p ./objs/main/
 gcc -g -Wall -Werror -Wextra -I ./includes/ -I. -c srcs/main/clean_trash.c -o objs/main/clean_trash.o -lreadline
+ 
 mkdir -p ./objs/
 mkdir -p ./objs/builtins/
 mkdir -p ./objs/command/
@@ -60,6 +62,7 @@ mkdir -p ./objs/parse/
 mkdir -p ./objs/utils/
 mkdir -p ./objs/main/
 gcc -g -Wall -Werror -Wextra -I ./includes/ -I. -c srcs/builtins/pwd.c -o objs/builtins/pwd.o -lreadline
+ 
 mkdir -p ./objs/
 mkdir -p ./objs/builtins/
 mkdir -p ./objs/command/
@@ -90,6 +93,7 @@ mkdir -p ./objs/parse/
 mkdir -p ./objs/utils/
 mkdir -p ./objs/main/
 gcc -g -Wall -Werror -Wextra -I ./includes/ -I. -c srcs/builtins/echo.c -o objs/builtins/echo.o -lreadline
+ 
 mkdir -p ./objs/
 mkdir -p ./objs/builtins/
 mkdir -p ./objs/command/
@@ -130,7 +134,29 @@ mkdir -p ./objs/operators/
 mkdir -p ./objs/parse/
 mkdir -p ./objs/utils/
 mkdir -p ./objs/main/
+gcc -g -Wall -Werror -Wextra -I ./includes/ -I. -c srcs/command/relations.c -o objs/command/relations.o -lreadline
+mkdir -p ./objs/
+mkdir -p ./objs/builtins/
+mkdir -p ./objs/command/
+mkdir -p ./objs/env/
+mkdir -p ./objs/message/
+mkdir -p ./objs/operators/
+mkdir -p ./objs/parse/
+mkdir -p ./objs/utils/
+mkdir -p ./objs/main/
+gcc -g -Wall -Werror -Wextra -I ./includes/ -I. -c srcs/command/exec_helper.c -o objs/command/exec_helper.o -lreadline
+ 
+mkdir -p ./objs/
+mkdir -p ./objs/builtins/
+mkdir -p ./objs/command/
+mkdir -p ./objs/env/
+mkdir -p ./objs/message/
+mkdir -p ./objs/operators/
+mkdir -p ./objs/parse/
+mkdir -p ./objs/utils/
+mkdir -p ./objs/main/
 gcc -g -Wall -Werror -Wextra -I ./includes/ -I. -c srcs/env/create_env.c -o objs/env/create_env.o -lreadline
+ 
 mkdir -p ./objs/
 mkdir -p ./objs/builtins/
 mkdir -p ./objs/command/
@@ -181,7 +207,16 @@ mkdir -p ./objs/parse/
 mkdir -p ./objs/utils/
 mkdir -p ./objs/main/
 gcc -g -Wall -Werror -Wextra -I ./includes/ -I. -c srcs/operators/signal.c -o objs/operators/signal.o -lreadline
- 
+mkdir -p ./objs/
+mkdir -p ./objs/builtins/
+mkdir -p ./objs/command/
+mkdir -p ./objs/env/
+mkdir -p ./objs/message/
+mkdir -p ./objs/operators/
+mkdir -p ./objs/parse/
+mkdir -p ./objs/utils/
+mkdir -p ./objs/main/
+gcc -g -Wall -Werror -Wextra -I ./includes/ -I. -c srcs/operators/redirect_helper.c -o objs/operators/redirect_helper.o -lreadline
 mkdir -p ./objs/
 mkdir -p ./objs/builtins/
 mkdir -p ./objs/command/
@@ -192,6 +227,7 @@ mkdir -p ./objs/parse/
 mkdir -p ./objs/utils/
 mkdir -p ./objs/main/
 gcc -g -Wall -Werror -Wextra -I ./includes/ -I. -c srcs/parse/parse_string.c -o objs/parse/parse_string.o -lreadline
+ 
 mkdir -p ./objs/
 mkdir -p ./objs/builtins/
 mkdir -p ./objs/command/
@@ -232,6 +268,7 @@ mkdir -p ./objs/parse/
 mkdir -p ./objs/utils/
 mkdir -p ./objs/main/
 gcc -g -Wall -Werror -Wextra -I ./includes/ -I. -c srcs/parse/check_grammar.c -o objs/parse/check_grammar.o -lreadline
+ 
 mkdir -p ./objs/
 mkdir -p ./objs/builtins/
 mkdir -p ./objs/command/
@@ -282,6 +319,7 @@ mkdir -p ./objs/parse/
 mkdir -p ./objs/utils/
 mkdir -p ./objs/main/
 gcc -g -Wall -Werror -Wextra -I ./includes/ -I. -c srcs/utils/ft_strjoin.c -o objs/utils/ft_strjoin.o -lreadline
+ 
 mkdir -p ./objs/
 mkdir -p ./objs/builtins/
 mkdir -p ./objs/command/
@@ -312,6 +350,7 @@ mkdir -p ./objs/parse/
 mkdir -p ./objs/utils/
 mkdir -p ./objs/main/
 gcc -g -Wall -Werror -Wextra -I ./includes/ -I. -c srcs/utils/ft_strtrim.c -o objs/utils/ft_strtrim.o -lreadline
+ 
 mkdir -p ./objs/
 mkdir -p ./objs/builtins/
 mkdir -p ./objs/command/

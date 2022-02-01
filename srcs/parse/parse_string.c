@@ -30,7 +30,8 @@ int	check_quotes(char *s)
 			i += string_forward(&s[i], '\'', &quote_s);
 		if (s[i] == '\"')
 			i += string_forward(&s[i], '\"', &quote_d);
-		i++;
+		if (s[i])
+			i++;
 	}
 	if (quote_s % 2 != 0)
 		show_error(M_ERROR_SINTAX, "'''", E_ERROR_SINTAX, 0);

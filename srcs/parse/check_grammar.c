@@ -7,11 +7,14 @@ int	check_grammar(void)
 	t_node	*init;
 
 	init = g_minishell.node;
-	while (init && init->next)
+	while (init)
 	{
-		if (init->relation && (!init->next->argv || !init->next->argv[0]))
+		if (init->relation && (!init->next || !init->next->argv || !init->next->argv[0]))
 		{
-			printf("erro de sintax\n");
+			if (!ft_strncmp(init->relation, "|", 1))
+				show_error(" syntax error near unexpected token ", init->relation, 2, 0);
+			else
+				show_error(" syntax error near unexpected token ", "'newline'", 2, 0);
 			return (1);
 		}
 		init = init->next;
