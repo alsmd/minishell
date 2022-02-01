@@ -21,8 +21,11 @@ int	handle_output(t_node *cmd)
 	{
 		while (temp && !is_command(temp))
 			temp = temp->next;
-		temp->output = fd;
-		temp->output_file = 1;
+		if (temp && is_command(temp))
+		{
+			temp->output = fd;
+			temp->output_file = 1;
+		}
 	}
 	else
 	{
@@ -48,7 +51,8 @@ int	handle_input(t_node *cmd)
 	{
 		while (temp && !is_command(temp))
 			temp = temp->next;
-		temp->input = fd;
+		if (temp && is_command(temp))
+			temp->input = fd;
 	}
 	else
 		cmd->input = fd;
