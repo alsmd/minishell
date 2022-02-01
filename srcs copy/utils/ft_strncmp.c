@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_in.c                                            :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 18:42:07 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/02/01 15:44:14 by flda-sil         ###   ########.fr       */
+/*   Created: 2021/07/28 19:45:30 by flavio            #+#    #+#             */
+/*   Updated: 2022/01/18 17:55:41 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-char	*is_in(char **array, char *str)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	while (*array)
+	size_t	index;
+
+	index = 0;
+	if (n == 0)
+		return (0);
+	while ((s1[index] && s2[index]) && index < n)
 	{
-		if (!ft_strncmp(*array, str, ft_strlen(*array)))
-			return (*array);
-		array++;
+		if (s1[index] != s2[index] || index == n - 1)
+			break ;
+		index++;
 	}
-	return (0);
+	if (s1[index] == '\n' && s2[index] == '\0')
+		return (0);
+	return ((unsigned char)s1[index] - (unsigned char)s2[index]);
 }

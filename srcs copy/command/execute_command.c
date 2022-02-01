@@ -47,38 +47,16 @@ static void	execute_cmd(t_node *node)
 	exit(g_minishell.exit_code);
 }
 
-t_node	*get_next_chain(t_node *node)
+void	exec_commands(void)
 {
-	node = node->next;
-	while (node && node->next && (ft_strncmp(node->relation, "||", 2) \
-		&& ft_strncmp(node->relation, "&&", 2)))
-		node = node->next;
-	return (node);
-}
-
-void	exec_commands(t_node *node)
-{
+	t_node		*node;
 	int			id;
 
-	if (!node)
-		node = g_minishell.node;
+	node = g_minishell.node;
 	while (node)
 	{
 		close_prev_fd(node);
-		if (node->subshell != NULL)
-		{
-			id = fork();
-			signals(3);
-			if (id == 0)
-			{
-				signals(CHILD);
-				make_shell_command(node->subshell);
-				exit(g_minishell.exit_code);
-			}
-			waitpid(id, &g_minishell.exit_code, 0);
-			g_minishell.exit_code = get_status(g_minishell.exit_code);
-		}
-		else if (is_command(node))
+		if (is_command(node))
 		{
 			id = fork();
 			signals(3);
@@ -89,14 +67,8 @@ void	exec_commands(t_node *node)
 			}
 			waitpid(id, &g_minishell.exit_code, 0);
 			g_minishell.exit_code = get_status(g_minishell.exit_code);
-			
 		}
-		if (node && node->relation && !ft_strncmp(node->relation, "&&", 2) && g_minishell.exit_code != 0)
-			node = get_next_chain(node);
-		if (node && node->relation && !ft_strncmp(node->relation, "||", 2) && g_minishell.exit_code == 0)
-			node = get_next_chain(node);
-		if (node)
-			node = node->next;
+		node = node->next;
 	}
 	clean_trash();
 	exit(g_minishell.exit_code);
@@ -113,9 +85,12 @@ void	make_shell_command(char *buffer)
 
 	/* while (g_minishell.node)
 	{
-		printf("|%s|\n", *g_minishell.node->argv);
-		if (g_minishell.node->subshell)
-			printf("|%s|\n", g_minishell.node->subshell);
+		while (*g_minishell.node->argv)
+		{
+
+			printf("|%s|\n", *g_minishell.node->argv);
+			g_minishell.node->argv += 1;
+		}
 		if (g_minishell.node->relation)
 			printf("|%s|\n", g_minishell.node->relation);
 		g_minishell.node = g_minishell.node->next;
@@ -135,8 +110,8 @@ void	make_shell_command(char *buffer)
 		signals(3);
 		if (id == 0)
 		{
-			link_relations(0);
-			exec_commands(0);
+			link_relations();
+			exec_commands();
 		}
 		waitpid(id, &g_minishell.exit_code, 0);
 		g_minishell.exit_code = get_status(g_minishell.exit_code);

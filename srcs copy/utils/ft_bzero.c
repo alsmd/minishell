@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_in.c                                            :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 18:42:07 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/02/01 15:44:14 by flda-sil         ###   ########.fr       */
+/*   Created: 2021/07/28 19:43:52 by flavio            #+#    #+#             */
+/*   Updated: 2022/01/18 17:55:37 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-char	*is_in(char **array, char *str)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	while (*array)
+	size_t	index;
+
+	index = 0;
+	while (index < n)
 	{
-		if (!ft_strncmp(*array, str, ft_strlen(*array)))
-			return (*array);
-		array++;
+		((char *)s)[index] = (char)c;
+		index++;
 	}
-	return (0);
+	return (s);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	ft_memset(s, 0, n);
 }

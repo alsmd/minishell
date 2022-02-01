@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_in.c                                            :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 18:42:07 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/02/01 15:44:14 by flda-sil         ###   ########.fr       */
+/*   Created: 2021/07/28 19:43:55 by flavio            #+#    #+#             */
+/*   Updated: 2022/01/18 17:55:35 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
+#include <limits.h>
+#include <stdlib.h>
+#include <errno.h>
 
-char	*is_in(char **array, char *str)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	while (*array)
+	void	*r;
+
+	if (nmemb * size > INT_MAX)
 	{
-		if (!ft_strncmp(*array, str, ft_strlen(*array)))
-			return (*array);
-		array++;
+		errno = 12;
+		return (0);
+	}
+	r = malloc(nmemb * size);
+	if (r)
+	{
+		ft_bzero(r, nmemb * size);
+		return (r);
 	}
 	return (0);
 }

@@ -41,6 +41,7 @@ typedef struct s_node
 	int				is_builtin;
 	int				is_executable;
 	int				is_absolute_path;
+	char			*subshell;
 	char			*relation;
 	struct s_node	*next;
 	struct s_node	*previous;
@@ -99,7 +100,7 @@ void	show_error(char *name, char *message, int status, int has_to_exit);
 void	make_shell_command(char *buffer);
 char	*create_node(char *buffer, int first, int index, char *relation);
 void	create_relations(char *buffer);
-void	link_relations(void);
+void	link_relations(t_node *node);
 
 // EXEC HELPER
 void	validade_command(t_node *node);
@@ -165,5 +166,6 @@ char	*ft_strtrim(char *s1, char const *set);
 void	close_fd(int fd);
 int		ft_atoi(const char *nptr);
 char	*ft_itoa(int n);
+void	ft_strlcpy(char *dst, const char *src, size_t size);
 
 #endif
