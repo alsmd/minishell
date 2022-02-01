@@ -80,7 +80,11 @@ char	*expand_vars(char *buffer)
 		}
 		if (buffer[index] == '$' && buffer[index + 1] != ' ' && buffer[index + 1])
 			new_buffer = write_variable(new_buffer, buffer, index);
+<<<<<<< HEAD
 		if (buffer[index])
+=======
+		if(buffer[index])
+>>>>>>> 34b7ab525522195d1a0ed1c7f357d39de3cdd9bd
 			index++;
 	}
 	free(buffer);
