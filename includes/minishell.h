@@ -100,7 +100,7 @@ void	show_error(char *name, char *message, int status, int has_to_exit);
 void	make_shell_command(char *buffer);
 char	*create_node(char *buffer, int first, int index, char *relation);
 void	create_relations(char *buffer);
-void	link_relations(t_node *node);
+void	link_relations();
 
 // EXEC HELPER
 void	validade_command(t_node *node);
