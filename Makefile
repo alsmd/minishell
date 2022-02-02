@@ -1,7 +1,10 @@
 NAME = minishell
 NAME_BONUS = minishell_bonus
+
 CC = gcc
+
 CFLAGS = -g -Wall -Werror -Wextra
+
 RM = rm -rf
 
 INCLUDE = -I ./includes/
@@ -109,10 +112,16 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
+	$(RM) $(NAME_BONUS)
 
 re: fclean all
 
-run: all
-	valgrind --leak-check=full ./$(NAME) here_doc ok 'cat' 'cat' fileout
+re_bonus: fclean bonus
 
-.PHONY: fclean re clean all run bonus
+run: all
+	valgrind --leak-check=full --show-leak-kinds=all --suppressions=readline.supp ./minishell
+
+run_bonus: bonus
+	valgrind --leak-check=full --show-leak-kinds=all --suppressions=readline.supp ./minishell_bonus
+
+.PHONY: all bonus run run_bonus re re_bonus clean fclean
