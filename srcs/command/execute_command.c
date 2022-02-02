@@ -82,20 +82,6 @@ void	make_shell_command(char *buffer)
 
 	get_path();
 	create_relations(buffer);
-
-	/* while (g_minishell.node)
-	{
-		while (*g_minishell.node->argv)
-		{
-
-			printf("|%s|\n", *g_minishell.node->argv);
-			g_minishell.node->argv += 1;
-		}
-		if (g_minishell.node->relation)
-			printf("|%s|\n", g_minishell.node->relation);
-		g_minishell.node = g_minishell.node->next;
-	}
-	return ; */
 	free(buffer);
 	if (check_grammar())
 	{

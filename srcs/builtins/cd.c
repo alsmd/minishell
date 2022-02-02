@@ -1,10 +1,30 @@
 #include <minishell.h>
 
+extern t_minishell	g_minishell;
+
+void	change_old_pwd(char *old_pwd)
+{
+	char	tmp[500];
+
+	unset("PWD");
+	unset("OLDPWD");
+	add_variable(ft_strdup("OLDPWD"), old_pwd);
+	add_variable(ft_strdup("PWD"), ft_strdup(getcwd(tmp, 500)));
+}
+
+void	join_show_and_free(char *argv)
+{
+	char	*buffer;
+
+	buffer = ft_strjoin(ft_strdup("cd: "), argv);
+	show_error(buffer, M_INVALID_FILE, 1, 0);
+	free(buffer);
+}
+
 void	cd(char **argv)
 {
 	int		status;
 	char	*old_pwd;
-	char	*buffer;
 	char	tmp[500];
 	char	*aux;
 
@@ -21,13 +41,7 @@ void	cd(char **argv)
 	else
 		status = chdir(argv[1]);
 	if (status == -1)
-	{
-		buffer = ft_strjoin(ft_strdup("cd: "), argv[1]);
-		show_error(buffer, M_INVALID_FILE, 1, 0);
-		free(buffer);
-	}
-	unset("PWD");
-	unset("OLDPWD");
-	add_variable(ft_strdup("OLDPWD"), old_pwd);
-	add_variable(ft_strdup("PWD"), ft_strdup(getcwd(tmp, 500)));
+		join_show_and_free(argv[1]);
+	change_old_pwd(old_pwd);
+	g_minishell.exit_code = 0;
 }

@@ -12,6 +12,7 @@ void	env(void)
 		printf("%s=%s\n", init->key, init->value);
 		init = init->next;
 	}
+	g_minishell.exit_code = 0;
 }
 
 void	export(char *command)
@@ -27,6 +28,14 @@ void	export(char *command)
 	value = ft_substr(command, i + 1, ft_strlen(command) - i + 1);
 	unset(key);
 	add_variable(key, value);
+	g_minishell.exit_code = 0;
+}
+
+void	free_env_node(t_env *to_clean)
+{
+	free(to_clean->key);
+	free(to_clean->value);
+	free(to_clean);
 }
 
 void	unset(char *key)
@@ -48,12 +57,11 @@ void	unset(char *key)
 				if (init->next)
 					init->next->previous = previous;
 			}
-			free(init->key);
-			free(init->value);
-			free(init);
+			free_env_node(init);
 			break ;
 		}
 		previous = init;
 		init = init->next;
 	}
+	g_minishell.exit_code = 0;
 }

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 09:16:16 by flavio            #+#    #+#             */
-/*   Updated: 2022/01/18 17:55:25 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/02/02 09:26:47 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minishell.h>
+#include <minishell_bonus.h>
 #include "get_next_line.h"
 
 size_t	get_line_size(char	*data)

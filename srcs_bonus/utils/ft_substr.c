@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 19:46:03 by flavio            #+#    #+#             */
-/*   Updated: 2022/01/18 17:54:46 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/02/02 09:26:44 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minishell.h>
+#include <minishell_bonus.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

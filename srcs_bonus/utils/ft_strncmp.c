@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 19:45:30 by flavio            #+#    #+#             */
-/*   Updated: 2022/01/18 17:55:41 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/02/02 09:26:38 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minishell.h>
+#include <minishell_bonus.h>
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

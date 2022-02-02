@@ -6,13 +6,11 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 19:43:06 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/28 11:40:04 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/02/02 09:31:58 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
-#include <errno.h>
-#include <stdlib.h>
 
 char	*ft_strdup(const char *s)
 {

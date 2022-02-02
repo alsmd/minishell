@@ -1,4 +1,4 @@
-#include <minishell.h>
+#include <minishell_bonus.h>
 
 extern t_minishell	g_minishell;
 
@@ -31,6 +31,13 @@ void	export(char *command)
 	g_minishell.exit_code = 0;
 }
 
+void	free_env_node(t_env *to_clean)
+{
+	free(to_clean->key);
+	free(to_clean->value);
+	free(to_clean);
+}
+
 void	unset(char *key)
 {
 	t_env	*init;
@@ -50,9 +57,7 @@ void	unset(char *key)
 				if (init->next)
 					init->next->previous = previous;
 			}
-			free(init->key);
-			free(init->value);
-			free(init);
+			free_env_node(init);
 			break ;
 		}
 		previous = init;

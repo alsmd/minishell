@@ -3,27 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 19:43:55 by flavio            #+#    #+#             */
-/*   Updated: 2022/01/18 17:55:35 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/02/02 09:25:54 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minishell.h>
-#include <limits.h>
-#include <stdlib.h>
-#include <errno.h>
+#include <minishell_bonus.h>
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*r;
 
-	if (nmemb * size > INT_MAX)
-	{
-		errno = 12;
-		return (0);
-	}
+	// if (nmemb * size > INT_MAX)
+	// {
+	// 	errno = 12;
+	// 	return (0);
+	// }
 	r = malloc(nmemb * size);
 	if (r)
 	{

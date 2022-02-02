@@ -1,8 +1,8 @@
-#include <minishell.h>
+#include <minishell_bonus.h>
 
 extern t_minishell	g_minishell;
 
-char	*create_node(char *buffer, int first, int index, char *relation)
+void	turn_off_space(void)
 {
 	char	*tmp;
 
@@ -12,6 +12,13 @@ char	*create_node(char *buffer, int first, int index, char *relation)
 		g_minishell.operators[7] = NULL;
 		g_minishell.operators[8] = tmp;
 	}
+}
+
+char	*create_node(char *buffer, int first, int index, char *relation)
+{
+	char	*tmp;
+
+	turn_off_space();
 	if (!ft_strncmp(&buffer[index], ">>", 2) || \
 	!ft_strncmp(&buffer[index], "<<", 2) || \
 	!ft_strncmp(&buffer[index], "&&", 2) || \
@@ -49,7 +56,7 @@ int	get_buffer_len(char *buffer)
 		if (buffer[index] == ')')
 			count--;
 		if (!count)
-			break;
+			break ;
 		index++;
 	}
 	return (index);
@@ -80,7 +87,6 @@ char	*create_subshell(char *buffer)
 void	create_relations(char *buffer)
 {
 	char	*relation;
-	char	*tmp;
 	int		index;
 	int		first;
 
@@ -106,12 +112,7 @@ void	create_relations(char *buffer)
 	}
 	if (*buffer != 0)
 		add_new_cmd(buffer, 0);
-	if (g_minishell.operators[7] != NULL)
-	{
-		tmp = g_minishell.operators[7];
-		g_minishell.operators[7] = NULL;
-		g_minishell.operators[8] = tmp;
-	}
+	turn_off_space();
 }
 
 void	link_relations(t_node *node)

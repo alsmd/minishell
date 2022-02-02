@@ -1,4 +1,4 @@
-#include <minishell.h>
+#include <minishell_bonus.h>
 
 extern t_minishell	g_minishell;
 
@@ -90,7 +90,6 @@ void	exec_commands(t_node *node)
 			}
 			waitpid(id, &g_minishell.exit_code, 0);
 			g_minishell.exit_code = get_status(g_minishell.exit_code);
-			
 		}
 		if (node && node->relation && !ft_strncmp(node->relation, "&&", 2) && g_minishell.exit_code != 0)
 			node = get_next_chain(node);
@@ -111,7 +110,6 @@ void	make_shell_command(char *buffer)
 
 	get_path();
 	create_relations(buffer);
-
 	/* while (g_minishell.node)
 	{
 		printf("|%s|\n", *g_minishell.node->argv);

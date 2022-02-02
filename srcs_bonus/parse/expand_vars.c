@@ -1,4 +1,4 @@
-#include <minishell.h>
+#include <minishell_bonus.h>
 
 extern t_minishell	g_minishell;
 
@@ -78,7 +78,8 @@ char	*expand_vars(char *buffer)
 			while (buffer[index] != '\'' && buffer[index])
 				index++;
 		}
-		if (buffer[index] == '$' && buffer[index + 1] != ' ' && buffer[index + 1])
+		if (buffer[index] == '$' && buffer[index + 1] \
+		!= ' ' && buffer[index + 1])
 			new_buffer = write_variable(new_buffer, buffer, index);
 		if (buffer[index])
 			index++;

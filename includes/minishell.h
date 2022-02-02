@@ -3,15 +3,15 @@
 # include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# include <curses.h>
 # include <signal.h>
-# include <term.h>
 # include <unistd.h>
 # include <sys/types.h>
 # include <sys/wait.h>
-# include <sys/stat.h>
 # include <fcntl.h>
 # include <stdlib.h>
+# include <sys/stat.h>
+# include <term.h>
+# include <curses.h>
 # define TRUE 1
 # define FALSE 0
 # define PARENT 1
@@ -41,7 +41,6 @@ typedef struct s_node
 	int				is_builtin;
 	int				is_executable;
 	int				is_absolute_path;
-	char			*subshell;
 	char			*relation;
 	struct s_node	*next;
 	struct s_node	*previous;
@@ -100,7 +99,7 @@ void	show_error(char *name, char *message, int status, int has_to_exit);
 void	make_shell_command(char *buffer);
 char	*create_node(char *buffer, int first, int index, char *relation);
 void	create_relations(char *buffer);
-void	link_relations();
+void	link_relations(void);
 
 // EXEC HELPER
 void	validade_command(t_node *node);

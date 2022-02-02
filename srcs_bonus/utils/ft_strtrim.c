@@ -6,11 +6,11 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 21:47:58 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/01/28 11:27:14 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/02/02 09:26:41 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minishell.h>
+#include <minishell_bonus.h>
 
 static size_t	helper_is_in(const char *array, char c)
 {

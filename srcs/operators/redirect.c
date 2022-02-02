@@ -1,11 +1,23 @@
 #include <minishell.h>
 
-int	handle_output(t_node *cmd)
+void	search_command(t_node *cmd, int fd)
 {
-	int		fd;
 	t_node	*temp;
 
 	temp = cmd;
+	while (temp && !is_command(temp))
+		temp = temp->next;
+	if (temp && is_command(temp))
+	{
+		temp->output = fd;
+		temp->output_file = 1;
+	}
+}
+
+int	handle_output(t_node *cmd)
+{
+	int		fd;
+
 	if (cmd->relation && !ft_strncmp(cmd->relation, ">>", 2))
 		fd = open(cmd->next->full_instruction, \
 		O_WRONLY | O_APPEND | O_CREAT, 0777);
@@ -18,15 +30,7 @@ int	handle_output(t_node *cmd)
 	while (cmd && !is_command(cmd))
 		cmd = cmd->previous;
 	if (cmd == 0)
-	{
-		while (temp && !is_command(temp))
-			temp = temp->next;
-		if (temp && is_command(temp))
-		{
-			temp->output = fd;
-			temp->output_file = 1;
-		}
-	}
+		search_command(cmd, fd);
 	else
 	{
 		cmd->output = fd;

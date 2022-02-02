@@ -1,6 +1,6 @@
-#include <minishell.h>
+#include <minishell_bonus.h>
 
-extern t_minishell g_minishell;
+extern t_minishell	g_minishell;
 
 void	pwd(void)
 {
