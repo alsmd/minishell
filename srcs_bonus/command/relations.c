@@ -78,7 +78,7 @@ char	*create_subshell(char *buffer)
 		relation = is_in(g_minishell.operators, buffer);
 	}
 	if (*buffer)
-		buffer++;
+		buffer += ft_strlen(relation);
 	node = add_new_cmd("subshell", relation);
 	node->subshell = sub_buffer;
 	return (buffer);
