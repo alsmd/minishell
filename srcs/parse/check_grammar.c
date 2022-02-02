@@ -13,17 +13,16 @@ int	check_grammar(void)
 		!init->next->argv || !init->next->argv[0]))
 		{
 			if (!ft_strncmp(init->relation, "|", 1))
-				show_error(" syntax error near \
-			unexpected token ", init->relation, 2, 0);
+				show_error(M_ERROR_SINTAX, init->relation, 2, 0);
 			else
-				show_error(" syntax error near \
-			unexpected token ", "'newline'", 2, 0);
+				show_error(M_ERROR_SINTAX, "'newline'", 2, 0);
 			return (1);
 		}
-		if (init->relation && (!ft_strncmp(init->relation, ">", -1) || !ft_strncmp(init->relation, ">>", -1)) \
-		&& init->next && init->next->argv && !ft_strncmp(init->next->argv[0], "/", -1))
+		if (init->relation && (!ft_strncmp(init->relation, ">", -1) || \
+		!ft_strncmp(init->relation, ">>", -1)) && init->next && \
+		init->next->argv && !ft_strncmp(init->next->argv[0], "/", -1))
 		{
-			 printf("\033[1;31mUnknown error!!!: I'm not programmed for this \033[33m☣\033[0m\n");
+			printf("%s\033[33m☣\033[0m\n", M_UNK);
 			return (1);
 		}
 		init = init->next;
