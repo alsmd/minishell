@@ -22,19 +22,19 @@ void	clean_node(void)
 {
 	t_node	*temp;
 
-	if (g_minishell.node)
+	while (g_minishell.node)
 	{
-		while (g_minishell.node)
-		{
-			temp = g_minishell.node;
-			g_minishell.node = g_minishell.node->next;
-			if (temp->argv)
-				free_matrix(temp->argv);
+		temp = g_minishell.node;
+		g_minishell.node = g_minishell.node->next;
+		if (temp->argv)
+			free_matrix(temp->argv);
+		if (temp->full_instruction)
 			free(temp->full_instruction);
-			if (temp->full_path)
-				free(temp->full_path);
-			free(temp);
-		}
+		if (temp->full_path)
+			free(temp->full_path);
+		if (temp->subshell)
+			free(temp->subshell);
+		free(temp);
 	}
 }
 

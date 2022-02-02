@@ -23,10 +23,22 @@ static void	exec_extern_cmd(t_node *node)
 	exit(get_status(g_minishell.exit_code));
 }
 
+void	expand_node(t_node *node)
+{
+	int	index;
+
+	index = 0;
+	while (node->argv[index])
+	{
+		node->argv[index] = expand_vars(node->argv[index]);
+		index++;
+	}
+}
 static void	execute_cmd(t_node *node)
 {
 	t_fd	*fds;
 
+	expand_node(node);
 	fds = g_minishell.fds;
 	while (fds)
 	{
@@ -49,60 +61,72 @@ static void	execute_cmd(t_node *node)
 
 t_node	*get_next_chain(t_node *node)
 {
-	node = node->next;
-	while (node && node->next && (ft_strncmp(node->relation, "||", 2) \
-		&& ft_strncmp(node->relation, "&&", 2)))
+	if ((node && node->relation && !ft_strncmp(node->relation, "&&", 2) && g_minishell.exit_code != 0) \
+		|| (node && node->relation && !ft_strncmp(node->relation, "||", 2) && g_minishell.exit_code == 0))
+	{
 		node = node->next;
+		while (node && (!node->relation || (ft_strncmp(node->relation, "||", 2) \
+			&& ft_strncmp(node->relation, "&&", 2))))
+			node = node->next;
+		if (!node)
+			return (node);
+		if (!ft_strncmp(node->relation, "&&", 2) || !ft_strncmp(node->relation, "||", 2))
+			return (get_next_chain(node));
+		return (node);
+	}
 	return (node);
+}
+
+void	chose_execute_line(t_node *node, int *status, int id)
+{
+	char	*buffer;
+
+	if (node->subshell != NULL)
+	{
+		id = fork();
+		if (id == 0)
+		{
+			buffer = ft_strdup(node->subshell);
+			clean_node();
+			make_shell_command(buffer);
+			clean_trash();
+			exit(g_minishell.exit_code);
+		}
+		waitpid(id, status, 0);
+	}
+	else if (is_command(node))
+	{
+		id = fork();
+		signals(3);
+		if (id == 0)
+		{
+			signals(CHILD);
+			execute_cmd(node);
+		}
+		waitpid(id, status, 0);
+	}
+	*status = get_status(*status);
 }
 
 void	exec_commands(t_node *node)
 {
-	int			id;
-	char		*buffer;
+	int			status;
 
 	if (!node)
 		node = g_minishell.node;
 	while (node)
 	{
 		close_prev_fd(node);
-		if (node->subshell != NULL)
-		{
-			id = fork();
-			if (id == 0)
-			{
-				buffer = node->subshell;
-				clean_node();
-				make_shell_command(buffer);
-				exit(g_minishell.exit_code);
-			}
-			waitpid(id, &g_minishell.exit_code, 0);
-			g_minishell.exit_code = get_status(g_minishell.exit_code);
-		}
-		else if (is_command(node))
-		{
-			id = fork();
-			signals(3);
-			if (id == 0)
-			{
-				signals(CHILD);
-				execute_cmd(node);
-			}
-			waitpid(id, &g_minishell.exit_code, 0);
-			g_minishell.exit_code = get_status(g_minishell.exit_code);
-		}
-		if (node && node->relation && !ft_strncmp(node->relation, "&&", 2) && g_minishell.exit_code != 0)
-			node = get_next_chain(node);
-		if (node && node->relation && !ft_strncmp(node->relation, "||", 2) && g_minishell.exit_code == 0)
-			node = get_next_chain(node);
+		chose_execute_line(node, &status, 0);
+		if (!node->relation || ((!ft_strncmp(node->relation, "||", 2) || !ft_strncmp(node->relation, "&&", 2))))
+			g_minishell.exit_code = status;
+		node = get_next_chain(node);
 		if (node)
 			node = node->next;
 	}
 	clean_trash();
 	exit(g_minishell.exit_code);
 }
-			// if (g_minishell.exit_code == 2)
-			// 	printf("\n");
 
 void	make_shell_command(char *buffer)
 {
@@ -127,7 +151,10 @@ void	make_shell_command(char *buffer)
 		return ;
 	}
 	if (is_builtin(g_minishell.node) == TRUE && g_minishell.node->next == 0)
+	{
+		expand_node(g_minishell.node);
 		exec_builtin(g_minishell.node);
+	}
 	else
 	{
 		id = fork();
