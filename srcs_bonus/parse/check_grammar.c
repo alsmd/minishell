@@ -20,6 +20,12 @@ int	check_grammar(void)
 				token ", "'newline'", 2, 0);
 			return (1);
 		}
+		if (init->relation && (!ft_strncmp(init->relation, ">", -1) || !ft_strncmp(init->relation, ">>", -1)) \
+		&& init->next && init->next->argv && !ft_strncmp(init->next->argv[0], "/", -1))
+		{
+			 printf("\033[1;31mUnknown error!!!: I'm not programmed for this \033[33m☣\033[0m\n");
+			return (1);
+		}
 		init = init->next;
 	}
 	return (0);
