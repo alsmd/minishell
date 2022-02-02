@@ -59,6 +59,70 @@ char	*write_variable(char *new_buffer, char *buffer, int index)
 	return (new_buffer);
 }
 
+char	*get_filter(char *buffer, int index)
+{
+	char	*new_buffer;
+	int		size;
+
+	size = 0;
+	while (buffer[index] != ' ' && index)//echo ola*
+	{
+		size++;
+		index--;
+	}
+	new_buffer = (char *) ft_calloc(size + 1, sizeof(char));
+	size = 0;
+	if (buffer[index] == ' ')
+		index++;
+	while (buffer[index] != '*')
+	{
+		new_buffer[size] = buffer[index];
+		index++;
+		size++;
+	}
+	return (new_buffer);
+}
+char	*expand_asterisk(char *buffer)
+{
+	char	*new_buffer;
+	char	*filter;
+	int		index;
+	int		j;
+	char	quoute_is_on;
+
+	index = 0;
+	j = 0;
+	quoute_is_on = 0;
+	new_buffer = ft_strdup(buffer);
+	while (buffer[index])
+	{
+		if (buffer[index] == '\'' || buffer[index] == '"')
+		{
+			if (!quoute_is_on)
+				quoute_is_on = TRUE;
+			else if (quoute_is_on && buffer[index] == quoute_is_on)
+				quoute_is_on = FALSE;
+		}
+		if (quoute_is_on == 0 && buffer[index] == '*')
+		{
+			if (buffer[index + 1] == ' ' || buffer[index + 1] == '\0' \
+			|| buffer[index + 1] == '\'' || buffer[index + 1] == '"')
+			{
+				filter = get_filter(buffer, index);
+				if (get_asterisk_buffer(filter))
+				{
+					new_buffer[index + j - ft_strlen(filter)] = '\0';
+					new_buffer = ft_strjoin(new_buffer, g_minishell.asterisk_buffer);
+					j += ft_strlen(g_minishell.asterisk_buffer);
+				}
+			}
+		}
+		index++;
+	}
+	free(buffer);
+	return (new_buffer);
+}
+
 char	*expand_vars(char *buffer)
 {
 	char	*new_buffer;
@@ -78,12 +142,14 @@ char	*expand_vars(char *buffer)
 			while (buffer[index] != '\'' && buffer[index])
 				index++;
 		}
+
 		if (buffer[index] == '$' && buffer[index + 1] \
 		!= ' ' && buffer[index + 1])
 			new_buffer = write_variable(new_buffer, buffer, index);
 		if (buffer[index])
 			index++;
 	}
+	new_buffer = expand_asterisk(new_buffer);
 	free(buffer);
 	return (new_buffer);
 }

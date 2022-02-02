@@ -15,7 +15,6 @@ t_node	*parse_cmd(char *command)
 	else
 		new_cmd->full_path = ft_strdup("");
 	new_cmd->argv = search_matrix(new_cmd->argv);
-	trim_quotes(new_cmd->argv);
 	return (new_cmd);
 }
 

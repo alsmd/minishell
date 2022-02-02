@@ -26,4 +26,6 @@ void	validade_command(t_node *node)
 	else if (node->not_exist == 1)
 		show_error(node->argv[0], M_COMMAND_NOT_FOUND, \
 		E_COMMAND_NOT_FOUND, 1);
+	else if (node->invalid_file)
+		show_error(node->invalid_file, M_INVALID_FILE, E_COMMAND_NOT_FOUND, 1);
 }

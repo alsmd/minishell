@@ -48,6 +48,7 @@ char	*get_var_value(char *key)
 		return (ft_itoa(g_minishell.exit_code));
 	while (init)
 	{
+		printf("|%s|\n", init->key);
 		if (!ft_strncmp(init->key, key, get_variable_len(key)))
 			return (ft_strdup(init->value));
 		init = init->next;

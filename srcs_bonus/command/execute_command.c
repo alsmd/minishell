@@ -39,6 +39,7 @@ static void	execute_cmd(t_node *node)
 	t_fd	*fds;
 
 	expand_node(node);
+	trim_quotes(g_minishell.node->argv);
 	fds = g_minishell.fds;
 	while (fds)
 	{
@@ -153,6 +154,7 @@ void	make_shell_command(char *buffer)
 	if (is_builtin(g_minishell.node) == TRUE && g_minishell.node->next == 0)
 	{
 		expand_node(g_minishell.node);
+		trim_quotes(g_minishell.node->argv);
 		exec_builtin(g_minishell.node);
 	}
 	else

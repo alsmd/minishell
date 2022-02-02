@@ -58,7 +58,7 @@ SRCS_BONUS = $(PATH_MAIN_BONUS)main.c $(PATH_MAIN_BONUS)init.c $(PATH_MAIN_BONUS
 		$(PATH_ENV_BONUS)create_env.c $(PATH_ENV_BONUS)get_matrix.c\
 		$(PATH_MESSAGE_BONUS)errors.c\
 		$(PATH_OPERATOR_BONUS)pipe.c $(PATH_OPERATOR_BONUS)redirect.c $(PATH_OPERATOR_BONUS)signal.c\
-		$(PATH_OPERATOR_BONUS)redirect_helper.c\
+		$(PATH_OPERATOR_BONUS)redirect_helper.c $(PATH_OPERATOR_BONUS)asterisk.c\
 		$(PATH_PARSE_BONUS)parse_string.c $(PATH_PARSE_BONUS)parse_quotes.c $(PATH_PARSE_BONUS)get_path.c\
 		$(PATH_PARSE_BONUS)expand_vars.c $(PATH_PARSE_BONUS)check_grammar.c\
 		$(PATH_UTILS_BONUS)ft_bzero.c $(PATH_UTILS_BONUS)ft_calloc.c $(PATH_UTILS_BONUS)ft_split.c\

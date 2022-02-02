@@ -12,6 +12,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdlib.h>
+# include <dirent.h>
 # define TRUE 1
 # define FALSE 0
 # define PARENT 1
@@ -41,6 +42,7 @@ typedef struct s_node
 	int				is_builtin;
 	int				is_executable;
 	int				is_absolute_path;
+	char			*invalid_file;
 	char			*subshell;
 	char			*relation;
 	struct s_node	*next;
@@ -58,6 +60,7 @@ typedef struct s_minishell
 	int		exit_code;
 	char	**paths;
 	char	**operators;
+	char	*asterisk_buffer;
 	t_env	*env;
 	t_node	*node;
 	t_fd	*fds;
@@ -135,6 +138,8 @@ int		handle_output(t_node *cmd);
 int		handle_input(t_node *cmd);
 int		handle_pipe(t_node *node);
 void	handle_here_doc(t_node *node);
+int		get_asterisk_buffer(char *buffer);
+
 
 // OPERATORS HELPERS
 void	change_cmd_stdin(int fd, t_node *node);
