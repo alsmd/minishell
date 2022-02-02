@@ -119,9 +119,9 @@ re: fclean all
 re_bonus: fclean bonus
 
 run: all
-	valgrind --leak-check=full --show-leak-kinds=all --suppressions=readline.supp ./minishell
+	clear && valgrind --leak-check=full --show-leak-kinds=all --suppressions=readline.supp ./minishell
 
 run_bonus: bonus
-	valgrind --leak-check=full --show-leak-kinds=all --suppressions=readline.supp ./minishell_bonus
+	clear && valgrind --leak-check=full --show-leak-kinds=all --suppressions=readline.supp ./minishell_bonus
 
 .PHONY: all bonus run run_bonus re re_bonus clean fclean
