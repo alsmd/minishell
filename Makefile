@@ -3,7 +3,7 @@ NAME_BONUS = minishell_bonus
 
 CC = gcc
 
-CFLAGS = -g -Wall -Werror -Wextra
+#CFLAGS = -g -Wall -Werror -Wextra
 
 RM = rm -rf
 
@@ -58,15 +58,15 @@ SRCS_BONUS = $(PATH_MAIN_BONUS)main.c $(PATH_MAIN_BONUS)init.c $(PATH_MAIN_BONUS
 		$(PATH_ENV_BONUS)create_env.c $(PATH_ENV_BONUS)get_matrix.c\
 		$(PATH_MESSAGE_BONUS)errors.c\
 		$(PATH_OPERATOR_BONUS)pipe.c $(PATH_OPERATOR_BONUS)redirect.c $(PATH_OPERATOR_BONUS)signal.c\
-		$(PATH_OPERATOR_BONUS)redirect_helper.c $(PATH_OPERATOR_BONUS)asterisk.c\
+		$(PATH_OPERATOR_BONUS)redirect_helper.c $(PATH_OPERATOR_BONUS)asterisk.c $(PATH_OPERATOR_BONUS)asterisk_helper.c\
 		$(PATH_PARSE_BONUS)parse_string.c $(PATH_PARSE_BONUS)parse_quotes.c $(PATH_PARSE_BONUS)get_path.c\
-		$(PATH_PARSE_BONUS)expand_vars.c $(PATH_PARSE_BONUS)check_grammar.c\
+		$(PATH_PARSE_BONUS)expand_vars.c $(PATH_PARSE_BONUS)check_grammar.c $(PATH_PARSE_BONUS)expand_asterisk.c\
 		$(PATH_UTILS_BONUS)ft_bzero.c $(PATH_UTILS_BONUS)ft_calloc.c $(PATH_UTILS_BONUS)ft_split.c\
 		$(PATH_UTILS_BONUS)ft_strdup.c $(PATH_UTILS_BONUS)ft_strjoin.c $(PATH_UTILS_BONUS)ft_strlen.c\
 		$(PATH_UTILS_BONUS)ft_strncmp.c $(PATH_UTILS_BONUS)ft_strtrim.c $(PATH_UTILS_BONUS)ft_substr.c \
 		$(PATH_UTILS_BONUS)get_next_line.c $(PATH_UTILS_BONUS)handler_final_file.c $(PATH_UTILS_BONUS)is_in.c\
 		$(PATH_UTILS_BONUS)close_fd.c	$(PATH_UTILS_BONUS)ft_atoi.c $(PATH_UTILS_BONUS)ft_itoa.c \
-		$(PATH_UTILS_BONUS)ft_strlcpy.c
+		$(PATH_UTILS_BONUS)ft_strlcpy.c $(PATH_UTILS_BONUS)compare.c
 		
 OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(SRCS))
 

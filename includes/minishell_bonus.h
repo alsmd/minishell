@@ -55,12 +55,20 @@ typedef struct s_fd
 	struct s_fd	*next;
 }	t_fd;
 
+typedef struct s_folder
+{
+	char	*buffer;
+	struct s_folder	*next;
+	struct s_folder	*previous;
+} t_folder;
+
 typedef struct s_minishell
 {
 	int		exit_code;
 	char	**paths;
 	char	**operators;
 	char	*asterisk_buffer;
+	int		asterisk_found;
 	t_env	*env;
 	t_node	*node;
 	t_fd	*fds;
@@ -138,7 +146,15 @@ int		handle_output(t_node *cmd);
 int		handle_input(t_node *cmd);
 int		handle_pipe(t_node *node);
 void	handle_here_doc(t_node *node);
-int		get_asterisk_buffer(char *buffer);
+
+//ASTERISK
+int			get_asterisk_buffer(char *buffer, char *dir);
+t_folder	*create_folder_list(char *buffer);
+int			compare(char *string, char *filter);
+t_folder	*add_to_list(t_folder **begin, char *buffer);
+t_folder	*create_folder_list(char *buffer);
+char		*expand_asterisk(char *buffer);
+
 
 
 // OPERATORS HELPERS
@@ -173,5 +189,6 @@ void	close_fd(int fd);
 int		ft_atoi(const char *nptr);
 char	*ft_itoa(int n);
 void	ft_strlcpy(char *dst, const char *src, size_t size);
+int		has(char *string, char c);
 
 #endif

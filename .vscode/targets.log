@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Feb  2 19:37:44 2022
+# Make data base, printed on Thu Feb  3 04:30:57 2022
 
 # Variables
 
@@ -21,7 +21,7 @@ VSCODE_AGENT_FOLDER = /home/coder/.vscode-server
 # environment
 VSCODE_LOG_NATIVE = false
 # makefile (from 'Makefile', line 53)
-SRCS_BONUS = $(PATH_MAIN_BONUS)main.c $(PATH_MAIN_BONUS)init.c $(PATH_MAIN_BONUS)clean_trash.c $(PATH_BUILTINS_BONUS)env.c $(PATH_BUILTINS_BONUS)check_builtin.c $(PATH_BUILTINS_BONUS)pwd.c $(PATH_BUILTINS_BONUS)cd.c $(PATH_BUILTINS_BONUS)my_exit.c $(PATH_BUILTINS_BONUS)echo.c $(PATH_COMMAND_BONUS)execute_command.c $(PATH_COMMAND_BONUS)helper_command.c $(PATH_COMMAND_BONUS)check_command.c $(PATH_COMMAND_BONUS)relations.c $(PATH_COMMAND_BONUS)exec_helper.c $(PATH_ENV_BONUS)create_env.c $(PATH_ENV_BONUS)get_matrix.c $(PATH_MESSAGE_BONUS)errors.c $(PATH_OPERATOR_BONUS)pipe.c $(PATH_OPERATOR_BONUS)redirect.c $(PATH_OPERATOR_BONUS)signal.c $(PATH_OPERATOR_BONUS)redirect_helper.c $(PATH_OPERATOR_BONUS)asterisk.c $(PATH_PARSE_BONUS)parse_string.c $(PATH_PARSE_BONUS)parse_quotes.c $(PATH_PARSE_BONUS)get_path.c $(PATH_PARSE_BONUS)expand_vars.c $(PATH_PARSE_BONUS)check_grammar.c $(PATH_UTILS_BONUS)ft_bzero.c $(PATH_UTILS_BONUS)ft_calloc.c $(PATH_UTILS_BONUS)ft_split.c $(PATH_UTILS_BONUS)ft_strdup.c $(PATH_UTILS_BONUS)ft_strjoin.c $(PATH_UTILS_BONUS)ft_strlen.c $(PATH_UTILS_BONUS)ft_strncmp.c $(PATH_UTILS_BONUS)ft_strtrim.c $(PATH_UTILS_BONUS)ft_substr.c $(PATH_UTILS_BONUS)get_next_line.c $(PATH_UTILS_BONUS)handler_final_file.c $(PATH_UTILS_BONUS)is_in.c $(PATH_UTILS_BONUS)close_fd.c	$(PATH_UTILS_BONUS)ft_atoi.c $(PATH_UTILS_BONUS)ft_itoa.c $(PATH_UTILS_BONUS)ft_strlcpy.c
+SRCS_BONUS = $(PATH_MAIN_BONUS)main.c $(PATH_MAIN_BONUS)init.c $(PATH_MAIN_BONUS)clean_trash.c $(PATH_BUILTINS_BONUS)env.c $(PATH_BUILTINS_BONUS)check_builtin.c $(PATH_BUILTINS_BONUS)pwd.c $(PATH_BUILTINS_BONUS)cd.c $(PATH_BUILTINS_BONUS)my_exit.c $(PATH_BUILTINS_BONUS)echo.c $(PATH_COMMAND_BONUS)execute_command.c $(PATH_COMMAND_BONUS)helper_command.c $(PATH_COMMAND_BONUS)check_command.c $(PATH_COMMAND_BONUS)relations.c $(PATH_COMMAND_BONUS)exec_helper.c $(PATH_ENV_BONUS)create_env.c $(PATH_ENV_BONUS)get_matrix.c $(PATH_MESSAGE_BONUS)errors.c $(PATH_OPERATOR_BONUS)pipe.c $(PATH_OPERATOR_BONUS)redirect.c $(PATH_OPERATOR_BONUS)signal.c $(PATH_OPERATOR_BONUS)redirect_helper.c $(PATH_OPERATOR_BONUS)asterisk.c $(PATH_OPERATOR_BONUS)asterisk_helper.c $(PATH_PARSE_BONUS)parse_string.c $(PATH_PARSE_BONUS)parse_quotes.c $(PATH_PARSE_BONUS)get_path.c $(PATH_PARSE_BONUS)expand_vars.c $(PATH_PARSE_BONUS)check_grammar.c $(PATH_PARSE_BONUS)expand_asterisk.c $(PATH_UTILS_BONUS)ft_bzero.c $(PATH_UTILS_BONUS)ft_calloc.c $(PATH_UTILS_BONUS)ft_split.c $(PATH_UTILS_BONUS)ft_strdup.c $(PATH_UTILS_BONUS)ft_strjoin.c $(PATH_UTILS_BONUS)ft_strlen.c $(PATH_UTILS_BONUS)ft_strncmp.c $(PATH_UTILS_BONUS)ft_strtrim.c $(PATH_UTILS_BONUS)ft_substr.c $(PATH_UTILS_BONUS)get_next_line.c $(PATH_UTILS_BONUS)handler_final_file.c $(PATH_UTILS_BONUS)is_in.c $(PATH_UTILS_BONUS)close_fd.c	$(PATH_UTILS_BONUS)ft_atoi.c $(PATH_UTILS_BONUS)ft_itoa.c $(PATH_UTILS_BONUS)ft_strlcpy.c $(PATH_UTILS_BONUS)compare.c
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # makefile (from 'Makefile', line 28)
@@ -40,8 +40,6 @@ RM = rm -rf
 VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
 _ = /home/coder/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/node
-# makefile (from 'Makefile', line 6)
-CFLAGS = -g -Wall -Werror -Wextra
 # makefile (from 'Makefile', line 16)
 PATH_ENV = $(PATH_SRC)env/
 # makefile (from 'Makefile', line 2)
@@ -69,7 +67,7 @@ PATH = /home/coder/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/b
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-ac56e652-9164-4915-a8f7-d5618e95c69a.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-14afc99c-8b34-4e19-8bfb-322469903d8c.sock
 # makefile (from 'Makefile', line 15)
 PATH_COMMAND = $(PATH_SRC)command/
 # default
@@ -165,7 +163,6 @@ PATH_MESSAGE_BONUS = $(PATH_SRC_BONUS)message/
 # makefile (from 'Makefile', line 26)
 PATH_COMMAND_BONUS = $(PATH_SRC_BONUS)command/
 # environment
- 
 LC_ALL = C
 # automatic
 ^F = $(notdir $^)
@@ -196,7 +193,7 @@ MOTD_SHOWN = pam
 # makefile (from 'Makefile', line 11)
 INCLUDE_BONUS = -I ./includes/
 # variable set hash-table stats:
-# Load=92/1024=9%, Rehash=0, Collisions=14/303=5%
+# Load=91/1024=9%, Rehash=0, Collisions=14/308=5%
 
 # Pattern-specific Variable Values
 
@@ -207,7 +204,7 @@ INCLUDE_BONUS = -I ./includes/
 # srcs/command (device 142, inode 220555274): 7 files, no impossibilities so far.
 # srcs/builtins (device 142, inode 220555273): 8 files, no impossibilities so far.
 # srcs/operators (device 142, inode 220555278): 6 files, no impossibilities so far.
-# . (device 142, inode 220469257): 42 files, no impossibilities.
+# . (device 142, inode 220469257): 48 files, no impossibilities.
 # srcs/env (device 142, inode 220555275): 4 files, no impossibilities so far.
 # srcs/parse (device 142, inode 220557313): 7 files, no impossibilities so far.
 # srcs/utils (device 142, inode 220557314): 19 files, no impossibilities.
@@ -216,7 +213,7 @@ INCLUDE_BONUS = -I ./includes/
 # srcs_bonus (device 142, inode 220473346): No files, no impossibilities so far.
 # srcs (device 142, inode 220555272): No files, no impossibilities so far.
 
-# 101 files, no impossibilities in 11 directories.
+# 107 files, no impossibilities in 11 directories.
 
 # Implicit Rules
 
@@ -287,6 +284,7 @@ objs/command/relations.o: srcs/command/relations.c
 	$(CC) $(CFLAGS) $(INCLUDE) -I. -c $< -o $@ -lreadline
 
 objs/builtins/env.o: srcs/builtins/env.c
+ 
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'builtins/env'
 #  Last modified 2022-02-02 19:20:41.054565696
@@ -447,7 +445,6 @@ objs_bonus/utils/ft_itoa.o:
 # Not a target:
 srcs/command/exec_helper.c:
 #  Implicit rule search has been done.
- 
 #  Last modified 2022-02-02 18:00:04.829593298
 #  File has been updated.
 #  Successfully updated.
@@ -506,7 +503,7 @@ objs/command/execute_command.o: srcs/command/execute_command.c
 	@mkdir -p $(PATH_OBJS)main/
 	$(CC) $(CFLAGS) $(INCLUDE) -I. -c $< -o $@ -lreadline
 
-minishell_bonus: objs_bonus/main/main.o objs_bonus/main/init.o objs_bonus/main/clean_trash.o objs_bonus/builtins/env.o objs_bonus/builtins/check_builtin.o objs_bonus/builtins/pwd.o objs_bonus/builtins/cd.o objs_bonus/builtins/my_exit.o objs_bonus/builtins/echo.o objs_bonus/command/execute_command.o objs_bonus/command/helper_command.o objs_bonus/command/check_command.o objs_bonus/command/relations.o objs_bonus/command/exec_helper.o objs_bonus/env/create_env.o objs_bonus/env/get_matrix.o objs_bonus/message/errors.o objs_bonus/operators/pipe.o objs_bonus/operators/redirect.o objs_bonus/operators/signal.o objs_bonus/operators/redirect_helper.o objs_bonus/operators/asterisk.o objs_bonus/parse/parse_string.o objs_bonus/parse/parse_quotes.o objs_bonus/parse/get_path.o objs_bonus/parse/expand_vars.o objs_bonus/parse/check_grammar.o objs_bonus/utils/ft_bzero.o objs_bonus/utils/ft_calloc.o objs_bonus/utils/ft_split.o objs_bonus/utils/ft_strdup.o objs_bonus/utils/ft_strjoin.o objs_bonus/utils/ft_strlen.o objs_bonus/utils/ft_strncmp.o objs_bonus/utils/ft_strtrim.o objs_bonus/utils/ft_substr.o objs_bonus/utils/get_next_line.o objs_bonus/utils/handler_final_file.o objs_bonus/utils/is_in.o objs_bonus/utils/close_fd.o objs_bonus/utils/ft_atoi.o objs_bonus/utils/ft_itoa.o objs_bonus/utils/ft_strlcpy.o
+minishell_bonus: objs_bonus/main/main.o objs_bonus/main/init.o objs_bonus/main/clean_trash.o objs_bonus/builtins/env.o objs_bonus/builtins/check_builtin.o objs_bonus/builtins/pwd.o objs_bonus/builtins/cd.o objs_bonus/builtins/my_exit.o objs_bonus/builtins/echo.o objs_bonus/command/execute_command.o objs_bonus/command/helper_command.o objs_bonus/command/check_command.o objs_bonus/command/relations.o objs_bonus/command/exec_helper.o objs_bonus/env/create_env.o objs_bonus/env/get_matrix.o objs_bonus/message/errors.o objs_bonus/operators/pipe.o objs_bonus/operators/redirect.o objs_bonus/operators/signal.o objs_bonus/operators/redirect_helper.o objs_bonus/operators/asterisk.o objs_bonus/operators/asterisk_helper.o objs_bonus/parse/parse_string.o objs_bonus/parse/parse_quotes.o objs_bonus/parse/get_path.o objs_bonus/parse/expand_vars.o objs_bonus/parse/check_grammar.o objs_bonus/parse/expand_asterisk.o objs_bonus/utils/ft_bzero.o objs_bonus/utils/ft_calloc.o objs_bonus/utils/ft_split.o objs_bonus/utils/ft_strdup.o objs_bonus/utils/ft_strjoin.o objs_bonus/utils/ft_strlen.o objs_bonus/utils/ft_strncmp.o objs_bonus/utils/ft_strtrim.o objs_bonus/utils/ft_substr.o objs_bonus/utils/get_next_line.o objs_bonus/utils/handler_final_file.o objs_bonus/utils/is_in.o objs_bonus/utils/close_fd.o objs_bonus/utils/ft_atoi.o objs_bonus/utils/ft_itoa.o objs_bonus/utils/ft_strlcpy.o objs_bonus/utils/compare.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -574,6 +571,7 @@ srcs/builtins/env.c:
 
 objs/env/create_env.o: srcs/env/create_env.c
 #  Implicit rule search has been done.
+ 
 #  Implicit/static pattern stem: 'env/create_env'
 #  Last modified 2022-02-02 19:20:48.550836041
 #  File has been updated.
@@ -685,7 +683,7 @@ objs/utils/ft_strtrim.o: srcs/utils/ft_strtrim.c
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-02-02 18:43:14.443128318
+#  Last modified 2022-02-03 04:14:13.540026071
 #  File has been updated.
 #  Successfully updated.
 
@@ -736,7 +734,6 @@ objs/command/helper_command.o: srcs/command/helper_command.c
 	@mkdir -p $(PATH_OBJS)
 	@mkdir -p $(PATH_OBJS)builtins/
 	@mkdir -p $(PATH_OBJS)command/
- 
 	@mkdir -p $(PATH_OBJS)env/
 	@mkdir -p $(PATH_OBJS)message/
 	@mkdir -p $(PATH_OBJS)operators/
@@ -860,6 +857,7 @@ objs_bonus/main/clean_trash.o:
 objs/utils/handler_final_file.o: srcs/utils/handler_final_file.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'utils/handler_final_file'
+ 
 #  Last modified 2022-02-02 19:21:01.255294829
 #  File has been updated.
 #  Successfully updated.
@@ -1054,7 +1052,6 @@ objs_bonus/utils/ft_calloc.o:
 #  File has not been updated.
 
 objs/builtins/pwd.o: srcs/builtins/pwd.c
- 
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'builtins/pwd'
 #  Last modified 2022-02-02 19:20:42.142604918
@@ -1074,6 +1071,12 @@ objs/builtins/pwd.o: srcs/builtins/pwd.c
 
 # Not a target:
 objs_bonus/utils/ft_substr.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs_bonus/parse/expand_asterisk.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -1142,6 +1145,7 @@ objs/utils/ft_bzero.o: srcs/utils/ft_bzero.c
 	@mkdir -p $(PATH_OBJS)env/
 	@mkdir -p $(PATH_OBJS)message/
 	@mkdir -p $(PATH_OBJS)operators/
+ 
 	@mkdir -p $(PATH_OBJS)parse/
 	@mkdir -p $(PATH_OBJS)utils/
 	@mkdir -p $(PATH_OBJS)main/
@@ -1180,6 +1184,12 @@ objs_bonus/operators/asterisk.o:
 
 # Not a target:
 objs_bonus/command/exec_helper.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs_bonus/operators/asterisk_helper.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -1333,7 +1343,6 @@ srcs/utils/ft_strjoin.c:
 #  Last modified 2022-02-01 20:18:07.940741552
 #  File has been updated.
 #  Successfully updated.
- 
 
 # Not a target:
 srcs/utils/ft_split.c:
@@ -1415,6 +1424,7 @@ objs/main/main.o: srcs/main/main.c
 	@mkdir -p $(PATH_OBJS)utils/
 	@mkdir -p $(PATH_OBJS)main/
 	$(CC) $(CFLAGS) $(INCLUDE) -I. -c $< -o $@ -lreadline
+ 
 
 # Not a target:
 objs_bonus/operators/pipe.o:
@@ -1503,6 +1513,12 @@ srcs/message/errors.c:
 #  Last modified 2022-02-01 15:24:24.619260188
 #  File has been updated.
 #  Successfully updated.
+
+# Not a target:
+objs_bonus/utils/compare.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 objs/utils/close_fd.o: srcs/utils/close_fd.c
 #  Implicit rule search has been done.
@@ -1623,7 +1639,6 @@ objs_bonus/utils/ft_strtrim.o:
 #  Modification time never checked.
 #  File has not been updated.
 
- 
 # Not a target:
 srcs/builtins/my_exit.c:
 #  Implicit rule search has been done.
@@ -1657,19 +1672,19 @@ objs/parse/get_path.o: srcs/parse/get_path.c
 	$(CC) $(CFLAGS) $(INCLUDE) -I. -c $< -o $@ -lreadline
 
 # files hash-table stats:
-# Load=141/1024=14%, Rehash=0, Collisions=32/382=8%
+# Load=144/1024=14%, Rehash=0, Collisions=34/388=9%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 279 / storage = 5423 B / avg = 19 B
-# current buf: size = 8162 B / used = 5423 B / count = 279 / avg = 19 B
+# strcache buffers: 1 (0) / strings = 288 / storage = 5656 B / avg = 19 B
+# current buf: size = 8162 B / used = 5656 B / count = 288 / avg = 19 B
 
-# strcache performance: lookups = 374 / hit rate = 25%
+# strcache performance: lookups = 383 / hit rate = 24%
 # hash-table stats:
-# Load=279/8192=3%, Rehash=0, Collisions=15/374=4%
-# Finished Make data base on Wed Feb  2 19:37:44 2022
+# Load=288/8192=4%, Rehash=0, Collisions=15/383=4%
+# Finished Make data base on Thu Feb  3 04:30:57 2022
 
  

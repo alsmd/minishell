@@ -16,9 +16,12 @@ void	run(char *buffer)
 	rl_replace_line("", 0);
 }
 
+int	get_asterisk_buffer2(char *buffer, char *dir);/// /home/coder/Documents/minishell/./obsj/env
+//   //////////*
 int	main(int argc, char *argv[], char *envp[])
 {
-	char	*buffer;
+	t_folder	*list;
+	char		*buffer;
 
 	(void)argv;
 	if (argc > 1)
