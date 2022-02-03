@@ -24,6 +24,7 @@ char	*make_path_next(t_folder *list)
 {
 	t_folder	*tmp;
 	char		*path;
+	char		*help;
 	int			first;
 
 	first = 1;
@@ -34,8 +35,14 @@ char	*make_path_next(t_folder *list)
 	while (tmp != list)
 	{
 		if (first == 0)
+		{
+			help = path;
 			path = ft_strjoin(ft_strdup("/"), path);
+			free(help);
+		}
+		help = path;
 		path = ft_strjoin(ft_strdup(tmp->buffer), path);
+		free(help);
 		tmp = tmp->previous;
 		first = 0;
 	}
@@ -50,7 +57,9 @@ void	search_directories(t_folder *list, char *dir)
 	DIR				*directory;
 
 	path = make_path_previous(list);
-	directory = opendir(ft_strjoin(ft_strdup(dir), path));
+	tmp = ft_strjoin(ft_strdup(dir), path);
+	directory = opendir(tmp);
+	free(tmp);
 	free(path);
 	file = readdir(directory);
 	path = make_path_next(list);
