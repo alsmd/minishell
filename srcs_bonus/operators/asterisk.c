@@ -99,6 +99,8 @@ int	get_asterisk_buffer(char *buffer, char *dir)
 	DIR				*directory;
 
 	dir = ft_strjoin(ft_strdup(dir), "/");
+	if (buffer[0] == '/')
+		dir = ft_strdup("");
 	list = 0;
 	list = create_folder_list(ft_strdup(buffer));
 	while (list)
