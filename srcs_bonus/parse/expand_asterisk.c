@@ -33,6 +33,28 @@ char	*get_filter(char *buffer, int index)
 	}
 	return (new_buffer);
 }
+
+int	custom_size_after(char *filter)
+{
+	int	index;
+
+	index = 0;
+	while (*filter && *filter != '*')
+		filter++;
+	while (filter[index])
+		index++;
+	return (index);
+}
+
+int	custom_size_before(char *filter)
+{
+	int	index;
+
+	index = 0;
+	while (filter[index] && filter[index] != '*')
+		index++;
+	return (index);
+}
 char	*expand_asterisk(char *buffer)
 {
 	char	*new_buffer;
@@ -65,12 +87,11 @@ char	*expand_asterisk(char *buffer)
 			get_asterisk_buffer(filter, get_var_value("PWD"));
 			if (g_minishell.asterisk_found > 0)
 			{
-				new_buffer[index + j - ft_strlen(filter) + 1] = '\0';
+				new_buffer[index + j - custom_size_before(filter)] = '\0';
 				new_buffer = ft_strjoin(new_buffer, g_minishell.asterisk_buffer);
 				j += ft_strlen(g_minishell.asterisk_buffer);
 			}
-			else
-				index += ft_strlen(filter);
+			index += custom_size_after(filter);
 		}
 		index++;
 	}
