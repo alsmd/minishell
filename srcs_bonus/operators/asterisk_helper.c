@@ -48,5 +48,6 @@ t_folder	*create_folder_list(char *buffer)
 	}
 	if (buffer[desloc])
 		add_to_list(&list, ft_strdup(&buffer[desloc]));
+	free(buffer);
 	return (list);
 }

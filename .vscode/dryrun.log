@@ -41,7 +41,6 @@ mkdir -p ./objs/utils/
 mkdir -p ./objs/main/
 gcc  -I ./includes/ -I. -c srcs/builtins/env.c -o objs/builtins/env.o -lreadline
 mkdir -p ./objs/
- 
 mkdir -p ./objs/builtins/
 mkdir -p ./objs/command/
 mkdir -p ./objs/env/
@@ -91,6 +90,7 @@ mkdir -p ./objs/parse/
 mkdir -p ./objs/utils/
 mkdir -p ./objs/main/
 gcc  -I ./includes/ -I. -c srcs/builtins/echo.c -o objs/builtins/echo.o -lreadline
+ 
 mkdir -p ./objs/
 mkdir -p ./objs/builtins/
 mkdir -p ./objs/command/
@@ -162,7 +162,6 @@ mkdir -p ./objs/utils/
 mkdir -p ./objs/main/
 gcc  -I ./includes/ -I. -c srcs/env/get_matrix.c -o objs/env/get_matrix.o -lreadline
 mkdir -p ./objs/
- 
 mkdir -p ./objs/builtins/
 mkdir -p ./objs/command/
 mkdir -p ./objs/env/
@@ -172,6 +171,7 @@ mkdir -p ./objs/parse/
 mkdir -p ./objs/utils/
 mkdir -p ./objs/main/
 gcc  -I ./includes/ -I. -c srcs/message/errors.c -o objs/message/errors.o -lreadline
+ 
 mkdir -p ./objs/
 mkdir -p ./objs/builtins/
 mkdir -p ./objs/command/
@@ -262,6 +262,7 @@ mkdir -p ./objs/parse/
 mkdir -p ./objs/utils/
 mkdir -p ./objs/main/
 gcc  -I ./includes/ -I. -c srcs/parse/check_grammar.c -o objs/parse/check_grammar.o -lreadline
+ 
 mkdir -p ./objs/
 mkdir -p ./objs/builtins/
 mkdir -p ./objs/command/

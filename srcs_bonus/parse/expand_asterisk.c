@@ -84,7 +84,7 @@ char	*expand_asterisk(char *buffer)
 				free(g_minishell.asterisk_buffer);
 			g_minishell.asterisk_buffer = ft_strdup("");
 			g_minishell.asterisk_found = 0;
-			get_asterisk_buffer(filter, get_var_value("PWD"));
+			get_asterisk_buffer(filter, ft_strjoin(get_var_value("PWD"), "/"));
 			if (g_minishell.asterisk_found > 0)
 			{
 				new_buffer[index + j - custom_size_before(filter)] = '\0';
@@ -92,8 +92,10 @@ char	*expand_asterisk(char *buffer)
 				j += ft_strlen(g_minishell.asterisk_buffer);
 			}
 			index += custom_size_after(filter);
+			free(filter);
 		}
-		index++;
+		if (buffer[index])
+			index++;
 	}
 	free(buffer);
 	return (new_buffer);
