@@ -7,7 +7,6 @@ void	run(char *buffer)
 	int		status;
 
 	add_history(buffer);
-	//new_buffer = expand_vars(buffer);
 	status = parse_string(buffer);
 	if (status == 0)
 		make_shell_command(buffer);
@@ -18,7 +17,7 @@ void	run(char *buffer)
 
 int	main(int argc, char *argv[], char *envp[])
 {
-	char	*buffer;
+	char		*buffer;
 
 	(void)argv;
 	if (argc > 1)

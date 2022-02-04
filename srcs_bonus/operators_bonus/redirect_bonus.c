@@ -47,7 +47,10 @@ int	handle_input(t_node *cmd)
 	temp = cmd;
 	fd = open(cmd->next->full_instruction, O_RDONLY, 0777);
 	if (fd == -1)
+	{
+		cmd->invalid_file = cmd->next->full_instruction;
 		return (ERROR_OPEN_FILE);
+	}
 	add_fd(fd);
 	while (cmd && !is_command(cmd))
 		cmd = cmd->previous;
@@ -55,7 +58,8 @@ int	handle_input(t_node *cmd)
 	{
 		while (temp && !is_command(temp))
 			temp = temp->next;
-		temp->input = fd;
+		if (temp && is_command(temp))
+			temp->input = fd;
 	}
 	else
 		cmd->input = fd;

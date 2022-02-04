@@ -22,14 +22,14 @@ PATH_UTILS = $(PATH_SRC)utils/
 PATH_OBJS = ./objs/
 
 PATH_SRC_BONUS = ./srcs_bonus/
-PATH_MAIN_BONUS = $(PATH_SRC_BONUS)main/
-PATH_COMMAND_BONUS = $(PATH_SRC_BONUS)command/
-PATH_ENV_BONUS = $(PATH_SRC_BONUS)env/
-PATH_OPERATOR_BONUS = $(PATH_SRC_BONUS)operators/
-PATH_MESSAGE_BONUS = $(PATH_SRC_BONUS)message/
-PATH_PARSE_BONUS = $(PATH_SRC_BONUS)parse/
-PATH_BUILTINS_BONUS = $(PATH_SRC_BONUS)builtins/
-PATH_UTILS_BONUS = $(PATH_SRC_BONUS)utils/
+PATH_MAIN_BONUS = $(PATH_SRC_BONUS)main_bonus/
+PATH_COMMAND_BONUS = $(PATH_SRC_BONUS)command_bonus/
+PATH_ENV_BONUS = $(PATH_SRC_BONUS)env_bonus/
+PATH_OPERATOR_BONUS = $(PATH_SRC_BONUS)operators_bonus/
+PATH_MESSAGE_BONUS = $(PATH_SRC_BONUS)message_bonus/
+PATH_PARSE_BONUS = $(PATH_SRC_BONUS)parse_bonus/
+PATH_BUILTINS_BONUS = $(PATH_SRC_BONUS)builtins_bonus/
+PATH_UTILS_BONUS = $(PATH_SRC_BONUS)utils_bonus/
 PATH_OBJS_BONUS = ./objs_bonus/
 
 SRCS =	$(PATH_MAIN)main.c	$(PATH_MAIN)init.c $(PATH_MAIN)clean_trash.c\
@@ -50,23 +50,25 @@ SRCS =	$(PATH_MAIN)main.c	$(PATH_MAIN)init.c $(PATH_MAIN)clean_trash.c\
 		$(PATH_UTILS)close_fd.c	$(PATH_UTILS)ft_atoi.c $(PATH_UTILS)ft_itoa.c \
 		$(PATH_UTILS)ft_strlcpy.c
 
-SRCS_BONUS = $(PATH_MAIN_BONUS)main.c $(PATH_MAIN_BONUS)init.c $(PATH_MAIN_BONUS)clean_trash.c\
-		$(PATH_BUILTINS_BONUS)env.c $(PATH_BUILTINS_BONUS)check_builtin.c $(PATH_BUILTINS_BONUS)pwd.c\
-		$(PATH_BUILTINS_BONUS)cd.c $(PATH_BUILTINS_BONUS)my_exit.c $(PATH_BUILTINS_BONUS)echo.c\
-		$(PATH_COMMAND_BONUS)execute_command.c $(PATH_COMMAND_BONUS)helper_command.c $(PATH_COMMAND_BONUS)check_command.c\
-		$(PATH_COMMAND_BONUS)relations.c $(PATH_COMMAND_BONUS)exec_helper.c\
-		$(PATH_ENV_BONUS)create_env.c $(PATH_ENV_BONUS)get_matrix.c\
-		$(PATH_MESSAGE_BONUS)errors.c\
-		$(PATH_OPERATOR_BONUS)pipe.c $(PATH_OPERATOR_BONUS)redirect.c $(PATH_OPERATOR_BONUS)signal.c\
-		$(PATH_OPERATOR_BONUS)redirect_helper.c\
-		$(PATH_PARSE_BONUS)parse_string.c $(PATH_PARSE_BONUS)parse_quotes.c $(PATH_PARSE_BONUS)get_path.c\
-		$(PATH_PARSE_BONUS)expand_vars.c $(PATH_PARSE_BONUS)check_grammar.c\
-		$(PATH_UTILS_BONUS)ft_bzero.c $(PATH_UTILS_BONUS)ft_calloc.c $(PATH_UTILS_BONUS)ft_split.c\
-		$(PATH_UTILS_BONUS)ft_strdup.c $(PATH_UTILS_BONUS)ft_strjoin.c $(PATH_UTILS_BONUS)ft_strlen.c\
-		$(PATH_UTILS_BONUS)ft_strncmp.c $(PATH_UTILS_BONUS)ft_strtrim.c $(PATH_UTILS_BONUS)ft_substr.c \
-		$(PATH_UTILS_BONUS)get_next_line.c $(PATH_UTILS_BONUS)handler_final_file.c $(PATH_UTILS_BONUS)is_in.c\
-		$(PATH_UTILS_BONUS)close_fd.c	$(PATH_UTILS_BONUS)ft_atoi.c $(PATH_UTILS_BONUS)ft_itoa.c \
-		$(PATH_UTILS_BONUS)ft_strlcpy.c
+SRCS_BONUS = $(PATH_MAIN_BONUS)main_bonus.c $(PATH_MAIN_BONUS)init_bonus.c $(PATH_MAIN_BONUS)clean_trash_bonus.c\
+		$(PATH_BUILTINS_BONUS)env_bonus.c $(PATH_BUILTINS_BONUS)check_builtin_bonus.c $(PATH_BUILTINS_BONUS)pwd_bonus.c\
+		$(PATH_BUILTINS_BONUS)cd_bonus.c $(PATH_BUILTINS_BONUS)my_exit_bonus.c $(PATH_BUILTINS_BONUS)echo_bonus.c\
+		$(PATH_COMMAND_BONUS)execute_command_bonus.c $(PATH_COMMAND_BONUS)helper_command_bonus.c $(PATH_COMMAND_BONUS)check_command_bonus.c\
+		$(PATH_COMMAND_BONUS)relations_bonus.c $(PATH_COMMAND_BONUS)relations_helper_bonus.c $(PATH_COMMAND_BONUS)exec_helper_bonus.c\
+		$(PATH_COMMAND_BONUS)make_commands_bonus.c\
+		$(PATH_ENV_BONUS)create_env_bonus.c $(PATH_ENV_BONUS)get_matrix_bonus.c\
+		$(PATH_MESSAGE_BONUS)errors_bonus.c\
+		$(PATH_OPERATOR_BONUS)pipe_bonus.c $(PATH_OPERATOR_BONUS)redirect_bonus.c $(PATH_OPERATOR_BONUS)signal_bonus.c\
+		$(PATH_OPERATOR_BONUS)redirect_helper_bonus.c $(PATH_OPERATOR_BONUS)asterisk_bonus.c $(PATH_OPERATOR_BONUS)asterisk_helper_bonus.c\
+		$(PATH_PARSE_BONUS)parse_string_bonus.c $(PATH_PARSE_BONUS)parse_quotes_bonus.c $(PATH_PARSE_BONUS)get_path_bonus.c\
+		$(PATH_PARSE_BONUS)expand_vars_bonus.c $(PATH_PARSE_BONUS)check_grammar_bonus.c $(PATH_PARSE_BONUS)expand_asterisk_bonus.c\
+		$(PATH_PARSE_BONUS)expand_asterisk_helper_bonus.c\
+		$(PATH_UTILS_BONUS)ft_bzero_bonus.c $(PATH_UTILS_BONUS)ft_calloc_bonus.c $(PATH_UTILS_BONUS)ft_split_bonus.c\
+		$(PATH_UTILS_BONUS)ft_strdup_bonus.c $(PATH_UTILS_BONUS)ft_strjoin_bonus.c $(PATH_UTILS_BONUS)ft_strlen_bonus.c\
+		$(PATH_UTILS_BONUS)ft_strncmp_bonus.c $(PATH_UTILS_BONUS)ft_strtrim_bonus.c $(PATH_UTILS_BONUS)ft_substr_bonus.c \
+		$(PATH_UTILS_BONUS)get_next_line_bonus.c $(PATH_UTILS_BONUS)handler_final_file_bonus.c $(PATH_UTILS_BONUS)is_in_bonus.c\
+		$(PATH_UTILS_BONUS)close_fd_bonus.c	$(PATH_UTILS_BONUS)ft_atoi_bonus.c $(PATH_UTILS_BONUS)ft_itoa_bonus.c \
+		$(PATH_UTILS_BONUS)ft_strlcpy_bonus.c $(PATH_UTILS_BONUS)compare_bonus.c $(PATH_UTILS_BONUS)join_matrix_bonus.c
 		
 OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(SRCS))
 
@@ -74,8 +76,12 @@ OBJS_BONUS = $(patsubst $(PATH_SRC_BONUS)%.c, $(PATH_OBJS_BONUS)%.o, $(SRCS_BONU
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(INCLUDE) ./objs/*/*.o -o $(NAME) -lreadline
+message:
+	@echo "\033[1;35mCompiling Shell\033[0m"
+
+$(NAME): message $(OBJS)
+	@$(CC) $(CFLAGS) $(INCLUDE) ./objs/*/*.o -o $(NAME) -lreadline
+	@echo "\033[1;32mREADY TO LAUNCH\033[0m"
 
 $(PATH_OBJS)%.o: $(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)
@@ -87,32 +93,41 @@ $(PATH_OBJS)%.o: $(PATH_SRC)%.c
 	@mkdir -p $(PATH_OBJS)parse/
 	@mkdir -p $(PATH_OBJS)utils/
 	@mkdir -p $(PATH_OBJS)main/
-	$(CC) $(CFLAGS) $(INCLUDE) -I. -c $< -o $@ -lreadline
+	@$(CC) $(CFLAGS) $(INCLUDE) -I. -c $< -o $@ -lreadline
 
 bonus: $(NAME_BONUS)
 
-$(NAME_BONUS): $(OBJS_BONUS)
-	$(CC) $(CFLAGS) $(INCLUDE_BONUS) ./objs_bonus/*/*.o -o $(NAME_BONUS) -lreadline
+message_bonus:
+	@echo "\033[1;35mCompiling Bonus\033[0m"
+
+$(NAME_BONUS): message_bonus $(OBJS_BONUS)
+	@$(CC) $(CFLAGS) $(INCLUDE_BONUS) ./objs_bonus/*/*.o -o $(NAME_BONUS) -lreadline
+	@echo "\033[1;32mREADY TO LAUNCH\033[0m"
 
 $(PATH_OBJS_BONUS)%.o: $(PATH_SRC_BONUS)%.c
 	@mkdir -p $(PATH_OBJS_BONUS)
-	@mkdir -p $(PATH_OBJS_BONUS)builtins/
-	@mkdir -p $(PATH_OBJS_BONUS)command/
-	@mkdir -p $(PATH_OBJS_BONUS)env/
-	@mkdir -p $(PATH_OBJS_BONUS)message/
-	@mkdir -p $(PATH_OBJS_BONUS)operators/
-	@mkdir -p $(PATH_OBJS_BONUS)parse/
-	@mkdir -p $(PATH_OBJS_BONUS)utils/
-	@mkdir -p $(PATH_OBJS_BONUS)main/
-	$(CC) $(CFLAGS) $(INCLUDE) -I. -c $< -o $@ -lreadline
+	@mkdir -p $(PATH_OBJS_BONUS)builtins_bonus/
+	@mkdir -p $(PATH_OBJS_BONUS)command_bonus/
+	@mkdir -p $(PATH_OBJS_BONUS)env_bonus/
+	@mkdir -p $(PATH_OBJS_BONUS)message_bonus/
+	@mkdir -p $(PATH_OBJS_BONUS)operators_bonus/
+	@mkdir -p $(PATH_OBJS_BONUS)parse_bonus/
+	@mkdir -p $(PATH_OBJS_BONUS)utils_bonus/
+	@mkdir -p $(PATH_OBJS_BONUS)main_bonus/
+	@$(CC) $(CFLAGS) $(INCLUDE) -I. -c $< -o $@ -lreadline
 
 clean:
-	$(RM) $(PATH_OBJS)
-	$(RM) $(PATH_OBJS_BONUS)
+	@echo "\033[1;33mCleaning objects\033[0m"
+	@$(RM) $(PATH_OBJS)
+	@$(RM) $(PATH_OBJS_BONUS)
+	@echo "\033[1;32mDone!\033[0m"
 
 fclean: clean
-	$(RM) $(NAME)
-	$(RM) $(NAME_BONUS)
+	@echo  "\033[1;33mCleaning all\033[0m"
+	@$(RM) $(NAME)
+	@$(RM) $(NAME_BONUS)
+	@echo  "\033[1;33mCleaning binaries\033[0m"
+	@echo "\033[1;32mDone!\033[0m"
 
 re: fclean all
 
