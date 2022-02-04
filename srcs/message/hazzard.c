@@ -1,6 +1,6 @@
-#include <stdio.h>
+#include <minishell.h>
 
-int	main()
+void	hazzard(void)
 {
 	printf("\033[1;33m			    	   _wr''        '-q__                       \n\
 				_dP                 9m_     \n\

@@ -11,7 +11,7 @@ void	init_shell(char **envp)
 
 void	init_term(void)
 {
-	printf("\033[H\033[J");
+	hazzard();
 }
 
 void	init_minishell(void)

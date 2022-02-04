@@ -75,6 +75,7 @@ enum e_error
 void	init_shell(char **envp);
 void	init_minishell(void);
 void	init_term(void);
+void	hazzard(void);
 
 // BUILTINS
 void	exec_builtin(t_node *cmd);

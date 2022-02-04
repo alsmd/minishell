@@ -89,6 +89,7 @@ void		init_shell(char **envp);
 void		init_minishell(void);
 void		init_term(void);
 void		run(char *buffer);
+void		hazzard(void);
 
 // BUILTINS
 void		exec_builtin(t_node *cmd);

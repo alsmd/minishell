@@ -29,7 +29,7 @@ int	main(int argc, char *argv[], char *envp[])
 	while (1)
 	{
 		signals(PARENT);
-		buffer = readline("MiniShell > ");
+		buffer = readline("MiniShell Bonus > ");
 		if (!buffer)
 			my_exit(NULL);
 		if (buffer[0] == '\0')
