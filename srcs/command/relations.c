@@ -45,13 +45,17 @@ void	create_relations(char *buffer)
 	char	*relation;
 	int		index;
 	int		first;
+	char	quoute_is_on;
 
+	quoute_is_on = 0;
 	index = 0;
 	first = TRUE;
 	while (buffer[index])
 	{
+		
+		toggle_quoute(&buffer[index], &quoute_is_on);
 		relation = is_in(g_minishell.operators, &(buffer[index]));
-		if (relation)
+		if (relation && !quoute_is_on)
 		{	
 			buffer = create_node(buffer, first, index, relation);
 			index = 0;

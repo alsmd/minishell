@@ -17,6 +17,7 @@ void	search_command(t_node *cmd, int fd)
 int	handle_output(t_node *cmd)
 {
 	int		fd;
+	t_node	*tmp;
 
 	if (cmd->relation && !ft_strncmp(cmd->relation, ">>", 2))
 		fd = open(cmd->next->full_instruction, \
@@ -27,10 +28,11 @@ int	handle_output(t_node *cmd)
 	if (fd == -1)
 		return (ERROR_OPEN_FILE);
 	add_fd(fd);
+	tmp = cmd;
 	while (cmd && !is_command(cmd))
 		cmd = cmd->previous;
 	if (cmd == 0)
-		search_command(cmd, fd);
+		search_command(tmp, fd);
 	else
 	{
 		cmd->output = fd;

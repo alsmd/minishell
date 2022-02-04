@@ -53,7 +53,7 @@ int	expand_asterisk(char *buffer, t_node *node, int *limiter)
 		if (buffer[index] == '\'' || buffer[index] == '"')
 		{
 			if (!quoute_is_on)
-				quoute_is_on = TRUE;
+				quoute_is_on = buffer[index];
 			else if (quoute_is_on && buffer[index] == quoute_is_on)
 				quoute_is_on = FALSE;
 		}

@@ -134,6 +134,7 @@ void		free_matrix(char **matrix);
 
 // PARSES
 int			parse_string(char *buffer);
+void		toggle_quoute(char *buffer, char *quoute_is_on);
 void		get_path(void);
 int			is_comand(char *s);
 void		trim_quotes(char **matrix);

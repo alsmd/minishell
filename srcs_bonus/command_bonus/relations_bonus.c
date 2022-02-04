@@ -6,18 +6,21 @@ void	create_relations(char *buffer)
 {
 	int		index;
 	int		first;
+	char	quoute_is_on;
 
+	quoute_is_on = 0;
 	index = 0;
 	first = TRUE;
 	while (buffer[index])
 	{
-		if (buffer[index] == '(')
+		//toggle_quoute(&buffer[index], &quoute_is_on);
+		if (buffer[index] == '(' && !quoute_is_on)
 		{
 			buffer = create_subshell(&buffer[index]);
 			index = 0;
 			continue ;
 		}
-		if (is_in(g_minishell.operators, &(buffer[index])))
+		if (is_in(g_minishell.operators, &(buffer[index])) && !quoute_is_on)
 		{	
 			buffer = create_node(buffer, &first, index, \
 			is_in(g_minishell.operators, &(buffer[index])));

@@ -44,21 +44,25 @@ int	check_quotes(char *s)
 
 int	parse_string(char *buffer)
 {
+	char	quoute_is_on;
+
+	quoute_is_on = 0;
 	if (check_quotes(buffer))
 		return (1);
 	while (*buffer)
 	{
-		if (!ft_strncmp(buffer, ">>>", 3))
+		toggle_quoute(buffer, &quoute_is_on);
+		if (!ft_strncmp(buffer, ">>>", 3) && !quoute_is_on)
 		{
 			show_error(M_ERROR_SINTAX, "'>'", E_ERROR_SINTAX, 0);
 			return (1);
 		}
-		if (*buffer == '\\')
+		if (*buffer == '\\' && !quoute_is_on)
 		{
 			show_error(M_ERROR_SINTAX, "'\\'", E_ERROR_SINTAX, 0);
 			return (1);
 		}
-		if (*buffer == ';')
+		if (*buffer == ';' && !quoute_is_on)
 		{
 			show_error(M_ERROR_SINTAX, "';'", E_ERROR_SINTAX, 0);
 			return (1);

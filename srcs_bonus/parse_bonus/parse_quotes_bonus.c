@@ -64,3 +64,14 @@ void	trim_quotes(char **matrix)
 		j++;
 	}
 }
+
+void	toggle_quoute(char *buffer, char *quoute_is_on)
+{
+	if (*buffer == '\'' || *buffer == '"')
+	{
+		if (!*quoute_is_on)
+			*quoute_is_on = *buffer;
+		else if (*quoute_is_on && *buffer == *quoute_is_on)
+			*quoute_is_on = FALSE;
+	}
+}
