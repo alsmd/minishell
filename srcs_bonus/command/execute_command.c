@@ -15,8 +15,7 @@ static void	exec_extern_cmd(t_node *node)
 	env = get_matrix();
 	clean_trash();
 	g_minishell.exit_code = execve(path, argv, env);
-	printf("\033[1;31mUnknown error!!!: I'm not programmed for this \
-\033[1;97m\"%s\" \033[33m☣\033[0m\n", argv[0]);
+	printf("%s\033[1;97m\"%s\" \033[33m☣\033[0m\n", M_UNK, argv[0]);
 	free_matrix(argv);
 	free_matrix(env);
 	free(path);
@@ -34,6 +33,7 @@ void	expand_node(t_node *node)
 		index++;
 	}
 }
+
 static void	execute_cmd(t_node *node)
 {
 	t_fd	*fds;
@@ -61,16 +61,18 @@ static void	execute_cmd(t_node *node)
 
 t_node	*get_next_chain(t_node *node)
 {
-	if ((node && node->relation && !ft_strncmp(node->relation, "&&", 2) && g_minishell.exit_code != 0) \
-		|| (node && node->relation && !ft_strncmp(node->relation, "||", 2) && g_minishell.exit_code == 0))
+	if ((node && node->relation && !ft_strncmp(node->relation, "&&", 2) && \
+	g_minishell.exit_code != 0) || (node && node->relation && \
+	!ft_strncmp(node->relation, "||", 2) && g_minishell.exit_code == 0))
 	{
 		node = node->next;
-		while (node && (!node->relation || (ft_strncmp(node->relation, "||", 2) \
-			&& ft_strncmp(node->relation, "&&", 2))))
+		while (node && (!node->relation || (ft_strncmp(node->relation, \
+		"||", 2) && ft_strncmp(node->relation, "&&", 2))))
 			node = node->next;
 		if (!node)
 			return (node);
-		if (!ft_strncmp(node->relation, "&&", 2) || !ft_strncmp(node->relation, "||", 2))
+		if (!ft_strncmp(node->relation, "&&", 2) || \
+		!ft_strncmp(node->relation, "||", 2))
 			return (get_next_chain(node));
 		return (node);
 	}
