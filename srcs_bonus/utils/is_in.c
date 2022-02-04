@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_in.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:42:07 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/02/03 04:09:01 by flda-sil         ###   ########.fr       */
+/*   Updated: 2022/02/04 09:28:18 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*is_in(char **array, char *str)
 			return (*array);
 		array++;
 	}
-	return (0);
+	return (NULL);
 }
 
 int	has(char *string, char c)

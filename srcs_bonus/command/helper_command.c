@@ -76,3 +76,8 @@ void	add_fd(int fd)
 		fds->next = new_fd;
 	}
 }
+
+int	get_status(int status)
+{
+	return (((status) & 0xff00) >> 8);
+}

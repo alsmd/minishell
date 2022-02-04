@@ -78,7 +78,6 @@ char	*expand_vars(char *buffer)
 			while (buffer[index] != '\'' && buffer[index])
 				index++;
 		}
-
 		if (buffer[index] == '$' && buffer[index + 1] \
 		!= ' ' && buffer[index + 1])
 			new_buffer = write_variable(new_buffer, buffer, index);

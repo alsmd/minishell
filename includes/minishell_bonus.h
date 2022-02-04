@@ -21,6 +21,7 @@
 # define M_INVALID_FILE ": No such file or directory"
 # define M_ERROR_SINTAX "sintax error near unexpected token "
 # define M_PERMISSION ": Permission denied"
+# define M_UNK "\033[1;31mUnknown error!!!: I'm not programmed for this "
 
 typedef struct s_env
 {
@@ -57,10 +58,10 @@ typedef struct s_fd
 
 typedef struct s_folder
 {
-	char	*buffer;
+	char			*buffer;
 	struct s_folder	*next;
 	struct s_folder	*previous;
-} t_folder;
+}	t_folder;
 
 typedef struct s_minishell
 {
@@ -81,115 +82,131 @@ enum e_error
 	E_PERMISSION = 126,
 	E_COMMAND_NOT_FOUND = 127,
 };
+
 // INIT
-void	init_shell(char **envp);
-void	init_minishell(void);
-void	init_term(void);
-void	run(char *buffer);
+void		init_shell(char **envp);
+void		init_minishell(void);
+void		init_term(void);
+void		run(char *buffer);
 
 // BUILTINS
-void	exec_builtin(t_node *cmd);
-int		is_builtin(t_node *cmd);
-void	env(void);
-void	export(char *command);
-void	unset(char *key);
-void	pwd(void);
-void	cd(char **argv);
-void	my_echo(char **argv);
-void	my_exit(char **argv);
+void		exec_builtin(t_node *cmd);
+int			is_builtin(t_node *cmd);
+void		env(void);
+void		export(char *command);
+void		unset(char *key);
+void		pwd(void);
+void		cd(char **argv);
+void		my_echo(char **argv);
+void		my_exit(char **argv);
 
 // ENV
-void	create_env(char **env);
-void	add_variable(char *key, char *value);
-char	**get_matrix(void);
-char	*get_var_value(char *key);
-int		get_variable_len(char *key);
+void		create_env(char **env);
+void		add_variable(char *key, char *value);
+char		**get_matrix(void);
+char		*get_var_value(char *key);
+int			get_variable_len(char *key);
 
 // MESSAGES
-void	show_error(char *name, char *message, int status, int has_to_exit);
+void		show_error(char *name, char *message, int status, int has_to_exit);
 
 // EXEC
-void	make_shell_command(char *buffer);
-char	*create_node(char *buffer, int first, int index, char *relation);
-void	create_relations(char *buffer);
-void	link_relations(t_node *node);
+void		make_shell_command(char *buffer);
+
+// RELATIONS
+void		link_relations(void);
+char		*create_node(char *buffer, int *first, int index, char *relation);
+char		*create_subshell(char *buffer);
+void		create_relations(char *buffer);
+void		toogle_space(int on);
 
 // EXEC HELPER
-void	validade_command(t_node *node);
-int		get_status(int status);
-void	close_prev_fd(t_node *node);
+void		validade_command(t_node *node);
+int			get_status(int status);
+void		close_prev_fd(t_node *node);
 
 // FREE
-void	clean_trash(void);
-void	clean_node(void);
-void	free_matrix(char **matrix);
+void		clean_trash(void);
+void		clean_node(void);
+void		free_matrix(char **matrix);
 
 // PARSES
-int		parse_string(char *buffer);
-void	get_path(void);
-int		is_comand(char *s);
-void	trim_quotes(char **matrix);
-char	**search_matrix(char **matrix);
-char	*swap_chars(char *cmd, char to_find, char to_put);
-void	check_absolute_path(t_node *cmd);
-int		is_absolute_path(char *cmd);
-char	*expand_vars(char *buffer);
-int		check_grammar(void);
+int			parse_string(char *buffer);
+void		get_path(void);
+int			is_comand(char *s);
+void		trim_quotes(char **matrix);
+char		**search_matrix(char **matrix);
+char		*swap_chars(char *cmd, char to_find, char to_put);
+void		check_absolute_path(t_node *cmd);
+int			is_absolute_path(char *cmd);
+char		*expand_vars(char *buffer);
+int			check_grammar(void);
 
 // CHECK COMMAND
-void	check_absolute_path(t_node *cmd);
-void	check_command_exist(t_node *cmd);
-int		is_command(t_node *node);
+void		check_absolute_path(t_node *cmd);
+void		check_command_exist(t_node *cmd);
+int			is_command(t_node *node);
 
 // OPERATORS
-int		handle_output(t_node *cmd);
-int		handle_input(t_node *cmd);
-int		handle_pipe(t_node *node);
-void	handle_here_doc(t_node *node);
+int			handle_output(t_node *cmd);
+int			handle_input(t_node *cmd);
+int			handle_pipe(t_node *node);
+void		handle_here_doc(t_node *node);
 
 //ASTERISK
-int			get_asterisk_buffer(char *buffer, char *dir);
+void		get_asterisk_buffer(char *buffer, char *dir);
 t_folder	*create_folder_list(char *buffer);
 int			compare(char *string, char *filter);
 t_folder	*add_to_list(t_folder **begin, char *buffer);
 t_folder	*create_folder_list(char *buffer);
 int			expand_asterisk(char *buffer, t_node *node, int *limiter);
+void		search_directories(t_folder *list, char *dir);
+void		search_filter(t_folder *list, char *dir);
+DIR			*create_directory(t_folder *list, char *dir);
+char		*make_path_previous(t_folder *list);
+char		*make_path_next(t_folder *list);
 
-
-
+// EXPAND ASTERISK HELPERS
+char		*get_filter(char *buffer, int index);
+int			get_filter_size(char *buffer);
 
 // OPERATORS HELPERS
-void	change_cmd_stdin(int fd, t_node *node);
-void	write_and_free(int fd, char *line);
-void	free_here_doc(char *line, char *delimiter);
+void		change_cmd_stdin(int fd, t_node *node);
+void		write_and_free(int fd, char *line);
+void		free_here_doc(char *line, char *delimiter);
 
 // SIGNALS
-void	signals(int sig);
+void		signals(int sig);
 
 // COMMAND HELPERS
-t_node	*add_new_cmd(char *command, char *relation);
-void	check_command_exist(t_node *cmd);
-int		is_command(t_node *node);
-void	add_fd(int fd);
-int		get_status(int status);
+t_node		*add_new_cmd(char *command, char *relation);
+void		check_command_exist(t_node *cmd);
+int			is_command(t_node *node);
+void		add_fd(int fd);
+int			get_status(int status);
+void		expand_node(t_node *node);
+void		chose_execute_line(t_node *node, int *status, int id);
+void		execute_subshell(t_node *node);
+void		exec_commands(t_node *node);
 
 // UTILS
-void	ft_bzero(void *s, size_t n);
-void	*ft_calloc(size_t nmemb, size_t size);
-char	**ft_split(char const *s, char c);
-size_t	ft_strlen(const char *s);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strjoin(char *s1, char *s2);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-char	*get_next_line(int fd);
-void	handler_final_file(int fd);
-char	*is_in(char **array, char *str);
-char	*ft_strdup(const char *s);
-char	*ft_strtrim(char *s1, char const *set);
-void	close_fd(int fd);
-int		ft_atoi(const char *nptr);
-char	*ft_itoa(int n);
-void	ft_strlcpy(char *dst, const char *src, size_t size);
-int		has(char *string, char c);
+void		ft_bzero(void *s, size_t n);
+void		*ft_calloc(size_t nmemb, size_t size);
+char		**ft_split(char const *s, char c);
+size_t		ft_strlen(const char *s);
+char		*ft_substr(char const *s, unsigned int start, size_t len);
+char		*ft_strjoin(char *s1, char *s2);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
+char		*get_next_line(int fd);
+void		handler_final_file(int fd);
+char		*is_in(char **array, char *str);
+char		*ft_strdup(const char *s);
+char		*ft_strtrim(char *s1, char const *set);
+void		close_fd(int fd);
+int			ft_atoi(const char *nptr);
+char		*ft_itoa(int n);
+void		ft_strlcpy(char *dst, const char *src, size_t size);
+int			has(char *string, char c);
+char		**join_matriz(char **m1, char **m2, int *limiter);
 
 #endif

@@ -10,15 +10,11 @@ static int	filter_size(char *filter)
 	return (index);
 }
 
-
 static char	*string_forward(char *string, char *filter)
 {
-
-	while ((ft_strncmp(string, filter, filter_size(filter)) || *filter == '\0') && *string)
-	{
-
+	while ((ft_strncmp(string, filter, filter_size(filter)) \
+	|| *filter == '\0') && *string)
 		string++;
-	}
 	return (string);
 }
 
@@ -36,7 +32,6 @@ int	compare(char *string, char *filter)
 			string = string_forward(&string[index], filter);
 			index = 0;
 		}
-		
 		if (string[index] != *filter)
 			return (0);
 		if (!string[index] || !*filter)
