@@ -153,7 +153,8 @@ t_folder	*create_folder_list(char *buffer);
 int			compare(char *string, char *filter);
 t_folder	*add_to_list(t_folder **begin, char *buffer);
 t_folder	*create_folder_list(char *buffer);
-char		*expand_asterisk(char *buffer);
+int			expand_asterisk(char *buffer, t_node *node, int *limiter);
+
 
 
 

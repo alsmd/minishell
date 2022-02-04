@@ -31,7 +31,8 @@ void	expand_node(t_node *node)
 	while (node->argv[index])
 	{
 		node->argv[index] = expand_vars(node->argv[index]);
-		index++;
+		if (!expand_asterisk(node->argv[index], node, &index))
+			index++;
 	}
 }
 static void	execute_cmd(t_node *node)
@@ -135,13 +136,13 @@ void	make_shell_command(char *buffer)
 
 	get_path();
 	create_relations(buffer);
-	/* while (g_minishell.node)
+/* 	while (g_minishell.node)
 	{
-		printf("|%s|\n", *g_minishell.node->argv);
-		if (g_minishell.node->subshell)
-			printf("|%s|\n", g_minishell.node->subshell);
-		if (g_minishell.node->relation)
-			printf("|%s|\n", g_minishell.node->relation);
+		while (*g_minishell.node->argv)
+		{
+			printf("|%s|\n", *g_minishell.node->argv);
+			g_minishell.node->argv += 1;
+		}	
 		g_minishell.node = g_minishell.node->next;
 	}
 	return ; */

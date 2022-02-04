@@ -85,7 +85,6 @@ char	*expand_vars(char *buffer)
 		if (buffer[index])
 			index++;
 	}
-	new_buffer = expand_asterisk(new_buffer);
 	free(buffer);
 	return (new_buffer);
 }
