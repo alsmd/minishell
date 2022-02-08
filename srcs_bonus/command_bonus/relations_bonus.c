@@ -13,7 +13,7 @@ void	create_relations(char *buffer)
 	first = TRUE;
 	while (buffer[index])
 	{
-		//toggle_quoute(&buffer[index], &quoute_is_on);
+		toggle_quoute(&buffer[index], &quoute_is_on);
 		if (buffer[index] == '(' && !quoute_is_on)
 		{
 			buffer = create_subshell(&buffer[index]);

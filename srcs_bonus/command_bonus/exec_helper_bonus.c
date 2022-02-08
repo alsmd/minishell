@@ -48,27 +48,15 @@ static void	execute_cmd(t_node *node)
 	exit(g_minishell.exit_code);
 }
 
-void	chose_execute_line(t_node *node, int *status, int id)
+void	execute_subshell(t_node *node)
 {
-	if (node->subshell != NULL)
-	{
-		id = fork();
-		if (id == 0)
-			execute_subshell(node);
-		waitpid(id, status, 0);
-	}
-	else if (is_command(node))
-	{
-		id = fork();
-		signals(3);
-		if (id == 0)
-		{
-			signals(CHILD);
-			execute_cmd(node);
-		}
-		waitpid(id, status, 0);
-	}
-	*status = get_status(*status);
+	char	*buffer;
+
+	buffer = ft_strdup(node->subshell);
+	clean_node();
+	make_shell_command(buffer);
+	clean_trash();
+	exit(g_minishell.exit_code);
 }
 
 void	close_prev_fd(t_node *node)
