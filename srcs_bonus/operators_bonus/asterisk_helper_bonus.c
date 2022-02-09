@@ -64,32 +64,31 @@ void	free_list(t_folder *begin)
 	}
 }
 
-void	get_asterisk_buffer(char *buffer, char *dir)
+void	search_filter(t_folder *list, char *dir)
 {
-	t_folder		*list;
-	t_folder		*begin;
+	char			*tmp;
+	struct dirent	*file;
+	DIR				*directory;
 
-	if (buffer[0] == '/')
+	directory = create_directory(list, dir);
+	if (!directory)
+		return ;
+	file = readdir(directory);
+	while (file)
 	{
-		free(dir);
-		dir = ft_strdup("");
-	}
-	list = 0;
-	list = create_folder_list(ft_strdup(buffer));
-	begin = list;
-	while (list)
-	{
-		if (has(list->buffer, '*') && list->next)
+		if (compare(file->d_name, list->buffer) && file->d_name[0] != '.')
 		{
-			search_directories(list, dir);
-			break ;
+			tmp = ft_strjoin(make_path_previous(list), file->d_name);
+			g_minishell.asterisk_buffer = ft_strjoin
+				(g_minishell.asterisk_buffer, tmp);
+			free(tmp);
+			g_minishell.asterisk_buffer = ft_strjoin
+				(g_minishell.asterisk_buffer, " ");
+			g_minishell.asterisk_found += 1;
 		}
-		else if (list->next == 0)
-			search_filter(list, dir);
-		list = list->next;
+		file = readdir(directory);
 	}
-	free_list(begin);
-	free(dir);
+	closedir(directory);
 }
 
 DIR	*create_directory(t_folder *list, char *dir)
