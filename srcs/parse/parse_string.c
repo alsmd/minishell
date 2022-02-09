@@ -53,20 +53,15 @@ int	parse_string(char *buffer)
 	{
 		toggle_quoute(buffer, &quoute_is_on);
 		if (!ft_strncmp(buffer, ">>>", 3) && !quoute_is_on)
-		{
 			show_error(M_ERROR_SINTAX, "'>'", E_ERROR_SINTAX, 0);
-			return (1);
-		}
 		if (*buffer == '\\' && !quoute_is_on)
-		{
 			show_error(M_ERROR_SINTAX, "'\\'", E_ERROR_SINTAX, 0);
-			return (1);
-		}
 		if (*buffer == ';' && !quoute_is_on)
-		{
 			show_error(M_ERROR_SINTAX, "';'", E_ERROR_SINTAX, 0);
+		if ((!ft_strncmp(buffer, ">>>", 3) && !quoute_is_on) || \
+			(*buffer == '\\' && !quoute_is_on) || \
+			(*buffer == ';' && !quoute_is_on))
 			return (1);
-		}
 		buffer++;
 	}
 	return (0);

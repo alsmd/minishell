@@ -52,7 +52,6 @@ void	create_relations(char *buffer)
 	first = TRUE;
 	while (buffer[index])
 	{
-		
 		toggle_quoute(&buffer[index], &quoute_is_on);
 		relation = is_in(g_minishell.operators, &(buffer[index]));
 		if (relation && !quoute_is_on)

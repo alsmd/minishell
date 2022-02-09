@@ -2,6 +2,26 @@
 
 extern t_minishell	g_minishell;
 
+char	*check_relation(char *buffer, int *index, int quoute, int *first)
+{
+	if (buffer[*index] == '(' && !quoute)
+	{
+		buffer = create_subshell(&buffer[*index]);
+		*index = 0;
+		return (buffer);
+	}
+	if (is_in(g_minishell.operators, &(buffer[*index])) && !quoute)
+	{	
+		buffer = create_node(buffer, first, *index, \
+		is_in(g_minishell.operators, &(buffer[*index])));
+		*index = 0;
+	}
+	else
+		*index += 1;
+	return (buffer);
+}
+
+
 void	create_relations(char *buffer)
 {
 	int		index;
@@ -13,21 +33,8 @@ void	create_relations(char *buffer)
 	first = TRUE;
 	while (buffer[index])
 	{
-		//toggle_quoute(&buffer[index], &quoute_is_on);
-		if (buffer[index] == '(' && !quoute_is_on)
-		{
-			buffer = create_subshell(&buffer[index]);
-			index = 0;
-			continue ;
-		}
-		if (is_in(g_minishell.operators, &(buffer[index])) && !quoute_is_on)
-		{	
-			buffer = create_node(buffer, &first, index, \
-			is_in(g_minishell.operators, &(buffer[index])));
-			index = 0;
-		}
-		else
-			index++;
+		toggle_quoute(&buffer[index], &quoute_is_on);
+		buffer = check_relation(buffer, &index, quoute_is_on, &first);
 	}
 	if (*buffer != 0)
 		add_new_cmd(buffer, 0);
