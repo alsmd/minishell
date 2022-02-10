@@ -42,16 +42,33 @@ int	check_quotes(char *s)
 	return (0);
 }
 
+int	check_parentheses(char *buffer)
+{
+	int		index;
+	int		parentheses_is_on;
+
+	index = 0;
+	parentheses_is_on = 0;
+
+	return (0);
+}
+
 int	parse_string(char *buffer)
 {
 	char	quoute_is_on;
+	int		parentheses_is_on;
 
 	quoute_is_on = 0;
-	if (check_quotes(buffer))
+	parentheses_is_on = 0;
+	if (check_quotes(buffer) || check_parentheses(buffer))
 		return (1);
 	while (*buffer)
 	{
 		toggle_quoute(buffer, &quoute_is_on);
+		if (*buffer == '(' && quoute_is_on == FALSE)
+			parentheses_is_on += 1;
+		else if (*buffer == ')' && quoute_is_on == FALSE)
+			parentheses_is_on -= 1;
 		if (!ft_strncmp(buffer, ">>>", 3) && !quoute_is_on)
 			show_error(M_ERROR_SINTAX, "'>'", E_ERROR_SINTAX, 0);
 		if (*buffer == '\\' && !quoute_is_on)
@@ -63,6 +80,14 @@ int	parse_string(char *buffer)
 			(*buffer == ';' && !quoute_is_on))
 			return (1);
 		buffer++;
+	}
+	if (parentheses_is_on != 0)
+	{
+		if (parentheses_is_on > 0)
+			show_error(M_ERROR_SINTAX, "'('", E_ERROR_SINTAX, 0);
+		else
+			show_error(M_ERROR_SINTAX, "')'", E_ERROR_SINTAX, 0);
+		return (1);
 	}
 	return (0);
 }

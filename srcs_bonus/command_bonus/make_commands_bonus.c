@@ -15,20 +15,7 @@ void	make_shell_command(char *buffer)
 
 	get_path();
 	create_relations(buffer);
-	// while (g_minishell.node)
-	// {
-	// 	if (g_minishell.node->argv[0])
-	// 		printf("%s\n", g_minishell.node->argv[0]);
-	// 	else
-	// 		printf("sem nome\n");
-	// 	if (g_minishell.node->relation)
-	// 		printf("%s\n", g_minishell.node->relation);
-	// 	else
-	// 		printf("sem relation\n");
-	// 	printf("--------\n");
-	// 	g_minishell.node = g_minishell.node->next;
-	// }
-	// return ;
+	//debuger();
 	free(buffer);
 	if (check_grammar())
 	{

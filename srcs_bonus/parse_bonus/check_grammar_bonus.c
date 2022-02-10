@@ -2,6 +2,15 @@
 
 extern t_minishell	g_minishell;
 
+int	is_redirect(char *str)
+{
+	if (!ft_strncmp(str, ">", -1) || !ft_strncmp(str, "<", -1))
+		return (1);
+	if (!ft_strncmp(str, ">>", -1) || !ft_strncmp(str, "<<", -1))
+		return (1);
+	return (0);
+}
+
 int	check_grammar(void)
 {
 	t_node	*init;
@@ -9,6 +18,12 @@ int	check_grammar(void)
 	init = g_minishell.node;
 	while (init)
 	{
+		if (init->previous && init->subshell && init->previous->relation &&\
+			is_redirect(init->previous->relation))
+		{
+			show_error(M_ERROR_SINTAX, "'('", 2, 0);
+			return (1);
+		}
 		if (init->relation && (!init->next || \
 		!init->next->argv || !init->next->argv[0]))
 		{

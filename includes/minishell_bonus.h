@@ -117,6 +117,7 @@ int			get_variable_len(char *key);
 
 // MESSAGES
 void		show_error(char *name, char *message, int status, int has_to_exit);
+void		debuger(void);
 
 // EXEC
 void		make_shell_command(char *buffer);
