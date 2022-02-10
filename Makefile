@@ -60,6 +60,7 @@ SRCS_BONUS = $(PATH_MAIN_BONUS)main_bonus.c $(PATH_MAIN_BONUS)init_bonus.c $(PAT
 		$(PATH_MESSAGE_BONUS)errors_bonus.c $(PATH_MESSAGE_BONUS)hazzard_bonus.c\
 		$(PATH_OPERATOR_BONUS)pipe_bonus.c $(PATH_OPERATOR_BONUS)redirect_bonus.c $(PATH_OPERATOR_BONUS)signal_bonus.c\
 		$(PATH_OPERATOR_BONUS)redirect_helper_bonus.c $(PATH_OPERATOR_BONUS)asterisk_bonus.c $(PATH_OPERATOR_BONUS)asterisk_helper_bonus.c\
+		$(PATH_OPERATOR_BONUS)asterisk_result_bonus.c\
 		$(PATH_PARSE_BONUS)parse_string_bonus.c $(PATH_PARSE_BONUS)parse_quotes_bonus.c $(PATH_PARSE_BONUS)get_path_bonus.c\
 		$(PATH_PARSE_BONUS)expand_vars_bonus.c $(PATH_PARSE_BONUS)check_grammar_bonus.c $(PATH_PARSE_BONUS)expand_asterisk_bonus.c\
 		$(PATH_PARSE_BONUS)expand_asterisk_helper_bonus.c\

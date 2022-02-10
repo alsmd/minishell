@@ -66,16 +66,7 @@ void	chose_execute_line(t_node *node, int *status, int id)
 			execute_cmd(node);
 		waitpid(id, status, 0);
 	}
-	if (g_minishell.has_signal)
-		*status = g_minishell.exit_code;
-	else
-		*status = get_status(*status);
-	if (*status == 131)
-		write(1, "Quit (core dumped)\n", 20);
-	if (*status == 130)
-		write(1, "\n", 1);
-	if (*status == 130 || *status == 131)
-		exit(*status);
+	set_signal(status);
 }
 
 void	close_prev_fd(t_node *node)

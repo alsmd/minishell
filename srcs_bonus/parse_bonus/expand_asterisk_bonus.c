@@ -29,6 +29,7 @@ void	find_result(char *buffer, t_node *node, int index, int *limiter)
 	char	*filter;
 	char	*temp;
 
+	g_minishell.only_dir = FALSE;
 	filter = get_filter(buffer, index);
 	temp = copy_string_trim(buffer);
 	free(filter);

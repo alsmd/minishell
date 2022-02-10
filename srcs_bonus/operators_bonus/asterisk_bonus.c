@@ -86,7 +86,6 @@ void	search_directories(t_folder *list, char *dir)
 
 void	search_filter(t_folder *list, char *dir)
 {
-	char			*tmp;
 	struct dirent	*file;
 	DIR				*directory;
 
@@ -96,16 +95,10 @@ void	search_filter(t_folder *list, char *dir)
 	file = readdir(directory);
 	while (file)
 	{
-		if (compare(file->d_name, list->buffer) && file->d_name[0] != '.')
-		{
-			tmp = ft_strjoin(make_path_previous(list), file->d_name);
-			g_minishell.asterisk_buffer = ft_strjoin
-				(g_minishell.asterisk_buffer, tmp);
-			free(tmp);
-			g_minishell.asterisk_buffer = ft_strjoin
-				(g_minishell.asterisk_buffer, " ");
-			g_minishell.asterisk_found += 1;
-		}
+		if (compare(file->d_name, list->buffer) && file->d_name[0] != '.'\
+			&& (file->d_type == 10 || file->d_type == 4 || \
+			g_minishell.only_dir == FALSE))
+			add_result(list, file);
 		file = readdir(directory);
 	}
 	closedir(directory);

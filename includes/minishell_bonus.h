@@ -73,6 +73,7 @@ typedef struct s_minishell
 	char	*asterisk_buffer;
 	int		asterisk_found;
 	int		has_signal;
+	int		only_dir;
 	t_env	*env;
 	t_node	*node;
 	t_fd	*fds;
@@ -175,6 +176,7 @@ char		*make_path_next(t_folder *list);
 // EXPAND ASTERISK HELPERS
 char		*get_filter(char *buffer, int index);
 int			get_filter_size(char *buffer);
+void		add_result(t_folder *list, struct dirent *file);
 
 
 // OPERATORS HELPERS
@@ -184,6 +186,7 @@ void		free_here_doc(char *line, char *delimiter);
 
 // SIGNALS
 void		signals(int sig);
+void		set_signal(int *status);
 
 // COMMAND HELPERS
 t_node		*add_new_cmd(char *command, char *relation);

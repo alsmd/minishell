@@ -86,3 +86,20 @@ char	*create_subshell(char *buffer)
 	node->subshell = sub_buffer;
 	return (buffer);
 }
+
+void	set_signal(int *status)
+{
+	if (g_minishell.has_signal)
+		*status = g_minishell.exit_code;
+	else
+		*status = get_status(*status);
+	if (*status == 131)
+		write(1, "Quit (core dumped)\n", 20);
+	if (*status == 130)
+		write(1, "\n", 1);
+	if (*status == 130 || *status == 131)
+	{
+		clean_trash();
+		exit(*status);
+	}
+}

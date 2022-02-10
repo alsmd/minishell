@@ -51,6 +51,7 @@ void	exec_commands(t_node *node)
 {
 	int			status;
 
+	status = 0;
 	if (!node)
 		node = g_minishell.node;
 	while (node)
