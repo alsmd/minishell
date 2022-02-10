@@ -1,4 +1,4 @@
-#include "../../includes/minishell_bonus.h"
+#include <minishell_bonus.h>
 
 static int	filter_size(char *filter)
 {

@@ -49,7 +49,6 @@ char	*write_variable(char *new_buffer, char *buffer, int index)
 {
 	char	*value;
 
-	//limitando o tamanho para o join, colocando byte nulo ante do $
 	value = get_var_value(&buffer[index + 1]);
 	if (*value)
 	{

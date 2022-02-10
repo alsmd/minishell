@@ -76,7 +76,6 @@ void	get_asterisk_buffer(char *buffer, char *dir)
 	}
 	if (buffer[ft_strlen(buffer) - 1] == '/')
 		g_minishell.only_dir = TRUE;
-	list = 0;
 	list = create_folder_list(ft_strdup(buffer));
 	begin = list;
 	while (list)

@@ -1,22 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/09 09:16:09 by flavio            #+#    #+#             */
-/*   Updated: 2021/12/13 19:01:58 by flda-sil         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 # define BUFFER_SIZE 30
 # include <unistd.h>
 # include <stdlib.h>
-# include <errno.h>
-# include <limits.h>
 /*
 	@param fd		File Descriptor
 	@param data		Where the buffer's content will stay.

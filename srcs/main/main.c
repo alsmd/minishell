@@ -26,7 +26,7 @@ char	*cut_dir(char *buffer)
 		i--;
 	if (buffer[i] == '/')
 		i++;
-	return (&buffer[i]);	
+	return (&buffer[i]);
 }
 
 char	*get_user(void)
@@ -65,7 +65,7 @@ char	*get_current_dir(void)
 	current_dir = ft_strjoin(temp, "-$> \033[0m");
 	free(color);
 	free(user);
-	return(current_dir);
+	return (current_dir);
 }
 
 int	main(int argc, char *argv[], char *envp[])
@@ -80,7 +80,6 @@ int	main(int argc, char *argv[], char *envp[])
 		return (-1);
 	}
 	init_shell(envp);
-	
 	while (1)
 	{
 		signals(PARENT);

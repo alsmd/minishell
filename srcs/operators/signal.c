@@ -11,7 +11,6 @@ void	handle_signal_child(int sig)
 
 void	handle_signal_parent(int sig)
 {
-	//write(1, "parent\n", 8);
 	(void)sig;
 	g_minishell.exit_code = 130;
 	g_minishell.has_signal = 1;

@@ -4,25 +4,25 @@ extern t_minishell	g_minishell;
 
 void	show_colors(void)
 {
-	write(2,"\033[1;30mblack\n", 14);
-	write(2,"\033[1;31mred\n", 12);
-	write(2,"\033[1;32mgreen\n", 14);
-	write(2,"\033[1;33myellow\n", 15);
-	write(2,"\033[1;34mblue\n", 13);
-	write(2,"\033[1;35mmagenta\n", 16);
-	write(2,"\033[1;36mcyan\n", 13);
-	write(2,"\033[1;37mgrey_light\n", 19);
-	write(2,"\033[1;90mdark_grey\n", 18);
-	write(2,"\033[1;91mred_light\n", 18);
-	write(2,"\033[1;92mgreen_light\n", 20);
-	write(2,"\033[1;93myellow_light\n", 21);
-	write(2,"\033[1;94mblue_light\n", 19);
-	write(2,"\033[1;95mmagenta_light\n", 22);
-	write(2,"\033[1;96mcyan_light\n", 19);
-	write(2,"\033[1;97mwhite\n", 14);
-	write(2,"\033[;1mbold\n", 11);
-	write(2,"\033[;7minvert\n", 13);
-	write(2,"\033[;0mreset\n", 12);
+	write(2, "\033[1;30mblack\n", 14);
+	write(2, "\033[1;31mred\n", 12);
+	write(2, "\033[1;32mgreen\n", 14);
+	write(2, "\033[1;33myellow\n", 15);
+	write(2, "\033[1;34mblue\n", 13);
+	write(2, "\033[1;35mmagenta\n", 16);
+	write(2, "\033[1;36mcyan\n", 13);
+	write(2, "\033[1;37mgrey_light\n", 19);
+	write(2, "\033[1;90mdark_grey\n", 18);
+	write(2, "\033[1;91mred_light\n", 18);
+	write(2, "\033[1;92mgreen_light\n", 20);
+	write(2, "\033[1;93myellow_light\n", 21);
+	write(2, "\033[1;94mblue_light\n", 19);
+	write(2, "\033[1;95mmagenta_light\n", 22);
+	write(2, "\033[1;96mcyan_light\n", 19);
+	write(2, "\033[1;97mwhite\n", 14);
+	write(2, "\033[;1mbold\n", 11);
+	write(2, "\033[;7minvert\n", 13);
+	write(2, "\033[;0mreset\n", 12);
 }
 
 char	*try_normal(char *color)
@@ -73,16 +73,14 @@ char	*try_light(char *color)
 	return (NULL);
 }
 
-
 char	*get_color(char *color)
 {
-	char *color_result;
+	char	*color_result;
 
 	color_result = try_normal(color);
 	if (!color_result)
 		color_result = try_light(color);
 	return (color_result);
-		
 }
 
 void	set_color(char *color)

@@ -14,6 +14,7 @@ void	run(char *buffer)
 		free(buffer);
 	rl_replace_line("", 0);
 }
+
 char	*cut_dir(char *buffer)
 {
 	int	i;
@@ -23,7 +24,7 @@ char	*cut_dir(char *buffer)
 		i--;
 	if (buffer[i] == '/')
 		i++;
-	return (&buffer[i]);	
+	return (&buffer[i]);
 }
 
 char	*get_user(void)
@@ -62,7 +63,7 @@ char	*get_current_dir(void)
 	current_dir = ft_strjoin(temp, "-$> \033[0m");
 	free(color);
 	free(user);
-	return(current_dir);
+	return (current_dir);
 }
 
 int	main(int argc, char *argv[], char *envp[])
