@@ -40,7 +40,7 @@ void	make_shell_command(char *buffer)
 	else
 	{
 		id = fork();
-		signals(3);
+		signals(IGNORE);
 		if (id == 0)
 		{
 			link_relations();

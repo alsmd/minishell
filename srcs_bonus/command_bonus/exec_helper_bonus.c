@@ -60,15 +60,22 @@ void	chose_execute_line(t_node *node, int *status, int id)
 	else if (is_command(node))
 	{
 		id = fork();
-		signals(3);
+		signals(CHILD);
+		g_minishell.has_signal = 0;
 		if (id == 0)
-		{
-			signals(CHILD);
 			execute_cmd(node);
-		}
 		waitpid(id, status, 0);
 	}
-	*status = get_status(*status);
+	if (g_minishell.has_signal)
+		*status = g_minishell.exit_code;
+	else
+		*status = get_status(*status);
+	if (*status == 131)
+		write(1, "Quit (core dumped)\n", 20);
+	if (*status == 130)
+		write(1, "\n", 1);
+	if (*status == 130 || *status == 131)
+		exit(*status);
 }
 
 void	close_prev_fd(t_node *node)

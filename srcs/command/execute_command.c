@@ -47,8 +47,24 @@ static void	execute_cmd(t_node *node)
 	exit(g_minishell.exit_code);
 }
 
+int	quit_signal(int *status)
+{
+	if (g_minishell.has_signal)
+		*status = g_minishell.exit_code;
+	else
+		*status = get_status(*status);
+	if (*status == 131)
+		write(1, "Quit (core dumped)\n", 20);
+	if (*status == 130)
+		write(1, "\n", 1);
+	if (*status == 130 || *status == 131)
+		return (1);
+	return (0);
+}
+
 void	exec_commands(void)
 {
+	int			status;
 	t_node		*node;
 	int			id;
 
@@ -59,22 +75,20 @@ void	exec_commands(void)
 		if (is_command(node))
 		{
 			id = fork();
-			signals(3);
+			g_minishell.has_signal = 0;
+			signals(CHILD);
 			if (id == 0)
-			{
-				signals(CHILD);
 				execute_cmd(node);
-			}
-			waitpid(id, &g_minishell.exit_code, 0);
-			g_minishell.exit_code = get_status(g_minishell.exit_code);
+			waitpid(id, &status, 0);
 		}
+		if (quit_signal(&status))
+			break ;
 		node = node->next;
 	}
+	g_minishell.exit_code = status;
 	clean_trash();
 	exit(g_minishell.exit_code);
 }
-			// if (g_minishell.exit_code == 2)
-			// 	printf("\n");
 
 void	make_shell_command(char *buffer)
 {
@@ -93,7 +107,7 @@ void	make_shell_command(char *buffer)
 	else
 	{
 		id = fork();
-		signals(3);
+		signals(IGNORE);
 		if (id == 0)
 		{
 			link_relations();

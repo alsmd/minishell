@@ -17,6 +17,7 @@
 # define FALSE 0
 # define PARENT 1
 # define CHILD 2
+# define IGNORE 4
 # define M_UNK "\033[1;31mUnknown error!!!: I'm not programmed for this "
 # define M_COMMAND_NOT_FOUND ": command not found"
 # define M_INVALID_FILE ": No such file or directory"
@@ -71,6 +72,7 @@ typedef struct s_minishell
 	char	**operators;
 	char	*asterisk_buffer;
 	int		asterisk_found;
+	int		has_signal;
 	t_env	*env;
 	t_node	*node;
 	t_fd	*fds;
