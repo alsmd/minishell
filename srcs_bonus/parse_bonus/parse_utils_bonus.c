@@ -12,7 +12,7 @@ int	found_operator(char *buffer, int index, int direction)
 			return (0);
 		index += direction;
 	}
-	return (0);
+	return (1);
 }
 
 int	another_parenthesis(char *buffer, int index)
