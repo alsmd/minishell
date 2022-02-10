@@ -152,6 +152,7 @@ int			is_absolute_path(char *cmd);
 char		*expand_vars(char *buffer);
 int			check_grammar(void);
 char		*copy_string_trim(char *string);
+int			found_operator(char *buffer, int index, int direction);
 
 // CHECK COMMAND
 void		check_absolute_path(t_node *cmd);

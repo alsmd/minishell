@@ -65,7 +65,7 @@ SRCS_BONUS = $(PATH_MAIN_BONUS)main_bonus.c $(PATH_MAIN_BONUS)init_bonus.c $(PAT
 		$(PATH_OPERATOR_BONUS)asterisk_result_bonus.c\
 		$(PATH_PARSE_BONUS)parse_string_bonus.c $(PATH_PARSE_BONUS)parse_quotes_bonus.c $(PATH_PARSE_BONUS)get_path_bonus.c\
 		$(PATH_PARSE_BONUS)expand_vars_bonus.c $(PATH_PARSE_BONUS)check_grammar_bonus.c $(PATH_PARSE_BONUS)expand_asterisk_bonus.c\
-		$(PATH_PARSE_BONUS)expand_asterisk_helper_bonus.c\
+		$(PATH_PARSE_BONUS)expand_asterisk_helper_bonus.c $(PATH_PARSE_BONUS)parse_utils_bonus.c\
 		$(PATH_UTILS_BONUS)ft_bzero_bonus.c $(PATH_UTILS_BONUS)ft_calloc_bonus.c $(PATH_UTILS_BONUS)ft_split_bonus.c\
 		$(PATH_UTILS_BONUS)ft_strdup_bonus.c $(PATH_UTILS_BONUS)ft_strjoin_bonus.c $(PATH_UTILS_BONUS)ft_strlen_bonus.c\
 		$(PATH_UTILS_BONUS)ft_strncmp_bonus.c $(PATH_UTILS_BONUS)ft_strtrim_bonus.c $(PATH_UTILS_BONUS)ft_substr_bonus.c \

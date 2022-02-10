@@ -42,14 +42,44 @@ int	check_quotes(char *s)
 	return (0);
 }
 
-int	check_parentheses(char *buffer)
+int		check_parentheses(char *str, int i, char quoute_is_on, int *pare_is_on)
 {
-	int		index;
-	int		parentheses_is_on;
+	if(str[i] == '(' && quoute_is_on == FALSE)
+	{
+		if (found_operator(str, i + 1, 1))
+		{
+			show_error(M_ERROR_SINTAX, "'('", E_ERROR_SINTAX, 0);
+			return (1);
+		}
+		*pare_is_on += 1;
+	}
+	else if (str[i] == ')' && quoute_is_on == FALSE)
+	{
+		if (found_operator(str, i - 1, -1))
+		{
+			show_error(M_ERROR_SINTAX, "')'", E_ERROR_SINTAX, 0);
+			return (1);
+		}
+		*pare_is_on -= 1;
+	}
+	return (0);
+}
 
-	index = 0;
-	parentheses_is_on = 0;
-
+int	wrong_format(char *buffer, int index, char quoute, int *par_is_on)
+{
+	toggle_quoute(&buffer[index], &quoute);
+	if (check_parentheses(buffer, index, quoute, par_is_on))
+		return (1);
+	if (!ft_strncmp(&buffer[index], ">>>", 3) && !quoute)
+		show_error(M_ERROR_SINTAX, "'>'", E_ERROR_SINTAX, 0);
+	if (buffer[index] == '\\' && !quoute)
+		show_error(M_ERROR_SINTAX, "'\\'", E_ERROR_SINTAX, 0);
+	if (buffer[index] == ';' && !quoute)
+		show_error(M_ERROR_SINTAX, "';'", E_ERROR_SINTAX, 0);
+	if ((!ft_strncmp(&buffer[index], ">>>", 3) && !quoute) || \
+		(buffer[index] == '\\' && !quoute) || \
+		(buffer[index] == ';' && !quoute))
+		return (1);
 	return (0);
 }
 
@@ -57,72 +87,22 @@ int	parse_string(char *buffer)
 {
 	char	quoute_is_on;
 	int		parentheses_is_on;
+	int		index;
 
 	quoute_is_on = 0;
 	parentheses_is_on = 0;
-	if (check_quotes(buffer) || check_parentheses(buffer))
+	index = 0;
+	if (check_quotes(buffer))
 		return (1);
-	while (*buffer)
+	while (buffer[index])
 	{
-		toggle_quoute(buffer, &quoute_is_on);
-		if (*buffer == '(' && quoute_is_on == FALSE)
-			parentheses_is_on += 1;
-		else if (*buffer == ')' && quoute_is_on == FALSE)
-			parentheses_is_on -= 1;
-		if (!ft_strncmp(buffer, ">>>", 3) && !quoute_is_on)
-			show_error(M_ERROR_SINTAX, "'>'", E_ERROR_SINTAX, 0);
-		if (*buffer == '\\' && !quoute_is_on)
-			show_error(M_ERROR_SINTAX, "'\\'", E_ERROR_SINTAX, 0);
-		if (*buffer == ';' && !quoute_is_on)
-			show_error(M_ERROR_SINTAX, "';'", E_ERROR_SINTAX, 0);
-		if ((!ft_strncmp(buffer, ">>>", 3) && !quoute_is_on) || \
-			(*buffer == '\\' && !quoute_is_on) || \
-			(*buffer == ';' && !quoute_is_on))
+		if (wrong_format(buffer, index, quoute_is_on, &parentheses_is_on))
 			return (1);
-		buffer++;
+		index++;
 	}
-	if (parentheses_is_on != 0)
-	{
-		if (parentheses_is_on > 0)
-			show_error(M_ERROR_SINTAX, "'('", E_ERROR_SINTAX, 0);
-		else
-			show_error(M_ERROR_SINTAX, "')'", E_ERROR_SINTAX, 0);
-		return (1);
-	}
-	return (0);
-}
-
-char	*swap_chars(char *cmd, char to_find, char to_put)
-{
-	int	i;
-
-	i = 0;
-	while (cmd[i])
-	{
-		if (cmd[i] == '\'' || cmd[i] == '\"')
-		{
-			i++;
-			while (cmd[i] != '\'' && cmd[i] != '\"' && cmd[i])
-			{
-				if (cmd[i] == to_find)
-					cmd[i] = to_put;
-				i++;
-			}
-		}
-		i++;
-	}
-	return (cmd);
-}
-
-char	**search_matrix(char **matrix)
-{
-	int	i;
-
-	i = 0;
-	while (matrix[i])
-	{
-		matrix[i] = swap_chars(matrix[i], 1, ' ');
-		i++;
-	}
-	return (matrix);
+	if (parentheses_is_on  > 0)
+		show_error(M_ERROR_SINTAX, "'('", E_ERROR_SINTAX, 0);
+	else if (parentheses_is_on < 0)
+		show_error(M_ERROR_SINTAX, "')'", E_ERROR_SINTAX, 0);
+	return (parentheses_is_on);
 }
