@@ -15,6 +15,19 @@ int	found_operator(char *buffer, int index, int direction)
 	return (0);
 }
 
+int	another_parenthesis(char *buffer, int index)
+{
+	while (buffer[index])
+	{
+		if (buffer[index] == '(')
+			return (1);
+		if (buffer[index] != ' ')
+			return (0);
+		index += 1;
+	}
+	return (0);
+}
+
 char	*swap_chars(char *cmd, char to_find, char to_put)
 {
 	int	i;
