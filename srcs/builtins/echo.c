@@ -17,7 +17,8 @@ void	my_echo(char **argv)
 	while (argv[i])
 	{
 		write(1, argv[i], ft_strlen(argv[i]));
-		write(1, " ", 1);
+		if (argv[i + 1])
+			write(1, " ", 1);
 		i++;
 	}
 	if (broke_line == 0)

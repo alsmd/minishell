@@ -91,6 +91,7 @@ void	pwd(void);
 void	cd(char **argv);
 void	my_echo(char **argv);
 void	my_exit(char **argv);
+void	set_color(char *color);
 
 
 // ENV
