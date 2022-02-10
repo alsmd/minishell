@@ -17,9 +17,36 @@ void	run(char *buffer)
 	rl_replace_line("", 0);
 }
 
+char	*cut_dir(char *buffer)
+{
+	int	i;
+
+	i = ft_strlen(buffer) - 1;
+	while (i >= 0 && buffer[i] != '/')
+		i--;
+	if (buffer[i] == '/')
+		i++;
+	return (&buffer[i]);	
+}
+
+char	*get_current_dir(void)
+{
+	char	*current_dir;
+	char	buffer[500];
+	char	*temp;
+	char	*color;
+
+	color = ft_strdup(g_minishell.color);
+	current_dir = getcwd(buffer, 500);
+	temp = ft_strjoin(color, cut_dir(current_dir));
+	current_dir = ft_strjoin(temp, " > \033[0m");
+	return(current_dir);
+}
+
 int	main(int argc, char *argv[], char *envp[])
 {
 	char	*buffer;
+	char	*locate;
 
 	(void)argv;
 	if (argc > 1)
@@ -28,10 +55,13 @@ int	main(int argc, char *argv[], char *envp[])
 		return (-1);
 	}
 	init_shell(envp);
+	
 	while (1)
 	{
 		signals(PARENT);
-		buffer = readline("MiniShell > ");
+		locate = get_current_dir();
+		buffer = readline(locate);
+		free(locate);
 		if (!buffer)
 			my_exit(NULL);
 		if (buffer[0] == '\0')

@@ -18,6 +18,7 @@ void	free_matrix(char **matrix)
 	free(matrix);
 }
 
+
 void	clean_node(void)
 {
 	t_node	*temp;
@@ -71,6 +72,8 @@ void	clean_trash(void)
 	if (g_minishell.operators[7] == NULL)
 		free(g_minishell.operators[8]);
 	free_matrix(g_minishell.operators);
-	clean_fd();
+	clean_fd();	
+	if (g_minishell.color)
+		free(g_minishell.color);
 	free_matrix(g_minishell.paths);
 }

@@ -73,6 +73,8 @@ void	clean_trash(void)
 	if (g_minishell.operators[7] == NULL)
 		free(g_minishell.operators[8]);
 	free_matrix(g_minishell.operators);
+	if (g_minishell.color)
+		free(g_minishell.color);
 	clean_fd();
 	free_matrix(g_minishell.paths);
 }

@@ -12,6 +12,7 @@
 # include <sys/stat.h>
 # include <term.h>
 # include <curses.h>
+# include <colors.h>
 # define TRUE 1
 # define FALSE 0
 # define PARENT 1
@@ -61,6 +62,7 @@ typedef struct s_minishell
 	char	**paths;
 	char	**operators;
 	int		has_signal;
+	char 	*color;
 	t_env	*env;
 	t_node	*node;
 	t_fd	*fds;
@@ -89,6 +91,7 @@ void	pwd(void);
 void	cd(char **argv);
 void	my_echo(char **argv);
 void	my_exit(char **argv);
+
 
 // ENV
 void	create_env(char **env);

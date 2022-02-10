@@ -13,6 +13,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <dirent.h>
+# include <colors_bonus.h>
 # define TRUE 1
 # define FALSE 0
 # define PARENT 1
@@ -74,6 +75,7 @@ typedef struct s_minishell
 	int		asterisk_found;
 	int		has_signal;
 	int		only_dir;
+	char	*color;
 	t_env	*env;
 	t_node	*node;
 	t_fd	*fds;
@@ -104,6 +106,7 @@ void		pwd(void);
 void		cd(char **argv);
 void		my_echo(char **argv);
 void		my_exit(char **argv);
+void		set_color(char *color);
 
 // ENV
 void		create_env(char **env);

@@ -35,6 +35,7 @@ PATH_OBJS_BONUS = ./objs_bonus/
 SRCS =	$(PATH_MAIN)main.c	$(PATH_MAIN)init.c $(PATH_MAIN)clean_trash.c\
 		$(PATH_BUILTINS)env.c $(PATH_BUILTINS)check_builtin.c $(PATH_BUILTINS)pwd.c\
 		$(PATH_BUILTINS)cd.c $(PATH_BUILTINS)my_exit.c $(PATH_BUILTINS)echo.c\
+		$(PATH_BUILTINS)set_color.c\
 		$(PATH_COMMAND)execute_command.c $(PATH_COMMAND)helper_command.c $(PATH_COMMAND)check_command.c\
 		$(PATH_COMMAND)relations.c $(PATH_COMMAND)exec_helper.c\
 		$(PATH_ENV)create_env.c $(PATH_ENV)get_matrix.c\
@@ -53,6 +54,7 @@ SRCS =	$(PATH_MAIN)main.c	$(PATH_MAIN)init.c $(PATH_MAIN)clean_trash.c\
 SRCS_BONUS = $(PATH_MAIN_BONUS)main_bonus.c $(PATH_MAIN_BONUS)init_bonus.c $(PATH_MAIN_BONUS)clean_trash_bonus.c\
 		$(PATH_BUILTINS_BONUS)env_bonus.c $(PATH_BUILTINS_BONUS)check_builtin_bonus.c $(PATH_BUILTINS_BONUS)pwd_bonus.c\
 		$(PATH_BUILTINS_BONUS)cd_bonus.c $(PATH_BUILTINS_BONUS)my_exit_bonus.c $(PATH_BUILTINS_BONUS)echo_bonus.c\
+		$(PATH_BUILTINS_BONUS)set_color_bonus.c\
 		$(PATH_COMMAND_BONUS)execute_command_bonus.c $(PATH_COMMAND_BONUS)helper_command_bonus.c $(PATH_COMMAND_BONUS)check_command_bonus.c\
 		$(PATH_COMMAND_BONUS)relations_bonus.c $(PATH_COMMAND_BONUS)relations_helper_bonus.c $(PATH_COMMAND_BONUS)exec_helper_bonus.c\
 		$(PATH_COMMAND_BONUS)make_commands_bonus.c\
@@ -135,9 +137,9 @@ re: fclean all
 re_bonus: fclean bonus
 
 run: all
-	clear && valgrind --leak-check=full --show-leak-kinds=all --suppressions=readline.supp ./minishell
+	make re && valgrind --leak-check=full --show-leak-kinds=all --suppressions=readline.supp ./minishell
 
 run_bonus: bonus
-	clear && valgrind --leak-check=full --show-leak-kinds=all --suppressions=readline.supp ./minishell_bonus
+	make re_bonus && valgrind --leak-check=full --show-leak-kinds=all --suppressions=readline.supp ./minishell_bonus
 
 .PHONY: all bonus run run_bonus re re_bonus clean fclean

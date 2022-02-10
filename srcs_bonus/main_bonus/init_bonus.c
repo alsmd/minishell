@@ -17,6 +17,7 @@ void	init_term(void)
 void	init_minishell(void)
 {
 	ft_bzero(&g_minishell, sizeof(t_minishell));
+	g_minishell.color = ft_strdup(BLUE);
 	g_minishell.operators = (char **) ft_calloc(9, sizeof(char *));
 	g_minishell.operators[0] = ft_strdup("||");
 	g_minishell.operators[1] = ft_strdup("<<");
