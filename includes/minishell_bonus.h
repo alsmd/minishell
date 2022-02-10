@@ -146,6 +146,7 @@ void		check_absolute_path(t_node *cmd);
 int			is_absolute_path(char *cmd);
 char		*expand_vars(char *buffer);
 int			check_grammar(void);
+char		*copy_string_trim(char *string);
 
 // CHECK COMMAND
 void		check_absolute_path(t_node *cmd);
@@ -174,6 +175,7 @@ char		*make_path_next(t_folder *list);
 // EXPAND ASTERISK HELPERS
 char		*get_filter(char *buffer, int index);
 int			get_filter_size(char *buffer);
+
 
 // OPERATORS HELPERS
 void		change_cmd_stdin(int fd, t_node *node);

@@ -27,8 +27,12 @@ int	custom_size_before(char *filter)
 void	find_result(char *buffer, t_node *node, int index, int *limiter)
 {
 	char	*filter;
+	char	*temp;
 
 	filter = get_filter(buffer, index);
+	temp = copy_string_trim(buffer);
+	free(filter);
+	filter = temp;
 	if (g_minishell.asterisk_buffer)
 		free(g_minishell.asterisk_buffer);
 	g_minishell.asterisk_buffer = ft_strdup("");
