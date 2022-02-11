@@ -41,6 +41,8 @@ void	execute_subshell(t_node *node)
 	char	*buffer;
 
 	buffer = ft_strdup(node->subshell);
+	dup2(node->input, STDIN_FILENO);
+	dup2(node->output, STDOUT_FILENO);
 	clean_node();
 	make_shell_command(buffer);
 	clean_trash();
