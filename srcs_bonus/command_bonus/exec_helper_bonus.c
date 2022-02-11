@@ -27,7 +27,7 @@ static void	execute_cmd(t_node *node)
 	t_fd	*fds;
 
 	expand_node(node);
-	trim_quotes(g_minishell.node->argv);
+	trim_quotes(node->argv);
 	fds = g_minishell.fds;
 	while (fds)
 	{
