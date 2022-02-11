@@ -58,12 +58,26 @@ void	exec_commands(t_node *node)
 		node = g_minishell.node;
 	while (node)
 	{
+		if (g_minishell.debug_is_on && g_minishell.debug_mode == 1)
+		{
+			status = fork();
+			if (status == 0)
+			{
+				expand_node(node);
+				trim_quotes(node->argv);
+				print_debuger_table(node);
+			}
+			waitpid(status, NULL, 0);
+			node = node->next;
+			continue ;
+		}
 		close_prev_fd(node);
 		chose_execute_line(node, &status, 0);
 		if (!node->relation || ((!ft_strncmp(node->relation, "||", 2)
 					|| !ft_strncmp(node->relation, "&&", 2))))
 			g_minishell.exit_code = status;
-		node = get_next_chain(node);
+		if (g_minishell.debug_mode == 0)
+			node = get_next_chain(node);
 		if (node)
 			node = node->next;
 	}

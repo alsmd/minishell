@@ -6,8 +6,9 @@ void	print_debuger_table(t_node *node)
 {
 	if (g_minishell.debug_flags.show_nodes)
 		show_nodes(node);
-	if (g_minishell.debug_flags.exec_cmd == FALSE)
-		exit(0);
+	//if (g_minishell.debug_flags.show_subshell && node->subshell)
+//		show_subshell(node->subshell);
+	exit(0);
 }
 
 void	turn_on_debug_flags(char **flags)
@@ -39,6 +40,7 @@ void	debuger(char **flags)
 	{
 		printf("Debug mode is disable!\n");
 		ft_bzero(&g_minishell.debug_flags, sizeof(t_debug));
+		g_minishell.debug_mode = 0;
 		g_minishell.debug_is_on = 0;
 	}
 	if (g_minishell.debug_is_on)

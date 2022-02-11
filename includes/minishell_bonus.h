@@ -79,6 +79,7 @@ typedef struct s_minishell
 	int		has_signal;
 	int		only_dir;
 	char	*color;
+	int		debug_mode;
 	int		debug_is_on;
 	t_debug	debug_flags;
 	t_env	*env;
@@ -98,6 +99,7 @@ enum e_error
 void		debuger(char **flags);
 void		print_debuger_table(t_node *node);
 void		show_nodes(t_node *node);
+void		show_subshell(char *buffer);
 
 // INIT
 void		init_shell(char **envp);
@@ -142,6 +144,7 @@ void		toogle_space(int on);
 void		validade_command(t_node *node);
 int			get_status(int status);
 void		close_prev_fd(t_node *node);
+void		execute_subshell(t_node *node);
 
 // FREE
 void		clean_trash(void);

@@ -5,11 +5,29 @@ t_minishell	g_minishell;
 void	run(char *buffer)
 {
 	int		status;
+	int		id;
 
 	add_history(buffer);
 	status = parse_string(buffer);
 	if (status == 0)
-		make_shell_command(buffer);
+	{
+		if (g_minishell.debug_is_on)
+		{
+			g_minishell.debug_mode = 1;
+			id = fork();
+			if (id == 0)
+			{
+				make_shell_command(buffer);
+				exit(0);
+			}
+			waitpid(id, NULL, 0);
+			g_minishell.debug_mode = 0;
+		}
+		if ((!ft_strncmp(buffer, "debug ", 5)) && g_minishell.debug_is_on)
+			make_shell_command(buffer);
+		else if (!g_minishell.debug_is_on || g_minishell.debug_flags.exec_cmd)
+			make_shell_command(buffer);
+	}
 	else
 		free(buffer);
 	rl_replace_line("", 0);
