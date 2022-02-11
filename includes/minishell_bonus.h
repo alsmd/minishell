@@ -61,6 +61,14 @@ typedef struct s_folder
 	struct s_folder	*previous;
 }	t_folder;
 
+typedef struct s_debug
+{
+	int	show_nodes;
+	int	show_subshell;
+	int	exec_cmd;
+}	t_debug;
+
+
 typedef struct s_minishell
 {
 	int		exit_code;
@@ -71,6 +79,8 @@ typedef struct s_minishell
 	int		has_signal;
 	int		only_dir;
 	char	*color;
+	int		debug_is_on;
+	t_debug	debug_flags;
 	t_env	*env;
 	t_node	*node;
 	t_fd	*fds;
@@ -83,6 +93,11 @@ enum e_error
 	E_PERMISSION = 126,
 	E_COMMAND_NOT_FOUND = 127,
 };
+
+// DEBUG
+void		debuger(char **flags);
+void		print_debuger_table(t_node *node);
+void		show_nodes(t_node *node);
 
 // INIT
 void		init_shell(char **envp);
@@ -112,7 +127,6 @@ int			get_variable_len(char *key);
 
 // MESSAGES
 void		show_error(char *name, char *message, int status, int has_to_exit);
-void		debuger(void);
 
 // EXEC
 void		make_shell_command(char *buffer);

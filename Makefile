@@ -24,6 +24,7 @@ PATH_OBJS = ./objs/
 PATH_SRC_BONUS = ./srcs_bonus/
 PATH_MAIN_BONUS = $(PATH_SRC_BONUS)main_bonus/
 PATH_COMMAND_BONUS = $(PATH_SRC_BONUS)command_bonus/
+PATH_DEBUG_BONUS = $(PATH_SRC_BONUS)debug_bonus/
 PATH_ENV_BONUS = $(PATH_SRC_BONUS)env_bonus/
 PATH_OPERATOR_BONUS = $(PATH_SRC_BONUS)operators_bonus/
 PATH_MESSAGE_BONUS = $(PATH_SRC_BONUS)message_bonus/
@@ -58,8 +59,9 @@ SRCS_BONUS = $(PATH_MAIN_BONUS)main_bonus.c $(PATH_MAIN_BONUS)init_bonus.c $(PAT
 		$(PATH_COMMAND_BONUS)execute_command_bonus.c $(PATH_COMMAND_BONUS)helper_command_bonus.c $(PATH_COMMAND_BONUS)check_command_bonus.c\
 		$(PATH_COMMAND_BONUS)relations_bonus.c $(PATH_COMMAND_BONUS)relations_helper_bonus.c $(PATH_COMMAND_BONUS)exec_helper_bonus.c\
 		$(PATH_COMMAND_BONUS)make_commands_bonus.c\
+		$(PATH_DEBUG_BONUS)debuger_bonus.c $(PATH_DEBUG_BONUS)show_node_bonus.c\
 		$(PATH_ENV_BONUS)create_env_bonus.c $(PATH_ENV_BONUS)get_matrix_bonus.c\
-		$(PATH_MESSAGE_BONUS)errors_bonus.c $(PATH_MESSAGE_BONUS)hazzard_bonus.c $(PATH_MESSAGE_BONUS)debuger_bonus.c\
+		$(PATH_MESSAGE_BONUS)errors_bonus.c $(PATH_MESSAGE_BONUS)hazzard_bonus.c \
 		$(PATH_OPERATOR_BONUS)pipe_bonus.c $(PATH_OPERATOR_BONUS)redirect_bonus.c $(PATH_OPERATOR_BONUS)signal_bonus.c\
 		$(PATH_OPERATOR_BONUS)redirect_helper_bonus.c $(PATH_OPERATOR_BONUS)asterisk_bonus.c $(PATH_OPERATOR_BONUS)asterisk_helper_bonus.c\
 		$(PATH_OPERATOR_BONUS)asterisk_result_bonus.c\
@@ -108,6 +110,7 @@ $(PATH_OBJS_BONUS)%.o: $(PATH_SRC_BONUS)%.c
 	@mkdir -p $(PATH_OBJS_BONUS)
 	@mkdir -p $(PATH_OBJS_BONUS)builtins_bonus/
 	@mkdir -p $(PATH_OBJS_BONUS)command_bonus/
+	@mkdir -p $(PATH_OBJS_BONUS)debug_bonus/
 	@mkdir -p $(PATH_OBJS_BONUS)env_bonus/
 	@mkdir -p $(PATH_OBJS_BONUS)message_bonus/
 	@mkdir -p $(PATH_OBJS_BONUS)operators_bonus/
