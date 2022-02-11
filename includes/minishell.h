@@ -5,19 +5,15 @@
 # include <readline/history.h>
 # include <signal.h>
 # include <unistd.h>
-# include <sys/types.h>
 # include <sys/wait.h>
 # include <fcntl.h>
 # include <stdlib.h>
-# include <sys/stat.h>
-# include <term.h>
-# include <curses.h>
 # include <colors.h>
 # define TRUE 1
 # define FALSE 0
 # define PARENT 1
 # define CHILD 2
-# define IGNORE 4
+# define IGNORE 3
 # define M_UNK "\033[1;31mUnknown error!!!: I'm not programmed for this "
 # define M_COMMAND_NOT_FOUND ": command not found"
 # define M_INVALID_FILE ": No such file or directory"
@@ -62,7 +58,7 @@ typedef struct s_minishell
 	char	**paths;
 	char	**operators;
 	int		has_signal;
-	char 	*color;
+	char	*color;
 	t_env	*env;
 	t_node	*node;
 	t_fd	*fds;

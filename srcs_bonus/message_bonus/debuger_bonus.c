@@ -14,6 +14,11 @@ void	debuger(void)
 			printf("relation: %s\n", g_minishell.node->relation);
 		else
 			printf("sem relation\n");
+		if (g_minishell.node->argv)
+		{
+            for(int i = 0; g_minishell.node->argv[i]; i++)
+                printf("args: %s\tindex: %d\n",g_minishell.node->argv[i], i);
+		}
 		if (g_minishell.node->subshell)
 			printf("é subshell: yes\n");
 		else

@@ -15,8 +15,7 @@ static void	exec_extern_cmd(t_node *node)
 	env = get_matrix();
 	clean_trash();
 	g_minishell.exit_code = execve(path, argv, env);
-	printf("\033[1;31mUnknown error!!!: I'm not programmed for this \
-\033[1;97m\"%s\" \033[33m☣\033[0m\n", argv[0]);
+	printf("%s\033[1;97m\"%s\" \033[33m☣\033[0m\n", M_UNK, argv[0]);
 	free_matrix(argv);
 	free_matrix(env);
 	free(path);

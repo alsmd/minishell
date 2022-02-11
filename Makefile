@@ -82,7 +82,7 @@ all: $(NAME)
 message:
 	@echo "\033[1;35mCompiling Shell\033[0m"
 
-$(NAME): message $(OBJS)
+$(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(INCLUDE) ./objs/*/*.o -o $(NAME) -lreadline
 	@echo "\033[1;32mREADY TO LAUNCH\033[0m"
 
@@ -100,10 +100,7 @@ $(PATH_OBJS)%.o: $(PATH_SRC)%.c
 
 bonus: $(NAME_BONUS)
 
-message_bonus:
-	@echo "\033[1;35mCompiling Bonus\033[0m"
-
-$(NAME_BONUS): message_bonus $(OBJS_BONUS)
+$(NAME_BONUS): $(OBJS_BONUS)
 	@$(CC) $(CFLAGS) $(INCLUDE_BONUS) ./objs_bonus/*/*.o -o $(NAME_BONUS) -lreadline
 	@echo "\033[1;32mREADY TO LAUNCH\033[0m"
 

@@ -15,7 +15,7 @@ void	make_shell_command(char *buffer)
 
 	get_path();
 	create_relations(buffer);
-	//debuger();
+	// debuger();
 	free(buffer);
 	if (check_grammar())
 	{

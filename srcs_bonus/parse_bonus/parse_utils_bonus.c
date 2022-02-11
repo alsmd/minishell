@@ -30,19 +30,23 @@ int	another_parenthesis(char *buffer, int index)
 
 char	*swap_chars(char *cmd, char to_find, char to_put)
 {
-	int	i;
+	int		i;
+	char	quote_is_on;
 
+	quote_is_on = FALSE;
 	i = 0;
 	while (cmd[i])
 	{
-		if (cmd[i] == '\'' || cmd[i] == '\"')
+		toggle_quoute(&cmd[i], &quote_is_on);
+		if (quote_is_on)
 		{
 			i++;
-			while (cmd[i] != '\'' && cmd[i] != '\"' && cmd[i])
+			while (quote_is_on && cmd[i])
 			{
 				if (cmd[i] == to_find)
 					cmd[i] = to_put;
 				i++;
+				toggle_quoute(&cmd[i], &quote_is_on);
 			}
 		}
 		i++;
