@@ -19,8 +19,8 @@ void	show_nodes(t_node *node)
 	int	i;
 
 	i = 0;
-	if (node->argv[0])
-		printf("nome: %s\n", node->argv[0]);
+	if (node->full_path)
+		printf("nome: %s\n", node->full_path);
 	else
 		printf("sem nome\n");
 	if (node->relation)

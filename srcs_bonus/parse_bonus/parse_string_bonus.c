@@ -66,20 +66,20 @@ int		check_parentheses(char *str, int i, char quoute_is_on, int *pare_is_on)
 	return (0);
 }
 
-int	wrong_format(char *buffer, int index, char quoute, int *par_is_on)
+int	wrong_format(char *buffer, int index, char *quoute, int *par_is_on)
 {
-	toggle_quoute(&buffer[index], &quoute);
-	if (check_parentheses(buffer, index, quoute, par_is_on))
+	toggle_quoute(&buffer[index], quoute);
+	if (check_parentheses(buffer, index, *quoute, par_is_on))
 		return (1);
-	if (!ft_strncmp(&buffer[index], ">>>", 3) && !quoute)
+	if (!ft_strncmp(&buffer[index], ">>>", 3) && !*quoute)
 		show_error(M_ERROR_SINTAX, "'>'", E_ERROR_SINTAX, 0);
-	if (buffer[index] == '\\' && !quoute)
+	if (buffer[index] == '\\' && !*quoute)
 		show_error(M_ERROR_SINTAX, "'\\'", E_ERROR_SINTAX, 0);
-	if (buffer[index] == ';' && !quoute)
+	if (buffer[index] == ';' && !*quoute)
 		show_error(M_ERROR_SINTAX, "';'", E_ERROR_SINTAX, 0);
-	if ((!ft_strncmp(&buffer[index], ">>>", 3) && !quoute) || \
-		(buffer[index] == '\\' && !quoute) || \
-		(buffer[index] == ';' && !quoute))
+	if ((!ft_strncmp(&buffer[index], ">>>", 3) && !*quoute) || \
+		(buffer[index] == '\\' && !*quoute) || \
+		(buffer[index] == ';' && !*quoute))
 		return (1);
 	return (0);
 }
@@ -97,7 +97,7 @@ int	parse_string(char *buffer)
 		return (1);
 	while (buffer[index])
 	{
-		if (wrong_format(buffer, index, quoute_is_on, &parentheses_is_on))
+		if (wrong_format(buffer, index, &quoute_is_on, &parentheses_is_on))
 			return (1);
 		index++;
 	}
