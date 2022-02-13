@@ -4,6 +4,7 @@
 		"minishell.h": "c",
 		"dirent.h": "c",
 		"history.h": "c",
-		"minishell_bonus.h": "c"
+		"minishell_bonus.h": "c",
+		"unistd.h": "c"
 	}
 }

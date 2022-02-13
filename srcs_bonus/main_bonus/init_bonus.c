@@ -4,7 +4,9 @@ extern t_minishell	g_minishell;
 
 void	init_shell(char **envp)
 {
-	init_term();
+	g_minishell.str_env = envp;
+	if (g_minishell.debug_mode == 0)
+		init_term();
 	init_minishell();
 	create_env(envp);
 }
@@ -18,7 +20,6 @@ void	init_minishell(void)
 {
 	ft_bzero(&g_minishell, sizeof(t_minishell));
 	g_minishell.color = ft_strdup(RED);
-	g_minishell.debug_is_on = 0;
 	g_minishell.operators = (char **) ft_calloc(9, sizeof(char *));
 	g_minishell.operators[0] = ft_strdup("||");
 	g_minishell.operators[1] = ft_strdup("<<");

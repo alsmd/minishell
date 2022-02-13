@@ -6,8 +6,8 @@ void	print_debuger_table(t_node *node)
 {
 	if (g_minishell.debug_flags.show_nodes)
 		show_nodes(node);
-	//if (g_minishell.debug_flags.show_subshell && node->subshell)
-//		show_subshell(node->subshell);
+	if (g_minishell.debug_flags.show_subshell && node->subshell)
+		show_subshell(node->subshell);
 	exit(0);
 }
 

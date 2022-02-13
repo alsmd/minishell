@@ -4,7 +4,8 @@ extern t_minishell	g_minishell;
 
 void	show_subshell(char *buffer)
 {
-	int	id;
+	t_debug	debug_flags;
+	int		id;
 
 	(void)id;
 	printf("|%s|\n", buffer);
@@ -12,7 +13,14 @@ void	show_subshell(char *buffer)
 	if (id == 0)
 	{
 		g_minishell.debug_mode = 1;
+		debug_flags = g_minishell.debug_flags;
+		clean_trash();
+		init_shell(g_minishell.str_env);
+		g_minishell.debug_mode = 1;
+		g_minishell.debug_is_on = 1;
+		g_minishell.debug_flags = debug_flags;
 		make_shell_command(buffer);
+		clean_trash();
 		exit(0);
 	}
 	waitpid(id, NULL, 0);
