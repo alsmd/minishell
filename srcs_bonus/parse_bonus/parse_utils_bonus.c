@@ -8,6 +8,8 @@ int	found_operator(char *buffer, int index, int direction)
 	{
 		if (is_in(g_minishell.operators, &(buffer[index])))
 			return (1);
+		if (index - 1 >= 0 && is_in(g_minishell.operators, &(buffer[index - 1])))
+			return (1);
 		if (buffer[index] != ' ')
 			return (0);
 		index += direction;
