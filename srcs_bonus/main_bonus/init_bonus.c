@@ -4,10 +4,10 @@ extern t_minishell	g_minishell;
 
 void	init_shell(char **envp)
 {
-	g_minishell.str_env = envp;
 	if (g_minishell.debug_mode == 0)
 		init_term();
 	init_minishell();
+	g_minishell.str_env = envp;
 	create_env(envp);
 }
 

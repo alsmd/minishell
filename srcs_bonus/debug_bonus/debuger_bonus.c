@@ -2,13 +2,29 @@
 
 extern t_minishell	g_minishell;
 
+void	debug_mode(char *buffer)
+{
+	t_debug	debug_flags;
+
+	debug_flags = g_minishell.debug_flags;
+	g_minishell.debug_mode = 1;
+	clean_trash();
+	init_shell(g_minishell.str_env);
+	g_minishell.debug_mode = 1;
+	g_minishell.debug_is_on = 1;
+	g_minishell.debug_flags = debug_flags;
+	(void)buffer;
+	make_shell_command(buffer);
+	clean_trash();
+	exit(0);
+}
+
 void	print_debuger_table(t_node *node)
 {
 	if (g_minishell.debug_flags.show_nodes)
 		show_nodes(node);
 	if (g_minishell.debug_flags.show_subshell && node->subshell)
-		show_subshell(node->subshell);
-	exit(0);
+		show_subshell(ft_strdup(node->subshell));
 }
 
 void	turn_on_debug_flags(char **flags)

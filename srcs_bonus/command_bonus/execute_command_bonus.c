@@ -60,14 +60,9 @@ void	exec_commands(t_node *node)
 	{
 		if (g_minishell.debug_is_on && g_minishell.debug_mode == 1)
 		{
-			status = fork();
-			if (status == 0)
-			{
-				expand_node(node);
-				trim_quotes(node->argv);
-				print_debuger_table(node);
-			}
-			waitpid(status, NULL, 0);
+			expand_node(node);
+			trim_quotes(node->argv);
+			print_debuger_table(node);
 			node = node->next;
 			continue ;
 		}

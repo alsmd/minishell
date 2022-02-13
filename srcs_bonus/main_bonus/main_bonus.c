@@ -13,15 +13,10 @@ void	run(char *buffer)
 	{
 		if (g_minishell.debug_is_on)
 		{
-			g_minishell.debug_mode = 1;
 			id = fork();
 			if (id == 0)
-			{
-				make_shell_command(buffer);
-				exit(0);
-			}
+				debug_mode(buffer);
 			waitpid(id, NULL, 0);
-			g_minishell.debug_mode = 0;
 		}
 		if ((!ft_strncmp(buffer, "debug ", 5)) && g_minishell.debug_is_on)
 			make_shell_command(buffer);

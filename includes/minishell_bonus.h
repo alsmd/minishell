@@ -101,6 +101,7 @@ void		debuger(char **flags);
 void		print_debuger_table(t_node *node);
 void		show_nodes(t_node *node);
 void		show_subshell(char *buffer);
+void		debug_mode(char *buffer);
 
 // INIT
 void		init_shell(char **envp);
