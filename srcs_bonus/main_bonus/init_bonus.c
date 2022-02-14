@@ -7,7 +7,7 @@ void	init_shell(char **envp)
 	if (g_minishell.debug_mode == 0)
 		init_term();
 	init_minishell();
-	g_minishell.str_env = envp;
+	g_minishell.matrix_env = envp;
 	create_env(envp);
 }
 

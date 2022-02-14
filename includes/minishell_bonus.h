@@ -79,7 +79,7 @@ typedef struct s_minishell
 	int		has_signal;
 	int		only_dir;
 	char	*color;
-	char	**str_env;
+	char	**matrix_env;
 	int		debug_mode;
 	int		debug_is_on;
 	t_debug	debug_flags;
