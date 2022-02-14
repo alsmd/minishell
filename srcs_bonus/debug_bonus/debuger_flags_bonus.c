@@ -36,7 +36,6 @@ void	turn_on_debug_flags(char **flags)
 		else if (!ft_strncmp(flags[i], "--exec-cmd", -1))
 			g_minishell.debug_flags.exec_cmd = TRUE;
 		else if (delete_flags(flags[i]))
-
 			continue ;
 		else if (!ft_strncmp(flags[i], "-h", -1) && i == 1 && !flags[i + 1])
 			print_flags();

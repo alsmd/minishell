@@ -89,7 +89,6 @@ void	my_echo(char **argv);
 void	my_exit(char **argv);
 void	set_color(char *color);
 
-
 // ENV
 void	create_env(char **env);
 void	add_variable(char *key, char *value);

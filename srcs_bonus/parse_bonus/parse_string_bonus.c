@@ -42,11 +42,12 @@ int	check_quotes(char *s)
 	return (0);
 }
 
-int		check_parentheses(char *str, int i, char quoute_is_on, int *pare_is_on)
+int	check_parentheses(char *str, int i, char quoute_is_on, int *pare_is_on)
 {
-	if(str[i] == '(' && quoute_is_on == FALSE)
+	if (str[i] == '(' && quoute_is_on == FALSE)
 	{
-		if (!found_operator_left(str, i - 1)  || found_operator_right(str, i + 1))
+		if (!found_operator_left(str, i - 1) || \
+			found_operator_right(str, i + 1))
 		{
 			show_error(M_ERROR_SINTAX, "'('", E_ERROR_SINTAX, 0);
 			return (1);
@@ -55,8 +56,8 @@ int		check_parentheses(char *str, int i, char quoute_is_on, int *pare_is_on)
 	}
 	else if (str[i] == ')' && quoute_is_on == FALSE)
 	{
-		if (!found_operator_right(str, i) || found_operator_left(str, i - 1) || another_parenthesis(str, i + 1) \
-			|| *pare_is_on == 0)
+		if (!found_operator_right(str, i) || found_operator_left(str, i - 1) \
+			|| another_parenthesis(str, i + 1) || *pare_is_on == 0)
 		{
 			show_error(M_ERROR_SINTAX, "')'", E_ERROR_SINTAX, 0);
 			return (1);
@@ -101,7 +102,7 @@ int	parse_string(char *buffer)
 			return (1);
 		index++;
 	}
-	if (parentheses_is_on  > 0)
+	if (parentheses_is_on > 0)
 		show_error(M_ERROR_SINTAX, "'('", E_ERROR_SINTAX, 0);
 	else if (parentheses_is_on < 0)
 		show_error(M_ERROR_SINTAX, "')'", E_ERROR_SINTAX, 0);

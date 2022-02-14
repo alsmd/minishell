@@ -6,8 +6,6 @@ void	show_subshell(char *buffer)
 {
 	int		id;
 
-	(void)id;
-
 	g_minishell.tab_indentation += 2;
 	id = fork();
 	if (id == 0)

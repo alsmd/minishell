@@ -49,6 +49,22 @@ void	execute_subshell(t_node *node)
 	exit(g_minishell.exit_code);
 }
 
+int	show_debug(t_node *node)
+{
+	if (g_minishell.debug_is_on && g_minishell.debug_mode == 1)
+	{
+		while (node)
+		{
+			expand_node(node);
+			trim_quotes(node->argv);
+			print_debuger_table(node);
+			node = node->next;
+		}
+		return (1);
+	}
+	return (0);
+}
+
 void	exec_commands(t_node *node)
 {
 	int			status;
@@ -56,16 +72,10 @@ void	exec_commands(t_node *node)
 	status = 0;
 	if (!node)
 		node = g_minishell.node;
+	if (show_debug(node))
+		return ;
 	while (node)
 	{
-		if (g_minishell.debug_is_on && g_minishell.debug_mode == 1)
-		{
-			expand_node(node);
-			trim_quotes(node->argv);
-			print_debuger_table(node);
-			node = node->next;
-			continue ;
-		}
 		close_prev_fd(node);
 		chose_execute_line(node, &status, 0);
 		if (!node->relation || ((!ft_strncmp(node->relation, "||", 2)

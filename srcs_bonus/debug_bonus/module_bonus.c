@@ -5,6 +5,7 @@ extern t_minishell	g_minishell;
 void	module_name(t_node *node, int size)
 {
 	int	c;
+
 	print_char(' ', g_minishell.tab_indentation);
 	if (node->full_path && node->full_path[0])
 		c = printf("|  %sName: %s%s%s", BOLD, CYAN, node->full_path, RESET);

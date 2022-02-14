@@ -21,7 +21,6 @@ char	*check_relation(char *buffer, int *index, int quoute, int *first)
 	return (buffer);
 }
 
-
 void	create_relations(char *buffer)
 {
 	int		index;
