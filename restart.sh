@@ -1,5 +1,13 @@
 #!/bin/bash
 
-my_exit 123
-make
-./minishell
+echo ta aqui
+echo ta aqui
+echo ta aqui
+echo ta aqui
+echo ta aqui
+echo ta aqui
+echo ta aqui
+echo ta aqui
+echo ta aqui
+echo ta aqui
+echo ta aqui
