@@ -26,24 +26,6 @@ void	print_debuger_table(t_node *node)
 		show_subshell(ft_strdup(node->subshell));
 }
 
-void	turn_on_debug_flags(char **flags)
-{
-	int	i;
-
-	i = 1;
-	while (flags[i])
-	{
-		if (!ft_strncmp(flags[i], "--show-node", -1))
-			g_minishell.debug_flags.show_nodes = TRUE;
-		if (!ft_strncmp(flags[i], "--show-subshell", -1))
-			g_minishell.debug_flags.show_subshell = TRUE;
-		if (!ft_strncmp(flags[i], "--exec-cmd", -1))
-			g_minishell.debug_flags.exec_cmd = TRUE;
-		i++;
-	}
-}
-
-
 void	debuger(char **flags)
 {
 	if (!g_minishell.debug_is_on)
@@ -58,6 +40,6 @@ void	debuger(char **flags)
 		g_minishell.debug_mode = 0;
 		g_minishell.debug_is_on = 0;
 	}
-	if (g_minishell.debug_is_on)
+	if (g_minishell.debug_is_on && flags[1])
 		turn_on_debug_flags(flags);
 }
