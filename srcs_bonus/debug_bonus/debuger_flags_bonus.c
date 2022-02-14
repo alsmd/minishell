@@ -41,7 +41,7 @@ void	turn_on_debug_flags(char **flags)
 		else if (!ft_strncmp(flags[i], "-h", -1) && i == 1 && !flags[i + 1])
 			print_flags();
 		else
-			printf("invalid flag: use -h to see the valids!");
+			printf("invalid flag: use -h to see the valids!\n");
 	}
 }
 

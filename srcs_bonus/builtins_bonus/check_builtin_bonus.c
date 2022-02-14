@@ -20,6 +20,8 @@ int	is_builtin(t_node *cmd)
 		return (TRUE);
 	if (!(ft_strncmp(cmd->argv[0], "color", -1)))
 		return (TRUE);
+	if (!(ft_strncmp(cmd->argv[0], "hazzard", -1)))
+		return (TRUE);
 	if (!(ft_strncmp(cmd->argv[0], "debug", -1)))
 		return (TRUE);
 	return (FALSE);
@@ -45,6 +47,8 @@ void	exec_builtin(t_node *cmd)
 			unset(cmd->argv[1]);
 		if (!(ft_strncmp(cmd->argv[0], "color", -1)))
 			set_color(cmd->argv[1]);
+		if (!(ft_strncmp(cmd->argv[0], "hazzard", -1)))
+			hazzard();
 		if (!(ft_strncmp(cmd->argv[0], "debug", -1)))
 			debuger(cmd->argv);
 	}
