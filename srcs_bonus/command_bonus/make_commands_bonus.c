@@ -9,7 +9,8 @@ void	parse_builtin_final(void)
 	expand_node(g_minishell.node);
 	trim_quotes(g_minishell.node->argv);
 	if (g_minishell.debug_is_on && ft_strncmp(g_minishell.node->argv[0], \
-		"debug", ft_strlen(g_minishell.node->argv[0])))
+		"debug", ft_strlen(g_minishell.node->argv[0])) && \
+		g_minishell.debug_mode == 1)
 	{
 		id = fork();
 		if (id == 0)
