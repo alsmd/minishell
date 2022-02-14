@@ -82,6 +82,7 @@ typedef struct s_minishell
 	char	**matrix_env;
 	int		debug_mode;
 	int		debug_is_on;
+	int		tab_indentation;
 	t_debug	debug_flags;
 	t_env	*env;
 	t_node	*node;
@@ -107,10 +108,18 @@ void		turn_on_debug_flags(char **flags);
 void		print_flags(void);
 
 // DEBUG UTILS
-void		init_box(int size);
 int			get_square_size(t_node *node);
 void		indent(int c, int size);
 void		divider(char c, int size);
+void		print_char(char c, int size);
+
+//Debug Module
+void		header_box(int size);
+void		module_name(t_node *node, int size);
+void		module_relation(t_node *node, int size);
+void		module_subshell(t_node *node, int size);
+void		module_argv(char **matrix, int size);
+void		footer_box(int size);
 
 // INIT
 void		init_shell(char **envp);
@@ -176,6 +185,9 @@ char		*expand_vars(char *buffer);
 int			check_grammar(void);
 char		*copy_string_trim(char *string);
 int			found_operator(char *buffer, int index, int direction);
+int			found_operator_right(char *buffer, int index);
+int			found_operator_left(char *buffer, int index);
+
 int			another_parenthesis(char *buffer, int index);
 
 // CHECK COMMAND

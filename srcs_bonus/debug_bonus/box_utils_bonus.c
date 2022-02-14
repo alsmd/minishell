@@ -1,5 +1,7 @@
 #include <minishell_bonus.h>
 
+extern t_minishell	g_minishell;
+
 void	print_char(char c, int size)
 {
 	while (size--)
@@ -53,10 +55,12 @@ int	get_square_size(t_node *node)
 	return (size);
 }
 
-void	init_box(int size)
+void	header_box(int size)
 {
+	print_char(' ', g_minishell.tab_indentation);
 	print_char(' ', 1);
 	print_char('_', size);
 	print_char('\n', 1);
+	print_char('>', g_minishell.tab_indentation);
 	divider(' ', size);
 }

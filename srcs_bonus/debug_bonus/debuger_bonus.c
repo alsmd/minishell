@@ -5,12 +5,15 @@ extern t_minishell	g_minishell;
 void	debug_mode(char *buffer)
 {
 	t_debug	debug_flags;
+	int		tab;
 
+	tab = g_minishell.tab_indentation;
 	debug_flags = g_minishell.debug_flags;
 	g_minishell.debug_mode = 1;
 	clean_trash();
 	init_shell(g_minishell.matrix_env);
 	g_minishell.debug_mode = 1;
+	g_minishell.tab_indentation = tab;
 	g_minishell.debug_is_on = 1;
 	g_minishell.debug_flags = debug_flags;
 	make_shell_command(buffer);

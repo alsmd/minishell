@@ -2,17 +2,46 @@
 
 extern t_minishell	g_minishell;
 
-int	found_operator(char *buffer, int index, int direction)
+int	found_operator_right(char *buffer, int index)
 {
-	while (index > 0 && buffer[index])
+	while (buffer[index])
 	{
+		if (buffer[index] == ')' || buffer[index] == '(')
+		{
+			index++;
+			continue ;
+		}
 		if (is_in(g_minishell.operators, &(buffer[index])))
-			return (1);
-		if (index - 1 >= 0 && is_in(g_minishell.operators, &(buffer[index - 1])))
 			return (1);
 		if (buffer[index] != ' ')
 			return (0);
-		index += direction;
+		index++;
+	}
+	return (1);
+}
+
+int	found_operator_left(char *buffer, int index)
+{
+	char	*relation;
+
+	while (index >=0 && buffer[index])
+	{
+		if (buffer[index] == ')' || buffer[index] == '(')
+		{
+			index--;
+			continue ;
+		}
+		if (is_in(g_minishell.operators, &(buffer[index])))
+			return (1);
+		if (index - 1 >= 0)
+		{
+			relation = is_in(g_minishell.operators, &(buffer[index - 1]));
+			if (relation && ft_strlen(relation) == (size_t) 2)
+				return (1);
+		}
+		if (buffer[index] != ' ')
+			return (0);
+		index--;
 	}
 	return (1);
 }
