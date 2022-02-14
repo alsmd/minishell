@@ -14,18 +14,20 @@ void	show_subshell(char *buffer)
 	free(buffer);
 }
 
-static void	print_argv(char **matrix)
+static void	print_argv(char **matrix, int size)
 {
 	int	i;
+	int	c;
 
 	i = 0;
 	if (matrix[i] && matrix[i][0])
 	{
-		printf("----------------------\n|");
+		divider('-', size);
 		while (matrix[i])
 		{
-			printf("  %sArgs[%d]: %s%s\n%s|", BOLD, i, CYAN, \
+			c = printf("|  %sArgs[%d]: %s%s%s", BOLD, i, CYAN, \
 			matrix[i], RESET);
+			indent(c, size);
 			i++;
 		}
 	}
@@ -33,22 +35,30 @@ static void	print_argv(char **matrix)
 
 void	show_nodes(t_node *node)
 {
-	printf(" ______________________\n|\n|");
+	int	c;
+	int	size;
+
+	size = get_square_size(node);
+	init_box(size);
 	if (node->full_path && node->full_path[0])
-		printf("  %sName: %s%s\n%s|", BOLD, CYAN, node->full_path, RESET);
+		c = printf("|  %sName: %s%s%s", BOLD, CYAN, node->full_path, RESET);
 	else
-		printf("  %sName: %sNone\n%s|", BOLD, CYAN, RESET);
-	printf("----------------------\n|");
+		c = printf("|  %sName: %sNone%s", BOLD, CYAN, RESET);
+	indent(c, size);
+	divider('-', size);
 	if (node->relation)
-		printf("  %sRelation: %s%s\n%s|", BOLD, CYAN, node->relation, RESET);
+		c = printf("|  %sRelation: %s%s%s", BOLD, CYAN, node->relation, RESET);
 	else
-		printf("  %sRelation: %sNone%s\n|", BOLD, CYAN, RESET);
+		c = printf("|  %sRelation: %sNone%s", BOLD, CYAN, RESET);
+	indent(c, size);
 	if (node->subshell)
 	{
-		printf("----------------------\n|");
-		printf("  %sSubshell: %s\n|%s     %s\n%s|", BOLD, RESET, CYAN, \
-		node->subshell, RESET);
+		divider('-', size);
+		c = printf("|  %sSubshell: %s%s", BOLD, CYAN, RESET);
+		indent(c, size);
+		c = printf("|%s%s     %s%s", BOLD, CYAN, node->subshell, RESET);
+		indent(c, size);
 	}
-	print_argv(node->argv);
-	printf("______________________\n");
+	print_argv(node->argv, size);
+	divider('_', size);
 }

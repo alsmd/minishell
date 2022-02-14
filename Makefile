@@ -60,6 +60,7 @@ SRCS_BONUS = $(PATH_MAIN_BONUS)main_bonus.c $(PATH_MAIN_BONUS)init_bonus.c $(PAT
 		$(PATH_COMMAND_BONUS)relations_bonus.c $(PATH_COMMAND_BONUS)relations_helper_bonus.c $(PATH_COMMAND_BONUS)exec_helper_bonus.c\
 		$(PATH_COMMAND_BONUS)make_commands_bonus.c\
 		$(PATH_DEBUG_BONUS)debuger_bonus.c $(PATH_DEBUG_BONUS)show_node_bonus.c $(PATH_DEBUG_BONUS)debuger_flags_bonus.c\
+		$(PATH_DEBUG_BONUS)box_utils_bonus.c\
 		$(PATH_ENV_BONUS)create_env_bonus.c $(PATH_ENV_BONUS)get_matrix_bonus.c\
 		$(PATH_MESSAGE_BONUS)errors_bonus.c $(PATH_MESSAGE_BONUS)hazzard_bonus.c \
 		$(PATH_OPERATOR_BONUS)pipe_bonus.c $(PATH_OPERATOR_BONUS)redirect_bonus.c $(PATH_OPERATOR_BONUS)signal_bonus.c\

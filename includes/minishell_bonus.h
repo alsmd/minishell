@@ -106,6 +106,12 @@ int			delete_flags(char *flag);
 void		turn_on_debug_flags(char **flags);
 void		print_flags(void);
 
+// DEBUG UTILS
+void		init_box(int size);
+int			get_square_size(t_node *node);
+void		indent(int c, int size);
+void		divider(char c, int size);
+
 // INIT
 void		init_shell(char **envp);
 void		init_minishell(void);
