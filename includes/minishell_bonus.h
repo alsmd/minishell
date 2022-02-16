@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell_bonus.h                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: flda-sil <flda-sil@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/16 12:48:31 by flda-sil             #+#    #+#             */
+/*   Updated: 2022/02/16 12:58:44 by flda-sil            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MINISHELL_BONUS_H
 # define MINISHELL_BONUS_H
 # include <stdio.h>
@@ -67,7 +79,6 @@ typedef struct s_debug
 	int	show_subshell;
 	int	exec_cmd;
 }	t_debug;
-
 
 typedef struct s_minishell
 {
@@ -218,7 +229,6 @@ char		*make_path_next(t_folder *list);
 char		*get_filter(char *buffer, int index);
 int			get_filter_size(char *buffer);
 void		add_result(t_folder *list, struct dirent *file);
-
 
 // OPERATORS HELPERS
 void		change_cmd_stdin(int fd, t_node *node);

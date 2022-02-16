@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_grammar_bonus.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: flda-sil <flda-sil@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/16 12:52:25 by flda-sil             #+#    #+#             */
+/*   Updated: 2022/02/16 12:52:26 by flda-sil            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <minishell_bonus.h>
 
 extern t_minishell	g_minishell;
@@ -47,7 +59,6 @@ int	check_subshell_redir(t_node *node)
 	}
 	return (0);
 }
-
 
 int	check_grammar(void)
 {

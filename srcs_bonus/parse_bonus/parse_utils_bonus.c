@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_utils_bonus.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: flda-sil <flda-sil@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/16 12:52:51 by flda-sil             #+#    #+#             */
+/*   Updated: 2022/02/16 12:54:48 by flda-sil            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <minishell_bonus.h>
 
 extern t_minishell	g_minishell;
@@ -24,7 +36,7 @@ int	found_operator_left(char *buffer, int index)
 {
 	char	*relation;
 
-	while (index >=0 && buffer[index])
+	while (index >= 0 && buffer[index])
 	{
 		if (buffer[index] == ')' || buffer[index] == '(')
 		{
