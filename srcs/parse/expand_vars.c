@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 12:46:34 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/02/21 07:53:33 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/02/21 12:52:05 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,10 @@ char	*write_variable(char *new_buffer, char *buffer, int index)
 	char	*value;
 
 	value = get_var_value(&buffer[index + 1]);
-	if (*value)
-	{
-		cut_char(new_buffer);
-		new_buffer = ft_strjoin(new_buffer, value);
-		new_buffer = ft_strjoin(new_buffer, \
-		&buffer[index + get_variable_len(&buffer[index])]);
-	}
+	cut_char(new_buffer);
+	new_buffer = ft_strjoin(new_buffer, value);
+	new_buffer = ft_strjoin(new_buffer, \
+	&buffer[index + get_variable_len(&buffer[index])]);
 	free (value);
 	return (new_buffer);
 }

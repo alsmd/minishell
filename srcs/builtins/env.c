@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 12:45:01 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/02/21 10:10:49 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/02/21 12:42:58 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	export(char *command)
 	if (!command)
 	{
 		show_variables();
+		g_minishell.exit_code = 0;
 		return ;
 	}
 	while (command[i] && command[i] != '=')

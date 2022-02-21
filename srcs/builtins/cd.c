@@ -67,4 +67,6 @@ void	cd(char **argv)
 		join_show_and_free(argv[1]);
 	change_old_pwd(old_pwd);
 	g_minishell.exit_code = 0;
+	if (status == -1)
+		g_minishell.exit_code = 1;
 }
