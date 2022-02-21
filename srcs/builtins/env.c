@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 12:45:01 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/02/21 07:53:33 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/02/21 08:12:06 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	export(char *command)
 	int		i;
 
 	i = 0;
+	if (!command)
+		return ;
 	while (command[i] && command[i] != '=')
 		i++;
 	key = ft_substr(command, 0, i);
@@ -56,6 +58,8 @@ void	unset(char *key)
 	t_env	*previous;
 
 	previous = 0;
+	if (!key)
+		return ;
 	init = g_minishell.env;
 	while (init)
 	{
