@@ -79,6 +79,7 @@ void	clean_fd(void)
 void	clean_trash(void)
 {
 	clean_node();
+	rl_clear_history();
 	clean_env();
 	if (g_minishell.operators[7] == NULL)
 		free(g_minishell.operators[8]);

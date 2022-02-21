@@ -80,6 +80,7 @@ void	clean_trash(void)
 {
 	clean_node();
 	clean_env();
+	rl_clear_history();
 	if (g_minishell.asterisk_buffer)
 		free(g_minishell.asterisk_buffer);
 	if (g_minishell.operators[7] == NULL)
