@@ -52,6 +52,34 @@ char	*create_node(char *buffer, int first, int index, char *relation)
 	return (buffer);
 }
 
+void	fill_missing_arg(char *buffer, char *relation)
+{
+	char	**argv;
+	char	*tmp;
+	int		index;
+
+	tmp = buffer;
+	index = 0;
+	if (!relation || !is_redirect(relation))
+	{
+		free(tmp);
+		return ;
+	}
+	while (!is_in(g_minishell.operators, &buffer[index]) && buffer[index])
+		index++;
+	buffer[index] = '\0';
+	while (*buffer == ' ')
+		buffer++;
+	while (*buffer != ' ' && *buffer != '\0')
+		buffer++;
+	if (*buffer != '\0')
+	{
+		argv = ft_split(buffer, ' ');
+		g_minishell.node->argv = merge_matriz(g_minishell.node->argv, argv);
+	}
+	free(tmp);
+}
+
 void	create_relations(char *buffer)
 {
 	char	*relation;
@@ -69,6 +97,7 @@ void	create_relations(char *buffer)
 		if (relation && !quoute_is_on)
 		{	
 			buffer = create_node(buffer, first, index, relation);
+			fill_missing_arg(ft_strdup(buffer), relation);
 			index = 0;
 			first = FALSE;
 		}

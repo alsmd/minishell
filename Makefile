@@ -50,7 +50,7 @@ SRCS =	$(PATH_MAIN)main.c	$(PATH_MAIN)init.c $(PATH_MAIN)clean_trash.c\
 		$(PATH_UTILS)ft_strncmp.c $(PATH_UTILS)ft_strtrim.c $(PATH_UTILS)ft_substr.c \
 		$(PATH_UTILS)get_next_line.c $(PATH_UTILS)handler_final_file.c $(PATH_UTILS)is_in.c\
 		$(PATH_UTILS)close_fd.c	$(PATH_UTILS)ft_atoi.c $(PATH_UTILS)ft_itoa.c \
-		$(PATH_UTILS)ft_strlcpy.c
+		$(PATH_UTILS)ft_strlcpy.c $(PATH_UTILS)merge_matriz.c
 
 SRCS_BONUS = $(PATH_MAIN_BONUS)main_bonus.c $(PATH_MAIN_BONUS)init_bonus.c $(PATH_MAIN_BONUS)clean_trash_bonus.c\
 		$(PATH_BUILTINS_BONUS)env_bonus.c $(PATH_BUILTINS_BONUS)check_builtin_bonus.c $(PATH_BUILTINS_BONUS)pwd_bonus.c\

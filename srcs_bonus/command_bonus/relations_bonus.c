@@ -14,18 +14,49 @@
 
 extern t_minishell	g_minishell;
 
+void	fill_missing_arg(char *buffer, char *relation)
+{
+	char	**argv;
+	char	*tmp;
+	int		index;
+
+	tmp = buffer;
+	index = 0;
+	if (!relation || !is_redirect(relation))
+	{
+		free(tmp);
+		return ;
+	}
+	while (!is_in(g_minishell.operators, &buffer[index]) && buffer[index])
+		index++;
+	buffer[index] = '\0';
+	while (*buffer == ' ')
+		buffer++;
+	while (*buffer != ' ' && *buffer != '\0')
+		buffer++;
+	if (*buffer != '\0')
+	{
+		argv = ft_split(buffer, ' ');
+		g_minishell.node->argv = merge_matriz(g_minishell.node->argv, argv);
+	}
+	free(tmp);
+}
+
 char	*check_relation(char *buffer, int *index, int quoute, int *first)
 {
+	char	*relation;
+
 	if (buffer[*index] == '(' && !quoute)
 	{
 		buffer = create_subshell(&buffer[*index]);
 		*index = 0;
 		return (buffer);
 	}
-	if (is_in(g_minishell.operators, &(buffer[*index])) && !quoute)
+	relation = is_in(g_minishell.operators, &(buffer[*index]));
+	if (relation && !quoute)
 	{	
-		buffer = create_node(buffer, first, *index, \
-		is_in(g_minishell.operators, &(buffer[*index])));
+		buffer = create_node(buffer, first, *index, relation);//cat <<      file1 file2 file3 NULL aokd > ola
+		fill_missing_arg(ft_strdup(buffer), relation);
 		*index = 0;
 	}
 	else

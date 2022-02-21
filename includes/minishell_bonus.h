@@ -234,6 +234,7 @@ void		add_result(t_folder *list, struct dirent *file);
 void		change_cmd_stdin(int fd, t_node *node);
 void		write_and_free(int fd, char *line);
 void		free_here_doc(char *line, char *delimiter);
+int			is_redirect(char *str);
 
 // SIGNALS
 void		signals(int sig);
@@ -269,5 +270,7 @@ char		*ft_itoa(int n);
 void		ft_strlcpy(char *dst, const char *src, size_t size);
 int			has(char *string, char c);
 char		**join_matriz(char **m1, char **m2, int *limiter);
+int			matriz_size(char **m);
+char		**merge_matriz(char **m1, char **m2);
 
 #endif

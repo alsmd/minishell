@@ -155,6 +155,7 @@ void	handle_here_doc(t_node *node);
 void	change_cmd_stdin(int fd, t_node *node);
 void	write_and_free(int fd, char *line);
 void	free_here_doc(char *line, char *delimiter);
+int		is_redirect(char *str);
 
 // SIGNALS
 void	signals(int sig);
@@ -183,5 +184,7 @@ void	close_fd(int fd);
 int		ft_atoi(const char *nptr);
 char	*ft_itoa(int n);
 void	ft_strlcpy(char *dst, const char *src, size_t size);
+int		matriz_size(char **m);
+char	**merge_matriz(char **m1, char **m2);
 
 #endif
