@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 12:48:54 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/02/21 07:53:33 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/02/21 11:27:36 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,16 @@ void	join_show_and_free(char *argv)
 {
 	char	*buffer;
 
-	buffer = ft_strjoin(ft_strdup("cd: "), argv);
-	show_error(buffer, M_INVALID_FILE, 1, 0);
+	if (argv)
+	{
+		buffer = ft_strjoin(ft_strdup("cd: "), argv);
+		show_error(buffer, M_INVALID_FILE, 1, 0);
+	}
+	else
+	{
+		buffer = ft_strjoin(ft_strdup("cd: "), "HOME not set");
+		show_error(buffer, "", 1, 0);
+	}
 	free(buffer);
 }
 
@@ -45,7 +53,10 @@ void	cd(char **argv)
 	if (argv[1] == 0 || argv[1][0] == '\0' || !ft_strncmp(argv[1], "~", -1))
 	{
 		aux = get_var_value("HOME");
-		status = chdir(aux);
+		if (aux[0])
+			status = chdir(aux);
+		else
+			status = -1;
 		free(aux);
 	}
 	else if (argv[2] != 0)
