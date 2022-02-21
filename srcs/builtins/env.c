@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 12:45:01 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/02/21 08:12:06 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/02/21 10:10:49 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,23 @@ void	env(void)
 	g_minishell.exit_code = 0;
 }
 
+void	show_variables(void)
+{
+	t_env	*init;
+	char	*buffer;
+	
+	buffer = ft_strdup("declare -x");
+	init = g_minishell.env;
+	while (init)
+	{
+		printf("%s %s=\"%s\"\n", buffer, init->key, init->value);
+		init = init->next;
+	}
+	free(buffer);
+	g_minishell.exit_code = 0;
+}
+
+
 void	export(char *command)
 {
 	char	*key;
@@ -35,7 +52,10 @@ void	export(char *command)
 
 	i = 0;
 	if (!command)
+	{
+		show_variables();
 		return ;
+	}
 	while (command[i] && command[i] != '=')
 		i++;
 	key = ft_substr(command, 0, i);

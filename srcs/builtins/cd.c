@@ -28,7 +28,10 @@ void	join_show_and_free(char *argv)
 {
 	char	*buffer;
 
-	buffer = ft_strjoin(ft_strdup("cd: "), argv);
+	if (argv)
+		buffer = ft_strjoin(ft_strdup("cd: "), argv);
+	else
+		buffer = ft_strjoin(ft_strdup("cd: "), NULL);
 	show_error(buffer, M_INVALID_FILE, 1, 0);
 	free(buffer);
 }
@@ -45,7 +48,8 @@ void	cd(char **argv)
 	if (argv[1] == 0 || argv[1][0] == '\0' || !ft_strncmp(argv[1], "~", -1))
 	{
 		aux = get_var_value("HOME");
-		status = chdir(aux);
+		if (aux)
+			status = chdir(aux);
 		free(aux);
 	}
 	else if (argv[2] != 0)
