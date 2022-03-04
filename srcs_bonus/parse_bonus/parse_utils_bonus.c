@@ -92,7 +92,8 @@ char	*swap_chars(char *cmd, char to_find, char to_put)
 				toggle_quoute(&cmd[i], &quote_is_on);
 			}
 		}
-		i++;
+		if (cmd[i])
+			i++;
 	}
 	return (cmd);
 }

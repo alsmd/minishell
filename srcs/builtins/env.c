@@ -31,7 +31,7 @@ void	show_variables(void)
 {
 	t_env	*init;
 	char	*buffer;
-	
+
 	buffer = ft_strdup("declare -x");
 	init = g_minishell.env;
 	while (init)
@@ -42,7 +42,6 @@ void	show_variables(void)
 	free(buffer);
 	g_minishell.exit_code = 0;
 }
-
 
 void	export(char *command)
 {
@@ -79,10 +78,8 @@ void	unset(char *key)
 	t_env	*previous;
 
 	previous = 0;
-	if (!key)
-		return ;
 	init = g_minishell.env;
-	while (init)
+	while (init && key)
 	{
 		if (!ft_strncmp(init->key, key, -1))
 		{

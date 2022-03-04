@@ -55,7 +55,7 @@ char	*check_relation(char *buffer, int *index, int quoute, int *first)
 	relation = is_in(g_minishell.operators, &(buffer[*index]));
 	if (relation && !quoute)
 	{	
-		buffer = create_node(buffer, first, *index, relation);//cat <<      file1 file2 file3 NULL aokd > ola
+		buffer = create_node(buffer, first, *index, relation);
 		fill_missing_arg(ft_strdup(buffer), relation);
 		*index = 0;
 	}

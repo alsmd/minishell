@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flda-sil <flda-sil@student.42.fr>                +#+  +:+       +#+        */
+/*   By: flda-sil <flda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 12:44:50 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/02/16 13:06:34 by flda-sil          ###   ########.fr       */
+/*   Updated: 2022/02/16 13:06:34 by flda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,9 @@ void	cd(char **argv)
 	if (argv[1] == 0 || argv[1][0] == '\0' || !ft_strncmp(argv[1], "~", -1))
 	{
 		aux = get_var_value("HOME");
+		status = -1;
 		if (aux[0])
 			status = chdir(aux);
-		else
-			status = -1;
 		free(aux);
 	}
 	else if (argv[2] != 0)
