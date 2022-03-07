@@ -5,6 +5,11 @@
 		"dirent.h": "c",
 		"history.h": "c",
 		"minishell_bonus.h": "c",
-		"unistd.h": "c"
+		"unistd.h": "c",
+		"readline.h": "c",
+		"rlstdc.h": "c",
+		"keymaps.h": "c",
+		"wait.h": "c",
+		"stdio.h": "c"
 	}
 }

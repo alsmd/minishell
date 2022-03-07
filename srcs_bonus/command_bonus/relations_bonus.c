@@ -14,6 +14,11 @@
 
 extern t_minishell	g_minishell;
 
+/*
+	@brief cat < file1 file2 file3 file4.
+			When passing more than one file in a redirect,
+			it will concatenet the extra files inside the commands's argv
+*/
 void	fill_missing_arg(char *buffer, char *relation)
 {
 	char	**argv;

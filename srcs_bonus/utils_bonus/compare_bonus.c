@@ -19,6 +19,8 @@ static int	filter_size(char *filter)
 	index = 0;
 	while (filter[index] && filter[index] != '*')
 		index++;
+	if (filter[index] == '\0')
+		index++;
 	return (index);
 }
 
