@@ -28,7 +28,6 @@ int	get_variable_len(char *key)
 	return (i);
 }
 
-
 int	toogle_value(int signal)
 {
 	if (signal == 0)

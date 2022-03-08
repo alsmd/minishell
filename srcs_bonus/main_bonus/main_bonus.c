@@ -34,6 +34,8 @@ void	run(char *buffer)
 			make_shell_command(buffer);
 		else if (!g_minishell.debug_is_on || g_minishell.debug_flags.exec_cmd)
 			make_shell_command(buffer);
+		else
+			free(buffer);
 	}
 	else
 		free(buffer);
@@ -98,10 +100,7 @@ int	main(int argc, char *argv[], char *envp[])
 
 	(void)argv;
 	if (argc > 1)
-	{
-		printf("Invalid number of argument!\n");
-		return (-1);
-	}
+		show_error("SYSTEM", "Invalid number of argument!", 1, 1);
 	init_shell(envp);
 	while (1)
 	{

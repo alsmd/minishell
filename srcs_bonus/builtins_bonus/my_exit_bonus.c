@@ -13,6 +13,7 @@
 #include <minishell_bonus.h>
 
 extern t_minishell	g_minishell;
+
 int	check_argv(char *argv)
 {
 	int	i;

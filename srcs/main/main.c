@@ -14,11 +14,16 @@
 
 t_minishell	g_minishell;
 
-void	run(char *buffer)
+int	run(char *buffer)
 {
 	char	*new_buffer;
 	int		status;
 
+	if (buffer[0] == '\0')
+	{
+		free(buffer);
+		return (0);
+	}
 	add_history(buffer);
 	new_buffer = expand_vars(buffer);
 	status = parse_string(new_buffer);
@@ -27,6 +32,7 @@ void	run(char *buffer)
 	else
 		free(new_buffer);
 	rl_replace_line("", 0);
+	return (1);
 }
 
 char	*cut_dir(char *buffer)
@@ -87,10 +93,7 @@ int	main(int argc, char *argv[], char *envp[])
 
 	(void)argv;
 	if (argc > 1)
-	{
-		printf("Invalid number of argument!\n");
-		return (-1);
-	}
+		show_error("SYSTEM", "Invalid number of argument!", 1, 1);
 	init_shell(envp);
 	while (1)
 	{
@@ -100,13 +103,8 @@ int	main(int argc, char *argv[], char *envp[])
 		free(locate);
 		if (!buffer)
 			my_exit(NULL);
-		if (buffer[0] == '\0')
-		{
-			free(buffer);
-			continue ;
-		}
-		run(buffer);
-		clean_node();
+		if (run(buffer))
+			clean_node();
 	}
 	return (0);
 }
