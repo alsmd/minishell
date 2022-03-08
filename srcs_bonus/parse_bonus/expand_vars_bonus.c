@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 12:52:35 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/02/21 12:52:22 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/03/08 15:43:31 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,15 @@ int	get_variable_len(char *key)
 	int	i;
 
 	i = 0;
-	while (key[i] && key[i] != ' ' && key[i] != '\'' && key[i] != '\"')
+	if (key[i] == '$')
+		i++;
+	if (key[i] == '?')
+		i++;
+	while (key[i] && ft_isalnum(key[i]))
 		i++;
 	return (i);
 }
+
 
 int	toogle_value(int signal)
 {
@@ -61,12 +66,15 @@ char	*write_variable(char *new_buffer, char *buffer, int index)
 {
 	char	*value;
 
-	value = get_var_value(&buffer[index + 1]);
-	cut_char(new_buffer);
-	new_buffer = ft_strjoin(new_buffer, value);
-	new_buffer = ft_strjoin(new_buffer, \
-	&buffer[index + get_variable_len(&buffer[index])]);
-	free (value);
+	if (ft_isalnum(buffer[index + 1]) || buffer[index + 1] == '?')
+	{
+		value = get_var_value(&buffer[index + 1]);
+		cut_char(new_buffer);
+		new_buffer = ft_strjoin(new_buffer, value);
+		new_buffer = ft_strjoin(new_buffer, \
+		&buffer[index + get_variable_len(&buffer[index])]);
+		free (value);
+	}
 	return (new_buffer);
 }
 

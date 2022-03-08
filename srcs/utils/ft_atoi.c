@@ -6,20 +6,20 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 12:46:53 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/02/21 07:53:33 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/03/08 14:51:19 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-static int	is_space(char c)
+int	is_space(char c)
 {
 	if ((c >= 9 && c <= 13) || c == 32)
 		return (1);
 	return (0);
 }
 
-static int	is_number(char c)
+int	is_number(char c)
 {
 	if (c >= 48 && c <= 57)
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 12:45:04 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/02/21 07:53:33 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/03/08 15:02:28 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,41 @@
 
 extern t_minishell	g_minishell;
 
+int	check_argv(char *argv)
+{
+	int	i;
+
+	i = 0;
+	while (argv[i])
+	{
+		if (!is_number(argv[i]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	set_status(char *argv)
+{
+	char	*buffer;
+	int		status;
+
+	if (check_argv(argv))
+	{
+		buffer = ft_strdup(argv);
+		buffer = ft_strjoin(buffer, ": numeric argument required");
+		show_error("exit: ", buffer, 1, 0);
+		status = 2;
+		free(buffer);
+	}
+	else
+		status = ft_atoi(argv);
+	return (status);
+}
+
 void	my_exit(char **argv)
 {
-	int	status;
+	int		status;
 
 	printf("exit\n");
 	if (argv != 0)
@@ -29,7 +61,7 @@ void	my_exit(char **argv)
 		}
 		if (argv[1])
 		{
-			status = ft_atoi(argv[1]);
+			status = set_status(argv[1]);
 			clean_trash();
 			exit(status);
 		}

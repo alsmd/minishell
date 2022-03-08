@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 12:48:31 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/02/21 07:53:33 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/03/08 15:35:43 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,6 +252,9 @@ void		execute_subshell(t_node *node);
 void		exec_commands(t_node *node);
 
 // UTILS
+int			ft_isalpha(int x);
+int			ft_isalnum(int x);
+int			is_number(char c);
 void		ft_bzero(void *s, size_t n);
 void		*ft_calloc(size_t nmemb, size_t size);
 char		**ft_split(char const *s, char c);

@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 12:53:02 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/02/21 07:53:33 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/03/08 15:35:32 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	is_space(char c)
 	return (0);
 }
 
-static int	is_number(char c)
+int	is_number(char c)
 {
 	if (c >= 48 && c <= 57)
 		return (1);

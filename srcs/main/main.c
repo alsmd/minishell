@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 12:46:01 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/02/21 07:53:33 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/03/08 14:45:55 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,10 @@ int	main(int argc, char *argv[], char *envp[])
 		if (!buffer)
 			my_exit(NULL);
 		if (buffer[0] == '\0')
+		{
+			free(buffer);
 			continue ;
+		}
 		run(buffer);
 		clean_node();
 	}
