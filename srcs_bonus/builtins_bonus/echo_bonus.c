@@ -25,7 +25,7 @@ void	my_echo(char **argv)
 	{
 		broke_line = 1;
 		i = 2;
-		while(!ft_strncmp(argv[i], "-n", -1))
+		while (!ft_strncmp(argv[i], "-n", -1))
 			i++;
 	}
 	while (argv[i])
