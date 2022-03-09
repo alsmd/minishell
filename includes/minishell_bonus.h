@@ -275,5 +275,7 @@ int			has(char *string, char c);
 char		**join_matriz(char **m1, char **m2, int *limiter);
 int			matriz_size(char **m);
 char		**merge_matriz(char **m1, char **m2);
+int			is_space(char c);
+int			is_empty(char *buffer);
 
 #endif

@@ -110,7 +110,7 @@ int	main(int argc, char *argv[], char *envp[])
 		free(locate);
 		if (!buffer)
 			my_exit(NULL);
-		if (buffer[0] == '\0')
+		if (is_empty(buffer))
 		{
 			free(buffer);
 			continue ;

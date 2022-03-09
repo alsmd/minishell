@@ -19,7 +19,7 @@ int	run(char *buffer)
 	char	*new_buffer;
 	int		status;
 
-	if (buffer[0] == '\0')
+	if (is_empty(buffer))
 	{
 		free(buffer);
 		return (0);

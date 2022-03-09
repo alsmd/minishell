@@ -50,7 +50,7 @@ SRCS =	$(PATH_MAIN)main.c	$(PATH_MAIN)init.c $(PATH_MAIN)clean_trash.c\
 		$(PATH_UTILS)ft_strncmp.c $(PATH_UTILS)ft_strtrim.c $(PATH_UTILS)ft_substr.c \
 		$(PATH_UTILS)get_next_line.c $(PATH_UTILS)handler_final_file.c $(PATH_UTILS)is_in.c\
 		$(PATH_UTILS)close_fd.c	$(PATH_UTILS)ft_atoi.c $(PATH_UTILS)ft_itoa.c \
-		$(PATH_UTILS)ft_strlcpy.c $(PATH_UTILS)merge_matriz.c $(PATH_UTILS)is_alpha.c
+		$(PATH_UTILS)ft_strlcpy.c $(PATH_UTILS)merge_matriz.c $(PATH_UTILS)is_alpha.c $(PATH_UTILS)is_empty.c
 
 SRCS_BONUS = $(PATH_MAIN_BONUS)main_bonus.c $(PATH_MAIN_BONUS)init_bonus.c $(PATH_MAIN_BONUS)clean_trash_bonus.c\
 		$(PATH_BUILTINS_BONUS)env_bonus.c $(PATH_BUILTINS_BONUS)check_builtin_bonus.c $(PATH_BUILTINS_BONUS)pwd_bonus.c\
@@ -75,7 +75,7 @@ SRCS_BONUS = $(PATH_MAIN_BONUS)main_bonus.c $(PATH_MAIN_BONUS)init_bonus.c $(PAT
 		$(PATH_UTILS_BONUS)get_next_line_bonus.c $(PATH_UTILS_BONUS)handler_final_file_bonus.c $(PATH_UTILS_BONUS)is_in_bonus.c\
 		$(PATH_UTILS_BONUS)close_fd_bonus.c	$(PATH_UTILS_BONUS)ft_atoi_bonus.c $(PATH_UTILS_BONUS)ft_itoa_bonus.c \
 		$(PATH_UTILS_BONUS)ft_strlcpy_bonus.c $(PATH_UTILS_BONUS)compare_bonus.c $(PATH_UTILS_BONUS)join_matrix_bonus.c\
-		$(PATH_UTILS_BONUS)is_alpha.c
+		$(PATH_UTILS_BONUS)is_alpha_bonus.c $(PATH_UTILS_BONUS)is_empty_bonus.c
 		
 OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(SRCS))
 

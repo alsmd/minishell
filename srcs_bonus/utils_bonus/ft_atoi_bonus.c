@@ -12,7 +12,7 @@
 
 #include <minishell_bonus.h>
 
-static int	is_space(char c)
+int	is_space(char c)
 {
 	if ((c >= 9 && c <= 13) || c == 32)
 		return (1);

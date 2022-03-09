@@ -190,5 +190,6 @@ char	*ft_itoa(int n);
 void	ft_strlcpy(char *dst, const char *src, size_t size);
 int		matriz_size(char **m);
 char	**merge_matriz(char **m1, char **m2);
+int		is_empty(char *buffer);
 
 #endif
