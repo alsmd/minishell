@@ -6,7 +6,7 @@
 /*   By: gsilva-v <gsilva-v@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 12:46:34 by flda-sil          #+#    #+#             */
-/*   Updated: 2022/03/08 15:44:49 by gsilva-v         ###   ########.fr       */
+/*   Updated: 2022/03/08 18:23:33 by gsilva-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	get_variable_len(char *key)
 
 	i = 0;
 	if (key[i] == '$')
+		i++;
+	if (key[i] == '?')
 		i++;
 	while (key[i] && ft_isalnum(key[i]))
 		i++;
